@@ -20,11 +20,6 @@ export const projects = [
     href: 'https://easol.com',
   },
   {
-    title: 'Repeat',
-    source: 'Studio Freight',
-    href: 'https://getrepeat.io',
-  },
-  {
     title: 'How to Animate SVG Shapes on Scroll',
     source: 'Codrops',
     href: 'https://tympanus.net/Tutorials/OnScrollPathAnimations/',
@@ -53,10 +48,5 @@ export const projects = [
     title: 'Heights Agency',
     source: 'Francesco Michelini',
     href: 'https://www.heights.agency/',
-  },
-  {
-    title: 'Goodship',
-    source: 'Studio Freight',
-    href: 'https://goodship.io/',
   },
 ]
