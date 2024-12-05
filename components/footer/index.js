@@ -21,14 +21,14 @@ export const Footer = () => {
           </p>
         </div> */}
         <p className={cn(s['last-line'], 'h1')}>
-          & open to <span className="hide-on-desktop">&nbsp;</span> features,{' '}
-          <br /> forks or prs &nbsp;
+          & open to <span className="hide-on-desktop">&nbsp;</span> features{' '}
+          <br /> or sponsors
         </p>
         <Button
           className={s.cta}
           arrow
           icon={<GitHub />}
-          href="https://github.com/darkroomengineering/lenis"
+          href="https://github.com/sponsors/darkroomengineering"
         >
           Let's build together
         </Button>
@@ -43,7 +43,7 @@ export const Footer = () => {
         <p className={cn(s['first-line'], 'h1')}>
           Lenis is <br />
           <span className="contrast">Open source</span>
-          <br /> & open to <br /> features, forks or prs
+          <br /> & open to <br /> features or sponsors
         </p>
       </div>
       <div className={s.bottom}>

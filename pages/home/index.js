@@ -267,9 +267,9 @@ export default function Home() {
             className={cn(s.cta, introOut && s.in)}
             arrow
             icon={<GitHub />}
-            href="https://github.com/darkroomengineering/lenis"
+            href="https://github.com/sponsors/darkroomengineering"
           >
-            Check it out on github
+            become a sponsor
           </Button>
         </div>
       </section>
