@@ -16,9 +16,11 @@ import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import { useIntersection, useWindowSize } from 'react-use'
 import s from './home.module.scss'
+import { Modal } from 'components/modal'
 
 // const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
+const Sponsor = dynamic(() => import('icons/sponsor.svg'), { ssr: false })
 
 const Parallax = dynamic(
   () => import('components/parallax').then((mod) => mod.Parallax),
@@ -52,6 +54,11 @@ const HeroTextIn = ({ children, introOut }) => {
       {children}
     </div>
   )
+}
+
+if (typeof window !== 'undefined') {
+  window.history.scrollRestoration = 'manual'
+  window.scrollTo(0, 0)
 }
 
 export default function Home() {
@@ -218,6 +225,8 @@ export default function Home() {
         <WebGL />
       </div>
 
+      <Modal />
+
       <section className={s.hero}>
         <div className="layout-grid-inner">
           <Title className={s.title} />
@@ -264,15 +273,24 @@ export default function Home() {
             </HeroTextIn>
           </h1>
           <Button
-            className={cn(s.cta, introOut && s.in)}
+            className={cn(s.cta, s.documentation, introOut && s.in)}
             arrow
             icon={<GitHub />}
+            href="https://github.com/darkroomengineering/lenis/blob/main/README.md"
+          >
+            documentation
+          </Button>
+          <Button
+            className={cn(s.cta, s.sponsor, introOut && s.in)}
+            arrow
+            icon={<Sponsor />}
             href="https://github.com/sponsors/darkroomengineering"
           >
             become a sponsor
           </Button>
         </div>
       </section>
+
       <section className={s.why} data-lenis-scroll-snap-align="start">
         <div className="layout-grid">
           <h2 className={cn(s.sticky, 'h2')}>

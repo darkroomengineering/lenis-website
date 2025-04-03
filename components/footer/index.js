@@ -77,7 +77,7 @@ export const Footer = () => {
           className={cn(s.cta, 'hide-on-desktop')}
           arrow
           icon={<GitHub />}
-          href="https://github.com/darkroomengineering/lenis"
+          href="https://github.com/sponsors/darkroomengineering"
         >
           Let's build together
         </Button>

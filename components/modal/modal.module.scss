@@ -1,0 +1,107 @@
+@import 'styles/_functions';
+
+.modal {
+  position: fixed !important;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  //   pointer-events: none;
+
+  color: var(--theme-secondary);
+  //   display: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--theme-secondary);
+    opacity: 0.5;
+    backdrop-filter: blur(10px);
+  }
+
+  .content {
+    // width: 37.5%;
+    // aspect-ratio: 1;
+    background-color: var(--theme-primary);
+    padding: mobile-vw(40px) mobile-vw(20px);
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: mobile-vw(40px);
+    border: 1px solid var(--theme-contrast);
+    position: relative;
+
+    @include desktop {
+      grid-column: 5 / -5;
+      gap: desktop-vw(40px);
+      padding: desktop-vw(40px) desktop-vw(20px);
+    }
+
+    .close {
+      position: absolute;
+      top: mobile-vw(20px);
+      right: mobile-vw(20px);
+      width: mobile-vw(20px);
+      height: mobile-vw(20px);
+
+      @include desktop {
+        top: desktop-vw(20px);
+        right: desktop-vw(20px);
+        width: desktop-vw(20px);
+        height: desktop-vw(20px);
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        height: 1px;
+        width: 100%;
+        background-color: var(--theme-secondary);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &::after {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+
+    .text {
+      padding-top: mobile-vw(20px);
+
+      @include desktop {
+        padding-top: desktop-vw(20px);
+      }
+    }
+  }
+
+  &::before,
+  .content {
+    transition-duration: 1.2s;
+    transition-timing-function: var(--ease-out-expo);
+    transition-property: opacity, transform;
+  }
+
+  &:not(.active) {
+    pointer-events: none;
+
+    &::before {
+      opacity: 0;
+    }
+
+    .content {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+}

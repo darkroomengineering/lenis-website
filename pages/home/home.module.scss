@@ -230,9 +230,20 @@ $intro-duration: 2050ms;
       @include desktop {
         transition: transform calc($intro-duration - 200ms) var(--ease-out-expo),
           opacity $intro-duration var(--ease-out-expo);
-        grid-column: 10 / -1;
         opacity: 0.5;
         transform: translate3d(0, 100%, 0);
+      }
+
+      &.documentation {
+        @include desktop {
+          grid-column: 7 / 10;
+        }
+      }
+
+      &.sponsor {
+        @include desktop {
+          grid-column: 10 / -1;
+        }
       }
     }
   }
