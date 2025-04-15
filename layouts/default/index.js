@@ -34,7 +34,7 @@ export function Layout({
     window.scrollTo(0, 0)
     const lenis = new Lenis({
       // gestureOrientation: 'both',
-      smoothWheel: true,
+      smoothWheel: false,
       // smoothTouch: true,
       syncTouch: true,
     })
