@@ -32,11 +32,11 @@ const AppearTitle = dynamic(
   { ssr: false }
 )
 
-const HorizontalSlides = dynamic(
-  () =>
-    import('components/horizontal-slides').then((mod) => mod.HorizontalSlides),
-  { ssr: false }
-)
+// const HorizontalSlides = dynamic(
+//   () =>
+//     import('components/horizontal-slides').then((mod) => mod.HorizontalSlides),
+//   { ssr: false }
+// )
 
 const FeatureCards = dynamic(
   () => import('components/feature-cards').then((mod) => mod.FeatureCards),
