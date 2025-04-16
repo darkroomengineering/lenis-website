@@ -2,7 +2,7 @@ import { useFrame, useRect } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
 
 import { Button } from 'components/button'
-import { Card } from 'components/card'
+// import { Card } from 'components/card'
 import { Title } from 'components/intro'
 import { Link } from 'components/link'
 import { ListItem } from 'components/list-item'
@@ -16,16 +16,16 @@ import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import { useIntersection, useWindowSize } from 'react-use'
 import s from './home.module.scss'
-import { Modal } from 'components/modal'
+// import { Modal } from 'components/modal'
 
 // const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
 const Sponsor = dynamic(() => import('icons/sponsor.svg'), { ssr: false })
 
-const Parallax = dynamic(
-  () => import('components/parallax').then((mod) => mod.Parallax),
-  { ssr: false }
-)
+// const Parallax = dynamic(
+//   () => import('components/parallax').then((mod) => mod.Parallax),
+//   { ssr: false }
+// )
 
 const AppearTitle = dynamic(
   () => import('components/appear-title').then((mod) => mod.AppearTitle),
