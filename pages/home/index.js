@@ -163,11 +163,11 @@ export default function Home() {
 
   useEffect(() => {
     const top = cardsRect.top - windowHeight / 2
-    addThreshold({ id: 'cards-start', value: top })
-    addThreshold({ id: 'cards-end', value: top + cardsRect.height })
+    // addThreshold({ id: 'cards-start', value: top })
+    addThreshold({ id: 'cards-end', value: top + windowHeight })
     addThreshold({
       id: 'red-end',
-      value: top + cardsRect.height + windowHeight,
+      value: top + windowHeight,
     })
   }, [cardsRect])
 
@@ -224,8 +224,6 @@ export default function Home() {
       <div className={s.canvas}>
         <WebGL />
       </div>
-
-      <Modal />
 
       <section className={s.hero}>
         <div className="layout-grid-inner">
@@ -291,7 +289,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={s.why} data-lenis-scroll-snap-align="start">
+      <section className={s.why}>
         <div className="layout-grid">
           <h2 className={cn(s.sticky, 'h2')}>
             <AppearTitle>Why smooth scroll?</AppearTitle>
@@ -342,7 +340,7 @@ export default function Home() {
           </aside>
         </div>
       </section>
-      <section className={s.rethink}>
+      {/* <section className={s.rethink}>
         <div className={cn('layout-grid', s.pre)}>
           <div className={s.highlight} data-lenis-scroll-snap-align="start">
             <Parallax speed={-0.5}>
@@ -404,9 +402,10 @@ export default function Home() {
             />
           </HorizontalSlides>
         </div>
-      </section>
+      </section> */}
       <section
         ref={(node) => {
+          cardsRectRef(node)
           zoomWrapperRectRef(node)
           zoomRef.current = node
         }}
