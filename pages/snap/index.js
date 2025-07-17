@@ -17,7 +17,7 @@ export default function Page() {
 
     const snap = new Snap(lenis, {
       type: 'mandatory', // 'mandatory', 'proximity'
-      velocityThreshold: 1,
+      // velocityThreshold: 1,
       // debounce: 1000,
       // duration: 2,
       // easing: (t) => t,
