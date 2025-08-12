@@ -24,10 +24,10 @@
 
   .number {
     color: var(--theme-contrast);
-    font-stretch: condensed;
-    font-weight: 900;
-    line-height: 86%;
-    letter-spacing: -0.02em;
+    // font-stretch: condensed;
+    // font-weight: 900;
+    line-height: 90%;
+    // letter-spacing: -0.02em;
     font-size: mobile-vw(56px);
 
     @include desktop {
@@ -36,10 +36,12 @@
   }
 
   .text {
+    font-family: var(--font-panchang);
+    font-weight: 700;
     text-transform: uppercase;
-    font-stretch: expanded;
+    // font-stretch: expanded;
     line-height: 100%;
-    letter-spacing: -0.01em;
+    // letter-spacing: -0.01em;
     font-size: mobile-vw(20px);
 
     @include desktop {

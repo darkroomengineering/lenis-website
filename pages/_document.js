@@ -6,43 +6,23 @@ export default function Document() {
     <Html lang="en" className={process.env.NODE_ENV === 'development' && 'dev'}>
       <Head>
         <meta charSet="UTF-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+
         <link
-          href="/fonts/Slussen-Bold.woff2"
-          as="font"
-          rel="preload prefetch"
-          type="font/woff2"
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
         <link
-          href="/fonts/Slussen-Compressed-Black.woff2"
-          as="font"
-          rel="preload prefetch"
-          type="font/woff2"
-          crossOrigin="anonymous"
+          href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
         />
         <link
-          href="/fonts/Slussen-Expanded-Black.woff2"
-          as="font"
-          rel="preload prefetch"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+          href="https://api.fontshare.com/v2/css?f[]=panchang&display=swap"
+          rel="stylesheet"
+        ></link>
         <link
-          href="/fonts/Slussen-Medium.woff2"
-          as="font"
-          rel="preload prefetch"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="/fonts/Slussen-Regular.woff2"
-          as="font"
-          rel="preload prefetch"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="/fonts/Slussen-Semibold.woff2"
+          href="/fonts/PanchangVariable-Bold.woff2"
           as="font"
           rel="preload prefetch"
           type="font/woff2"

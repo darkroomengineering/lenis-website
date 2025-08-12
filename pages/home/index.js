@@ -457,7 +457,8 @@ export default function Home() {
           <aside className={s.title}>
             <p className="h3">
               <AppearTitle>
-                Lenis
+                <span>Lenis</span>
+
                 <br />
                 <span className="grey">in use</span>
               </AppearTitle>

@@ -1,6 +1,8 @@
 @import 'styles/_functions';
 
 .button {
+  font-weight: 900;
+  font-family: var(--font-roboto);
   display: flex;
   grid-template-columns: desktop-vw(48px) 1fr;
   align-items: center;
@@ -16,7 +18,7 @@
 
   @include desktop {
     font-size: desktop-vw(14px);
-    letter-spacing: -0.01em;
+    // letter-spacing: -0.01em;
   }
 
   .text {

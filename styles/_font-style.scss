@@ -1,13 +1,13 @@
 .h1 {
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  // font-weight: 900;
+  // letter-spacing: -0.02em;
   text-transform: uppercase;
-  line-height: 86%;
+  line-height: 95%;
   font-size: mobile-vw(56px);
 
   @include desktop {
     font-size: desktop-vw(160px);
-    line-height: 85%;
+    line-height: 95%;
   }
 
   &.vh {
@@ -20,15 +20,16 @@
 }
 
 .h2 {
-  font-weight: 900;
-  letter-spacing: -0.02em;
+  // font-weight: 900;
+  // letter-spacing: -0.02em;
+
   text-transform: uppercase;
-  line-height: 86%;
+  line-height: 90%;
   font-size: mobile-vw(56px);
 
   @include desktop {
     font-size: desktop-vw(96px);
-    line-height: 83%;
+    // line-height: 83%;
   }
 
   &.vh {
@@ -41,15 +42,16 @@
 }
 
 .h3 {
-  font-stretch: expanded;
-  font-weight: 900;
+  // font-stretch: expanded;
+  font-weight: 700;
   text-transform: uppercase;
-  line-height: 100%;
+  line-height: 90%;
   font-size: mobile-vw(20px);
-  letter-spacing: -0.01em;
+  // letter-spacing: -0.01em;
+  font-family: var(--font-panchang);
 
   @include desktop {
-    letter-spacing: 0.01em;
+    // letter-spacing: 0.01em;
     font-size: desktop-vw(52px);
   }
 
@@ -63,23 +65,25 @@
 }
 
 .h4 {
-  font-stretch: expanded;
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  // font-stretch: expanded;
+  font-weight: 700;
+  // letter-spacing: -0.03em;
   text-transform: uppercase;
   line-height: 100%;
   font-size: mobile-vw(20px);
+  font-family: var(--font-panchang);
 
   @include desktop {
     font-size: desktop-vw(28px);
-    letter-spacing: -0.01em;
+    // letter-spacing: -0.01em;
   }
 }
 
 .p-l {
+  font-family: var(--font-roboto);
   font-weight: 500;
   line-height: 100%;
-  letter-spacing: -0.03em;
+  // letter-spacing: -0.03em;
   font-size: mobile-vw(32px);
 
   @include desktop {
@@ -88,8 +92,9 @@
 }
 
 .p {
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  // letter-spacing: -0.03em;
+  font-family: var(--font-roboto);
   line-height: 125%;
   font-size: mobile-vw(16px);
 
@@ -99,7 +104,7 @@
   }
 
   &.bold {
-    font-weight: 600;
+    font-weight: 900;
     line-height: 125%;
 
     @include desktop {
@@ -109,8 +114,9 @@
 }
 
 .p-s {
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 900;
+  // letter-spacing: -0.01em;
+  font-family: var(--font-roboto);
   text-transform: uppercase;
   font-size: mobile-vw(14px);
 
@@ -121,8 +127,9 @@
 }
 
 .p-xs {
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 900;
+  font-family: var(--font-roboto);
+  // letter-spacing: -0.01em;
   text-transform: uppercase;
   font-size: mobile-vw(12px);
 
@@ -132,13 +139,13 @@
   }
 }
 
-.semi-bold {
-  font-weight: 600;
-}
+// .semi-bold {
+//   font-weight: 600;
+// }
 
-.bold {
-  font-weight: 700;
-}
+// .bold {
+//   font-weight: 700;
+// }
 
 .contrast {
   color: var(--theme-contrast);

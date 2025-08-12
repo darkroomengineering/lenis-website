@@ -59,6 +59,7 @@
     flex-shrink: 0;
 
     .text {
+      font-family: var(--font-roboto);
       font-weight: 500;
       line-height: 100%;
       font-size: mobile-vw(20px);
@@ -94,7 +95,8 @@
   }
 
   .source {
-    font-weight: 700;
+    font-family: var(--font-roboto);
+    font-weight: 900;
     transition: transform 600ms var(--ease-out-expo);
     line-height: 100%;
     letter-spacing: -0.03em;
