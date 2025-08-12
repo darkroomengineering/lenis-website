@@ -20,13 +20,6 @@ export default function Document() {
         <link
           href="https://api.fontshare.com/v2/css?f[]=panchang&display=swap"
           rel="stylesheet"
-        ></link>
-        <link
-          href="/fonts/PanchangVariable-Bold.woff2"
-          as="font"
-          rel="preload prefetch"
-          type="font/woff2"
-          crossOrigin="anonymous"
         />
       </Head>
       <body>
