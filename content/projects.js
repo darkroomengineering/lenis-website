@@ -35,7 +35,7 @@ export const projects = [
     href: 'https://www.rockstargames.com/VI',
   },
   {
-    title: 'Sculpting Harmony',
+    title: 'Getty - Sculpting Harmony',
     source: 'Resn',
     href: 'https://gehry.getty.edu/',
   },
@@ -45,13 +45,13 @@ export const projects = [
     href: 'https://microsoft.design/',
   },
   {
-    title: 'Deso',
-    source: 'Studio Freight',
-    href: 'https://deso.com',
-  },
-  {
     title: 'Shopify Supply',
     source: 'Shopify',
     href: 'https://shopify.supply/',
+  },
+  {
+    title: 'Metamask',
+    source: 'Antinomy',
+    href: 'https://metamask.io/',
   },
 ]
