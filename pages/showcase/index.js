@@ -2,6 +2,8 @@ import ShowcaseCard from 'components/showcase/card'
 import s from './showcase.module.scss'
 import cn from 'clsx'
 import { Footer } from 'components/footer'
+import { Button } from 'components/button'
+import Arrow from 'icons/arrow-buttons.svg'
 
 const IMAGES = [
   '/placeholder/68fa8128610a7926725697.png',
@@ -37,11 +39,37 @@ const CARDS = Array.from({ length: 10 }, (_, index) => ({
 
 export default function Showcase() {
   return (
-    <div className={s.page}>
+    <div className={cn(s.page, 'theme-light')}>
       <section className={s.hero}>
-        <h1 className="h1 ">Showcase</h1>
+        <h1 className="h1">Showcase</h1>
       </section>
       <section className={cn('layout-grid', s.grid)}>
+        <ShowcaseCard className={cn(s.featured)} {...CARDS[0]} />
+        {/* <ShowcaseCard className={cn(s.featured)} {...CARDS[0]} /> */}
+        <div className={s.subgrid}>
+          <div className={s.blank}>
+            <input
+              type="text"
+              placeholder="Search"
+              className={cn(s.search, 'p')}
+            />
+            <div className={cn(s.tags, 'p')}>
+              <span className={s.tag}>All</span>
+              <span className={s.tag}>Infinite</span>
+              <span className={s.tag}>Snap</span>
+              <span className={s.tag}>Horizontal</span>
+              <span className={s.tag}>WebGL</span>
+              <span className={s.tag}>Framer</span>
+            </div>
+            <Button className={s.searchButton} icon={<Arrow />}>
+              Submit your project
+            </Button>
+          </div>
+          <div className={s.cards}>
+            <ShowcaseCard className={cn(s.card)} {...CARDS[0]} />
+            <ShowcaseCard className={cn(s.card)} {...CARDS[0]} />
+          </div>
+        </div>
         {CARDS.map((card) => (
           <ShowcaseCard key={card.title} className={s.card} {...card} />
         ))}
