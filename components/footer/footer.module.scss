@@ -37,7 +37,7 @@
       @include desktop {
         margin: 0;
         align-self: start;
-        grid-column: 1 / span 7;
+        grid-column: 1 / -1;
       }
     }
 
@@ -71,7 +71,7 @@
       // this line is only rendered on desktop
       text-align: end;
       align-self: end;
-      grid-column: 2 / -1;
+      grid-column: 1 / -1;
     }
   }
 

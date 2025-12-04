@@ -1,0 +1,23 @@
+@import 'styles/_functions';
+
+.page {
+  background-color: var(--white);
+  min-height: 100vh;
+
+  .hero {
+    height: 50vh;
+    color: var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .grid {
+    row-gap: calc(var(--layout-columns-gap) * 2);
+    margin-bottom: desktop-vw(160px);
+  }
+
+  .card {
+    grid-column: span 4;
+  }
+}

@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <footer className={cn('theme-light', s.footer)}>
       <div className={cn(s.top, 'layout-grid hide-on-mobile')}>
-        <p className={cn(s['first-line'], 'h1')}>
+        <p className={cn(s['first-line'], 'h1 vh')}>
           Lenis is <br />
           <span className="contrast">Open source</span>
         </p>
@@ -20,8 +20,8 @@ export const Footer = () => {
             An independent creative <br /> studio built on principle
           </p>
         </div> */}
-        <p className={cn(s['last-line'], 'h1')}>
-          & open to <span className="hide-on-desktop">&nbsp;</span> features{' '}
+        <p className={cn(s['last-line'], 'h1 vh')}>
+          open to <span className="hide-on-desktop">&nbsp;</span> features{' '}
           <br /> and sponsors
         </p>
         <Button
@@ -43,7 +43,8 @@ export const Footer = () => {
         <p className={cn(s['first-line'], 'h1')}>
           Lenis is <br />
           <span className="contrast">Open source</span>
-          <br /> & open to <br /> features and sponsors
+          <br />
+          open to <br /> features and sponsors
         </p>
       </div>
       <div className={s.bottom}>
