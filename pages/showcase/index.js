@@ -40,9 +40,12 @@ const CARDS = Array.from({ length: 10 }, (_, index) => ({
 
 export default function Showcase() {
   return (
-    <div className={cn(s.page, 'theme-light')}>
+    <div className={cn(s.page, 'theme-dark')}>
       <section className={s.hero}>
-        <h1 className="h1">Showcase</h1>
+        <div className={s.tagline}>
+          <h1 className="h2">Get smooth or die trying</h1>
+          <h2 className="h4">A showcase of neat Lenis implementations</h2>
+        </div>
         <Button className={s.button} icon={<Arrow />}>
           Submit your project
         </Button>

@@ -12,6 +12,16 @@
     gap: var(--layout-columns-gap);
     align-items: center;
     justify-content: center;
+    text-align: center;
+
+    color: var(--theme-secondary);
+
+    .tagline {
+      display: flex;
+      flex-direction: column;
+      gap: desktop-vw(8px);
+      margin-bottom: var(--layout-columns-gap);
+    }
   }
 
   .grid {

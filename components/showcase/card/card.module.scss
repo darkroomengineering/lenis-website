@@ -2,8 +2,8 @@
 
 .card {
   //   aspect-ratio: 1 / 1;
-  background-color: var(--white);
-  border: 1px solid var(--black);
+  background-color: var(--theme-primary);
+  border: 1px solid var(--theme-secondary);
   //   color: var(--pink);
   flex-direction: column;
   justify-content: space-between;
@@ -47,7 +47,7 @@
       width: 100%;
       height: 100%;
       //   background-color: var(--black);
-      background-color: var(--pink);
+      background-color: var(--theme-contrast);
       //   background: linear-gradient(to top, var(--pink) 50%, transparent);
       opacity: 0.33;
       transition: opacity 600ms var(--ease-out-expo);
@@ -58,7 +58,7 @@
       position: absolute;
       bottom: desktop-vw(16px);
       right: desktop-vw(16px);
-      background-color: var(--pink);
+      background-color: var(--theme-contrast);
       width: desktop-vw(32px);
       border-radius: 100%;
       display: flex;
@@ -108,6 +108,7 @@
       //   font-family: var(--font-panchang);
       //   text-transform: uppercase;
       //   font-weight: 700;
+      color: var(--theme-secondary);
       white-space: nowrap;
       display: inline-block;
       font-weight: 700;
@@ -128,7 +129,7 @@
       transition: color 600ms var(--ease-out-expo);
 
       &:hover {
-        color: var(--pink);
+        color: var(--theme-contrast);
       }
     }
   }

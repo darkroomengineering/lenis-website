@@ -24,6 +24,7 @@
     .tags {
       display: flex;
       gap: desktop-vw(8px);
+      color: var(--theme-secondary);
 
       .tag {
         border: 1px solid var(--theme-secondary);
