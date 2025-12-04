@@ -4,6 +4,7 @@ import cn from 'clsx'
 import { Footer } from 'components/footer'
 import { Button } from 'components/button'
 import Arrow from 'icons/arrow-buttons.svg'
+import { Filters } from 'components/showcase/filters'
 
 const IMAGES = [
   '/placeholder/68fa8128610a7926725697.png',
@@ -42,11 +43,15 @@ export default function Showcase() {
     <div className={cn(s.page, 'theme-light')}>
       <section className={s.hero}>
         <h1 className="h1">Showcase</h1>
+        <Button className={s.button} icon={<Arrow />}>
+          Submit your project
+        </Button>
       </section>
+      <Filters className={s.filters} />
       <section className={cn('layout-grid', s.grid)}>
-        <ShowcaseCard className={cn(s.featured)} {...CARDS[0]} />
         {/* <ShowcaseCard className={cn(s.featured)} {...CARDS[0]} /> */}
-        <div className={s.subgrid}>
+        {/* <ShowcaseCard className={cn(s.featured)} {...CARDS[0]} /> */}
+        {/* <div className={s.subgrid}>
           <div className={s.blank}>
             <input
               type="text"
@@ -69,9 +74,13 @@ export default function Showcase() {
             <ShowcaseCard className={cn(s.card)} {...CARDS[0]} />
             <ShowcaseCard className={cn(s.card)} {...CARDS[0]} />
           </div>
-        </div>
-        {CARDS.map((card) => (
-          <ShowcaseCard key={card.title} className={s.card} {...card} />
+        </div> */}
+        {CARDS.map((card, index) => (
+          <ShowcaseCard
+            key={card.title}
+            className={cn(s.card, (index === 0 || index === 1) && s.featured)}
+            {...card}
+          />
         ))}
       </section>
       <Footer />
