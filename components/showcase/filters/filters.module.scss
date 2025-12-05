@@ -1,50 +1,54 @@
 @import 'styles/_functions';
 
 .filters {
-  align-items: flex-start;
+  // align-items: flex-start;
 
-  .left {
-    grid-column: span 6;
-    // grid-column: 1 / 5;
+  // .left {
+  //   // grid-column: span 6 / -1;
+  //   // grid-column: 1 / 5;
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: desktop-vw(8px);
+
+  //   justify-content: flex-start;
+
+  .search {
+    width: 100%;
+    border: 1px solid var(--theme-secondary);
+    background-color: var(--theme-primary);
+    padding: 0 desktop-vw(16px);
+    color: var(--theme-secondary);
+    height: desktop-vw(48px);
+    border-radius: desktop-vw(32px);
+    grid-column: span 5 / -1;
+  }
+
+  .tags {
     display: flex;
-    flex-direction: column;
     gap: desktop-vw(8px);
+    color: var(--theme-secondary);
+    justify-content: flex-end;
+    grid-column: 1 / -1;
 
-    justify-content: flex-start;
-
-    .search {
-      width: 100%;
+    .tag {
       border: 1px solid var(--theme-secondary);
-      padding: 0 desktop-vw(16px);
-      background-color: var(--theme-primary);
-      color: var(--theme-secondary);
-      height: desktop-vw(48px);
-      border-radius: desktop-vw(16px);
-    }
-
-    .tags {
       display: flex;
-      gap: desktop-vw(8px);
-      color: var(--theme-secondary);
+      align-items: center;
+      justify-content: center;
+      padding: 0 desktop-vw(16px);
+      height: desktop-vw(32px);
+      border-radius: desktop-vw(32px);
+      background-color: var(--theme-primary);
 
-      .tag {
-        border: 1px solid var(--theme-secondary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 desktop-vw(16px);
-        height: desktop-vw(32px);
-        border-radius: desktop-vw(16px);
-
-        &.active {
-          background-color: var(--theme-contrast);
-          color: var(--theme-primary);
-        }
+      &.active {
+        background-color: var(--theme-contrast);
+        color: var(--theme-primary);
       }
     }
   }
-
-  .button {
-    grid-column: span 3 / -1;
-  }
 }
+
+// .button {
+//   grid-column: span 3 / -1;
+// }
+// }

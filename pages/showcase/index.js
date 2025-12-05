@@ -1,3 +1,5 @@
+'use client'
+
 import ShowcaseCard from 'components/showcase/card'
 import s from './showcase.module.scss'
 import cn from 'clsx'
@@ -7,6 +9,7 @@ import Arrow from 'icons/arrow-buttons.svg'
 import { Filters } from 'components/showcase/filters'
 import { ReactLenis } from 'lenis/react'
 import dynamic from 'next/dynamic'
+import { useState } from 'react'
 
 const WebGL = dynamic(
   () => import('components/webgl').then(({ WebGL }) => WebGL),
@@ -47,6 +50,10 @@ const CARDS = Array.from({ length: 10 }, (_, index) => ({
 }))
 
 export default function Showcase() {
+  const [filters, setFilters] = useState([])
+
+  console.log(filters)
+
   return (
     <>
       <ReactLenis root />
@@ -67,40 +74,22 @@ export default function Showcase() {
             Submit your project
           </Button>
         </section>
-        <Filters className={s.filters} />
+        {/* <section className={cn('layout-grid', s.grid)}>
+          <ShowcaseCard
+            key={CARDS[0].title}
+            className={cn(s.card, s.featured)}
+            {...CARDS[0]}
+          />
+          <ShowcaseCard
+            key={CARDS[1].title}
+            className={cn(s.card, s.featured)}
+            {...CARDS[1]}
+          />
+        </section> */}
+        <Filters className={s.filters} onChange={setFilters} />
         <section className={cn('layout-grid', s.grid)}>
-          {/* <ShowcaseCard className={cn(s.featured)} {...CARDS[0]} /> */}
-          {/* <ShowcaseCard className={cn(s.featured)} {...CARDS[0]} /> */}
-          {/* <div className={s.subgrid}>
-          <div className={s.blank}>
-            <input
-              type="text"
-              placeholder="Search"
-              className={cn(s.search, 'p')}
-            />
-            <div className={cn(s.tags, 'p')}>
-              <span className={s.tag}>All</span>
-              <span className={s.tag}>Infinite</span>
-              <span className={s.tag}>Snap</span>
-              <span className={s.tag}>Horizontal</span>
-              <span className={s.tag}>WebGL</span>
-              <span className={s.tag}>Framer</span>
-            </div>
-            <Button className={s.searchButton} icon={<Arrow />}>
-              Submit your project
-            </Button>
-          </div>
-          <div className={s.cards}>
-            <ShowcaseCard className={cn(s.card)} {...CARDS[0]} />
-            <ShowcaseCard className={cn(s.card)} {...CARDS[0]} />
-          </div>
-        </div> */}
           {CARDS.map((card, index) => (
-            <ShowcaseCard
-              key={card.title}
-              className={cn(s.card, (index === 0 || index === 1) && s.featured)}
-              {...card}
-            />
+            <ShowcaseCard key={card.title} className={cn(s.card)} {...card} />
           ))}
         </section>
         <Footer theme="dark" />
