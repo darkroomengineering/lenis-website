@@ -69,7 +69,7 @@ export default function Showcase() {
           <Button
             className={s.button}
             icon={<Arrow />}
-            href="https://darkroom-engineering.notion.site/2c0e97ae01cf80e28087ceb59c414746"
+            href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
           >
             Submit your project
           </Button>
