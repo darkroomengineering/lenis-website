@@ -6,9 +6,9 @@ import s from './footer.module.scss'
 
 const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
 
-export const Footer = () => {
+export function Footer({ theme = 'light' }) {
   return (
-    <footer className={cn('theme-light', s.footer)}>
+    <footer className={cn(`theme-${theme}`, s.footer)}>
       <div className={cn(s.top, 'layout-grid hide-on-mobile')}>
         <p className={cn(s['first-line'], 'h1 vh')}>
           Lenis is <br />

@@ -3,13 +3,13 @@
 .card {
   //   aspect-ratio: 1 / 1;
   background-color: var(--theme-primary);
-  border: 1px solid var(--theme-secondary);
+  // border: 1px solid var(--theme-secondary);
   //   color: var(--pink);
   flex-direction: column;
   justify-content: space-between;
   align-items: space-between;
   display: flex;
-  gap: var(--layout-columns-gap);
+  // gap: var(--layout-columns-gap);
   transition: background-color 600ms var(--ease-out-expo);
 
   //   &:hover {
@@ -38,6 +38,8 @@
     // padding: desktop-vw(16px);
     padding-bottom: 0;
     position: relative;
+    border-radius: desktop-vw(16px);
+    overflow: hidden;
 
     &::after {
       content: '';
@@ -97,7 +99,7 @@
 
   .inner {
     padding: desktop-vw(16px);
-    padding-top: 0;
+    // padding-top: 0;
     border-top: 0; // font
     display: flex;
     flex-direction: column;
