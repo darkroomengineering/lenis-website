@@ -88,7 +88,7 @@ export default function Showcase() {
         </section> */}
         <Filters className={s.filters} onChange={setFilters} />
         <section className={cn('layout-grid', s.grid)}>
-          {CARDS.map((card, index) => (
+          {CARDS.map((card) => (
             <ShowcaseCard key={card.title} className={cn(s.card)} {...card} />
           ))}
         </section>
