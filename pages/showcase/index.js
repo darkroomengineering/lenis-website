@@ -59,7 +59,7 @@ export async function getStaticProps() {
   const database = await notion.dataSources.query({
     data_source_id: '2c0e97ae-01cf-80a8-aa3c-000b46741671',
   })
-  return { props: { database }, revalidate: 3600 }
+  return { props: { database }, revalidate: 3600 } // revalidate every hour
 }
 
 export default function Showcase({ database }) {
