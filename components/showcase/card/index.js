@@ -11,7 +11,6 @@ export default function ShowcaseCard({
   image,
   href,
 }) {
-  console.log('credits', credits)
   return (
     <div className={cn(s.card, className)}>
       <Link className={s.image} href={href}>

@@ -58,11 +58,19 @@ export async function getStaticProps() {
   })
   const database = await notion.dataSources.query({
     data_source_id: '2c0e97ae-01cf-80a8-aa3c-000b46741671',
+    filter: {
+      property: 'status',
+      status: {
+        equals: 'Published',
+      },
+    },
   })
+  // todo: filter by status
   return { props: { database }, revalidate: 3600 } // revalidate every hour
 }
 
 export default function Showcase({ database }) {
+  console.log(database)
   const [filters, setFilters] = useState([])
 
   // const list = database.results.map((result) => ({
@@ -83,8 +91,6 @@ export default function Showcase({ database }) {
     credits: RichText({ richText: result.properties.credits.rich_text }),
     // href: result.properties.Link.url,
   }))
-
-  console.log(list)
 
   return (
     <>
