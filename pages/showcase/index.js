@@ -11,7 +11,6 @@ import { ReactLenis } from 'lenis/react'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { Client } from '@notionhq/client'
-import { NotionRenderer } from '@notion-render/client'
 import { RichText } from 'lib/notion'
 // @refresh reset
 
@@ -20,38 +19,38 @@ const WebGL = dynamic(
   { ssr: false }
 )
 
-const IMAGES = [
-  '/placeholder/68fa8128610a7926725697.png',
-  '/placeholder/6900d08689edd726047249.jpg',
-  '/placeholder/69008cf4950da403826429.jpg',
-  '/placeholder/opengraph-image.jpg',
-  '/og.png',
-]
+// const IMAGES = [
+//   '/placeholder/68fa8128610a7926725697.png',
+//   '/placeholder/6900d08689edd726047249.jpg',
+//   '/placeholder/69008cf4950da403826429.jpg',
+//   '/placeholder/opengraph-image.jpg',
+//   '/og.png',
+// ]
 
-const TITLES = [
-  'Grand Theft Auto VI',
-  'Shopify Supply',
-  'Metamask',
-  'Getty - Sculpting Harmony',
-]
+// const TITLES = [
+//   'Grand Theft Auto VI',
+//   'Shopify Supply',
+//   'Metamask',
+//   'Getty - Sculpting Harmony',
+// ]
 
-const CREDITS = [
-  'Rockstar Games',
-  'Shopify',
-  'Antinomy',
-  'Resn',
-  'darkroom.engineering',
-]
+// const CREDITS = [
+//   'Rockstar Games',
+//   'Shopify',
+//   'Antinomy',
+//   'Resn',
+//   'darkroom.engineering',
+// ]
 
-const CARDS = Array.from({ length: 10 }, (_, index) => ({
-  title: TITLES[index % TITLES.length],
-  credits: {
-    text: CREDITS[index % CREDITS.length],
-    href: 'https://darkroom.engineering',
-  },
-  image: IMAGES[index % IMAGES.length],
-  href: 'https://www.rockstargames.com/VI',
-}))
+// const CARDS = Array.from({ length: 10 }, (_, index) => ({
+//   title: TITLES[index % TITLES.length],
+//   credits: {
+//     text: CREDITS[index % CREDITS.length],
+//     href: 'https://darkroom.engineering',
+//   },
+//   image: IMAGES[index % IMAGES.length],
+//   href: 'https://www.rockstargames.com/VI',
+// }))
 
 export async function getStaticProps() {
   const notion = new Client({
@@ -60,13 +59,11 @@ export async function getStaticProps() {
   const database = await notion.dataSources.query({
     data_source_id: '2c0e97ae-01cf-80a8-aa3c-000b46741671',
   })
-  return { props: { database } }
+  return { props: { database }, revalidate: 3600 }
 }
 
 export default function Showcase({ database }) {
   const [filters, setFilters] = useState([])
-
-  const renderer = new NotionRenderer()
 
   // const list = database.results.map((result) => ({
   //   title: result.properties.title.title[0].plain_text,
@@ -75,7 +72,7 @@ export default function Showcase({ database }) {
   //   href: result.properties.Link.url,
   // }))
 
-  console.log(database)
+  console.log(filters)
   const list = database.results.map((result) => ({
     title: result.properties.title.rich_text[0].plain_text,
     href: result.properties.url.url.startsWith('http')
