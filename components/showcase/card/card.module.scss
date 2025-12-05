@@ -123,15 +123,21 @@
     }
 
     .credits {
-      color: #8c8c8c;
-      white-space: nowrap;
-      display: inline-block;
-      font-weight: 400;
+      display: flex;
+      flex-direction: row;
+      gap: desktop-vw(3px);
 
-      transition: color 600ms var(--ease-out-expo);
+      * {
+        color: #8c8c8c;
+        white-space: nowrap;
+        display: inline-block;
+        font-weight: 400;
+        font-size: desktop-vw(16px);
+        transition: color 600ms var(--ease-out-expo);
 
-      &:hover {
-        color: var(--theme-contrast);
+        &:hover {
+          color: var(--theme-contrast);
+        }
       }
     }
   }

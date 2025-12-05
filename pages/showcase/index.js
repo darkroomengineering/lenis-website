@@ -10,6 +10,10 @@ import { Filters } from 'components/showcase/filters'
 import { ReactLenis } from 'lenis/react'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
+import { Client } from '@notionhq/client'
+import { NotionRenderer } from '@notion-render/client'
+import { RichText } from 'lib/notion'
+// @refresh reset
 
 const WebGL = dynamic(
   () => import('components/webgl').then(({ WebGL }) => WebGL),
@@ -49,10 +53,41 @@ const CARDS = Array.from({ length: 10 }, (_, index) => ({
   href: 'https://www.rockstargames.com/VI',
 }))
 
-export default function Showcase() {
+export async function getStaticProps() {
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  })
+  const database = await notion.dataSources.query({
+    data_source_id: '2c0e97ae-01cf-80a8-aa3c-000b46741671',
+  })
+  return { props: { database } }
+}
+
+export default function Showcase({ database }) {
   const [filters, setFilters] = useState([])
 
-  console.log(filters)
+  const renderer = new NotionRenderer()
+
+  // const list = database.results.map((result) => ({
+  //   title: result.properties.title.title[0].plain_text,
+  //   credits: result.properties.Credits.rich_text[0].plain_text,
+  //   image: result.properties.Image.files[0].file.url,
+  //   href: result.properties.Link.url,
+  // }))
+
+  console.log(database)
+  const list = database.results.map((result) => ({
+    title: result.properties.title.rich_text[0].plain_text,
+    href: result.properties.url.url.startsWith('http')
+      ? result.properties.url.url
+      : 'https://' + result.properties.url.url,
+    // credits: result.properties.Credits.rich_text[0].plain_text,
+    image: result.properties.thumbnail.files[0].file.url,
+    credits: RichText({ richText: result.properties.credits.rich_text }),
+    // href: result.properties.Link.url,
+  }))
+
+  console.log(list)
 
   return (
     <>
@@ -88,7 +123,7 @@ export default function Showcase() {
         </section> */}
         <Filters className={s.filters} onChange={setFilters} />
         <section className={cn('layout-grid', s.grid)}>
-          {CARDS.map((card) => (
+          {list.map((card) => (
             <ShowcaseCard key={card.title} className={cn(s.card)} {...card} />
           ))}
         </section>

@@ -19,6 +19,8 @@
   "dependencies": {
     "@darkroom.engineering/hamo": "^0.6.46",
     "@darkroom.engineering/tempus": "^0.0.46",
+    "@notion-render/client": "^0.0.2",
+    "@notionhq/client": "^5.4.0",
     "@react-three/drei": "^9.58.1",
     "@react-three/fiber": "^8.12.0",
     "clsx": "^1.2.1",

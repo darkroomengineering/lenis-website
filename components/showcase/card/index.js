@@ -11,6 +11,7 @@ export default function ShowcaseCard({
   image,
   href,
 }) {
+  console.log('credits', credits)
   return (
     <div className={cn(s.card, className)}>
       <Link className={s.image} href={href}>
@@ -25,9 +26,10 @@ export default function ShowcaseCard({
         <Link className={cn(s.title, 'p')} href={href}>
           {title}
         </Link>
-        <Link className={cn('p', s.credits)} href={credits.href}>
-          {credits.text}
-        </Link>
+        <div className={cn('p', s.credits)}>{credits}</div>
+        {/* <Link className={cn('p', s.credits)} href={credits?.href}>
+          {credits?.text}
+        </Link> */}
       </div>
     </div>
   )
