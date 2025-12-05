@@ -1,5 +1,26 @@
 @import 'styles/_functions';
 
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  right: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100vw;
+    width: 200vw;
+    background: radial-gradient(var(--pink), var(--pink-transparent) 70%);
+    // background: linear-gradient(to top, var(--pink), var(--pink-transparent));
+    transform: translateX(-50%) translateY(50vh);
+    opacity: 0.5;
+  }
+}
+
 .page {
   background-color: var(--theme-primary);
   min-height: 100vh;

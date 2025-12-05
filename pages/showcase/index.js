@@ -6,6 +6,12 @@ import { Button } from 'components/button'
 import Arrow from 'icons/arrow-buttons.svg'
 import { Filters } from 'components/showcase/filters'
 import { ReactLenis } from 'lenis/react'
+import dynamic from 'next/dynamic'
+
+const WebGL = dynamic(
+  () => import('components/webgl').then(({ WebGL }) => WebGL),
+  { ssr: false }
+)
 
 const IMAGES = [
   '/placeholder/68fa8128610a7926725697.png',
@@ -44,6 +50,9 @@ export default function Showcase() {
   return (
     <>
       <ReactLenis root />
+      <div className={s.canvas}>
+        <WebGL arm={false} />
+      </div>
       <div className={cn(s.page, 'theme-dark')}>
         <section className={s.hero}>
           <div className={s.tagline}>

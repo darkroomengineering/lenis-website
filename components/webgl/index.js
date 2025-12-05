@@ -517,7 +517,7 @@ export function Arm() {
   )
 }
 
-function Content() {
+function Content({ arm = true }) {
   const { viewport } = useThree()
 
   return (
@@ -532,12 +532,12 @@ function Content() {
         size={150}
       />
 
-      <Arm />
+      {arm && <Arm />}
     </>
   )
 }
 
-export function WebGL({ render = true }) {
+export function WebGL({ render = true, arm = true }) {
   return (
     <Canvas
       gl={{
@@ -554,7 +554,7 @@ export function WebGL({ render = true }) {
     >
       <Raf render={render} />
       <Suspense>
-        <Content />
+        <Content arm={arm} />
       </Suspense>
     </Canvas>
   )
