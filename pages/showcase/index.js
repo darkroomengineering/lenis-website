@@ -104,13 +104,18 @@ export default function Showcase({ database }) {
             <h1 className="h2">Get smooth or die trying</h1>
             <h2 className="h4">A showcase of neat Lenis implementations</h2>
           </div>
-          <Button
-            className={s.button}
-            icon={<Arrow />}
-            href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
-          >
-            Submit your project
-          </Button>
+          <div className={s.buttons}>
+            <Button
+              className={s.button}
+              icon={<Arrow />}
+              href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
+            >
+              Submit your project
+            </Button>
+            <Button className={s.button} icon={<Arrow />}>
+              Find template
+            </Button>
+          </div>
         </section>
         {/* <section className={cn('layout-grid', s.grid)}>
           <ShowcaseCard

@@ -24,6 +24,10 @@ const FILTERS = [
     value: 'webgl',
   },
   {
+    label: 'Template',
+    value: 'template',
+  },
+  {
     label: 'Framer',
     value: 'framer',
   },
