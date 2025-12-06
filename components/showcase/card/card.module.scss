@@ -98,7 +98,7 @@
   }
 
   .inner {
-    padding: desktop-vw(16px);
+    padding: desktop-vw(16px) 0;
     // padding-top: 0;
     border-top: 0; // font
     display: flex;
@@ -114,8 +114,11 @@
       white-space: nowrap;
       display: inline-block;
       font-weight: 700;
-      font-size: desktop-vw(22px);
+      font-size: desktop-vw(18px);
       transition: color 600ms var(--ease-out-expo);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
 
       &:hover {
         color: var(--pink);
@@ -135,7 +138,7 @@
         font-size: desktop-vw(16px);
         transition: color 600ms var(--ease-out-expo);
 
-        &:hover {
+        &[href]:hover {
           color: var(--theme-contrast);
         }
       }

@@ -82,6 +82,7 @@ export default function Showcase({ database }) {
 
   console.log(filters)
   const list = database.results.map((result) => ({
+    ...result,
     title: result.properties.title.rich_text[0].plain_text,
     href: result.properties.url.url.startsWith('http')
       ? result.properties.url.url
@@ -91,6 +92,35 @@ export default function Showcase({ database }) {
     credits: RichText({ richText: result.properties.credits.rich_text }),
     // href: result.properties.Link.url,
   }))
+
+  const filtersList = Array.from(
+    new Set(
+      database.results
+        .map((result) =>
+          [
+            ...result.properties.technologies.multi_select.map(
+              (tag) => tag.name
+            ),
+            ...result.properties.features.multi_select.map((tag) => tag.name),
+          ].flat()
+        )
+        .flat()
+    )
+  )
+
+  console.log(list)
+  const filteredList = list.filter((item) => {
+    return filters.every((filter) => {
+      return (
+        item.properties.technologies.multi_select.some(
+          (tag) => tag.name === filter
+        ) ||
+        item.properties.features.multi_select.some((tag) => tag.name === filter)
+      )
+    })
+  })
+
+  console.log(filtersList)
 
   return (
     <>
@@ -129,10 +159,19 @@ export default function Showcase({ database }) {
             {...CARDS[1]}
           />
         </section> */}
-        <Filters className={s.filters} onChange={setFilters} />
+        <Filters
+          className={s.filters}
+          onChange={setFilters}
+          list={filtersList}
+        />
         <section className={cn('layout-grid', s.grid)}>
-          {list.map((card) => (
-            <ShowcaseCard key={card.title} className={cn(s.card)} {...card} />
+          {filteredList.map((card, index) => (
+            <ShowcaseCard
+              key={card.title}
+              className={cn(s.card)}
+              {...card}
+              priority={index <= 3}
+            />
           ))}
         </section>
         <Footer theme="dark" />

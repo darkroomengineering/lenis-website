@@ -6,42 +6,7 @@ import cn from 'clsx'
 import s from './filters.module.scss'
 import { useState, useEffect } from 'react'
 
-const FILTERS = [
-  {
-    label: 'Infinite',
-    value: 'infinite',
-  },
-  {
-    label: 'Snap',
-    value: 'snap',
-  },
-  {
-    label: 'Horizontal',
-    value: 'horizontal',
-  },
-  {
-    label: 'WebGL',
-    value: 'webgl',
-  },
-  {
-    label: 'Template',
-    value: 'template',
-  },
-  {
-    label: 'Framer',
-    value: 'framer',
-  },
-  {
-    label: 'React',
-    value: 'react',
-  },
-  {
-    label: 'Vue',
-    value: 'vue',
-  },
-]
-
-export function Filters({ className, onChange }) {
+export function Filters({ className, onChange, list = [] }) {
   const [filters, setFilters] = useState([])
 
   useEffect(() => {
@@ -59,19 +24,19 @@ export function Filters({ className, onChange }) {
         >
           All
         </button>
-        {FILTERS.map((filter) => (
+        {list.map((filter) => (
           <button
-            key={filter.value}
-            className={cn(s.tag, filters.includes(filter.value) && s.active)}
+            key={filter}
+            className={cn(s.tag, filters.includes(filter) && s.active)}
             onClick={() =>
               setFilters((prev) => {
-                return prev.includes(filter.value)
-                  ? prev.filter((f) => f !== filter.value)
-                  : [...prev, filter.value]
+                return prev.includes(filter)
+                  ? prev.filter((f) => f !== filter)
+                  : [...prev, filter]
               })
             }
           >
-            {filter.label}
+            {filter}
           </button>
         ))}
       </div>

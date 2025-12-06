@@ -10,12 +10,20 @@ export default function ShowcaseCard({
   credits,
   image,
   href,
+  priority,
 }) {
   return (
     <div className={cn(s.card, className)}>
       <Link className={s.image} href={href}>
         <div className={s.imageInner}>
-          <Image src={image} alt={title} fill objectFit="cover" sizes="20vw" />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            objectFit="cover"
+            sizes="20vw"
+            priority={priority}
+          />
         </div>
         <div className={s.arrow}>
           <Arrow />
