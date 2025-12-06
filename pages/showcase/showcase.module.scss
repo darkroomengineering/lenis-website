@@ -59,7 +59,7 @@
   .grid {
     // row-gap: calc(var(--layout-columns-gap) * 2);
     margin-bottom: desktop-vw(160px);
-    align-items: flex-end;
+    align-items: flex-start;
   }
 
   .filters {
