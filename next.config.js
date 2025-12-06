@@ -33,7 +33,7 @@ const nextConfig = {
       'assets.darkroom.engineering',
       'prod-files-secure.s3.us-west-2.amazonaws.com',
     ],
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/webp'],
   },
   webpack: (config, options) => {
     const { dir } = options

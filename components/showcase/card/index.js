@@ -15,7 +15,7 @@ export default function ShowcaseCard({
     <div className={cn(s.card, className)}>
       <Link className={s.image} href={href}>
         <div className={s.imageInner}>
-          <Image src={image} alt={title} fill objectFit="cover" />
+          <Image src={image} alt={title} fill objectFit="cover" sizes="20vw" />
         </div>
         <div className={s.arrow}>
           <Arrow />
