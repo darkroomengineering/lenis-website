@@ -72,7 +72,7 @@ export async function getStaticProps() {
 export default function Showcase({ database }) {
   console.log(database)
   const [filters, setFilters] = useState([])
-
+  const [search, setSearch] = useState('')
   // const list = database.results.map((result) => ({
   //   title: result.properties.title.title[0].plain_text,
   //   credits: result.properties.Credits.rich_text[0].plain_text,
@@ -80,7 +80,7 @@ export default function Showcase({ database }) {
   //   href: result.properties.Link.url,
   // }))
 
-  console.log(filters)
+  console.log(filters, search)
   const list = database.results.map((result) => ({
     ...result,
     title: result.properties.title.rich_text[0].plain_text,
@@ -108,19 +108,29 @@ export default function Showcase({ database }) {
     )
   )
 
-  console.log(list)
   const filteredList = list.filter((item) => {
-    return filters.every((filter) => {
-      return (
-        item.properties.technologies.multi_select.some(
-          (tag) => tag.name === filter
-        ) ||
-        item.properties.features.multi_select.some((tag) => tag.name === filter)
-      )
-    })
+    return (
+      filters.every((filter) => {
+        return (
+          item.properties.technologies.multi_select.some(
+            (tag) => tag.name === filter
+          ) ||
+          item.properties.features.multi_select.some(
+            (tag) => tag.name === filter
+          )
+        )
+      }) &&
+      (item.title.toLowerCase().includes(search.toLowerCase()) ||
+        JSON.stringify(item.properties.credits.rich_text)
+          .toLowerCase()
+          .includes(search.toLowerCase()))
+    )
   })
+  // .sort((a, b) => {
+  //   return new Date(b.created_time) - new Date(a.created_time)
+  // })
 
-  console.log(filtersList)
+  console.log(filteredList)
 
   return (
     <>
@@ -162,6 +172,7 @@ export default function Showcase({ database }) {
         <Filters
           className={s.filters}
           onChange={setFilters}
+          onSearch={setSearch}
           list={filtersList}
         />
         <section className={cn('layout-grid', s.grid)}>
