@@ -12,6 +12,7 @@ import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { Client } from '@notionhq/client'
 import { RichText } from 'lib/notion'
+import { CustomHead } from 'components/custom-head'
 // @refresh reset
 
 const WebGL = dynamic(
@@ -134,6 +135,10 @@ export default function Showcase({ database }) {
 
   return (
     <>
+      <CustomHead
+        title="Lenis – Get smooth or die trying"
+        description="A showcase of neat Lenis implementations"
+      />
       <ReactLenis root />
       <div className={s.canvas}>
         <WebGL arm={false} />
