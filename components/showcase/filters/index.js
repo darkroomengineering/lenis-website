@@ -4,10 +4,13 @@
 // import Arrow from 'icons/arrow-buttons.svg'
 import cn from 'clsx'
 import s from './filters.module.scss'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
 import { useDebounce } from 'use-debounce'
 
-export function Filters({ className, onChange, onSearch, list = [] }) {
+export const Filters = forwardRef(function Filters(
+  { className, onChange, onSearch, list = [], id },
+  ref
+) {
   const [filters, setFilters] = useState([])
   const [search, setSearch] = useState('')
   const [debouncedSearch] = useDebounce(search, 500)
@@ -20,8 +23,17 @@ export function Filters({ className, onChange, onSearch, list = [] }) {
     onChange?.(filters)
   }, [filters])
 
+  useImperativeHandle(ref, () => ({
+    setFilters: (filters) => {
+      setFilters(filters)
+    },
+    setSearch: (search) => {
+      setSearch(search)
+    },
+  }))
+
   return (
-    <div className={cn('layout-grid', s.filters, className)}>
+    <div id={id} className={cn('layout-grid', s.filters, className)}>
       {/* <div className={s.left}> */}
       <input
         type="text"
@@ -56,4 +68,4 @@ export function Filters({ className, onChange, onSearch, list = [] }) {
       {/* </div> */}
     </div>
   )
-}
+})

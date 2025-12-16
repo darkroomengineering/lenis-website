@@ -9,10 +9,13 @@ import Arrow from 'icons/arrow-buttons.svg'
 import { Filters } from 'components/showcase/filters'
 import { ReactLenis } from 'lenis/react'
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Client } from '@notionhq/client'
 import { RichText } from 'lib/notion'
+import { useLenis } from 'lenis/react'
 import { CustomHead } from 'components/custom-head'
+
+import MagicWand from 'icons/magic-wand.svg'
 // @refresh reset
 
 const WebGL = dynamic(
@@ -71,7 +74,8 @@ export async function getStaticProps() {
 }
 
 export default function Showcase({ database }) {
-  console.log(database)
+  const filtersRef = useRef(null)
+
   const [filters, setFilters] = useState([])
   const [search, setSearch] = useState('')
   // const list = database.results.map((result) => ({
@@ -133,6 +137,8 @@ export default function Showcase({ database }) {
 
   console.log(filteredList)
 
+  const lenis = useLenis()
+
   return (
     <>
       <CustomHead
@@ -157,8 +163,16 @@ export default function Showcase({ database }) {
             >
               Submit your project
             </Button>
-            <Button className={s.button} icon={<Arrow />}>
-              Find template
+            <Button
+              className={s.button}
+              icon={<MagicWand />}
+              onClick={() => {
+                filtersRef.current.setFilters(['Template'])
+                filtersRef.current.setSearch('')
+                lenis.scrollTo('#filters')
+              }}
+            >
+              Start from a template
             </Button>
           </div>
         </section>
@@ -179,6 +193,8 @@ export default function Showcase({ database }) {
           onChange={setFilters}
           onSearch={setSearch}
           list={filtersList}
+          id="filters"
+          ref={filtersRef}
         />
         <section className={cn('layout-grid', s.grid)}>
           {filteredList.map((card, index) => (

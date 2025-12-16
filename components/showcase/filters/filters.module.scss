@@ -1,16 +1,7 @@
 @import 'styles/_functions';
 
 .filters {
-  // align-items: flex-start;
-
-  // .left {
-  //   // grid-column: span 6 / -1;
-  //   // grid-column: 1 / 5;
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: desktop-vw(8px);
-
-  //   justify-content: flex-start;
+  padding-top: var(--layout-columns-gap);
 
   .search {
     width: 100%;
