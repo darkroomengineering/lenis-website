@@ -15,7 +15,7 @@ import { RichText } from 'lib/notion'
 import { useLenis } from 'lenis/react'
 import { CustomHead } from 'components/custom-head'
 
-import MagicWand from 'icons/magic-wand.svg'
+import CubeSVG from 'icons/cube.svg'
 // @refresh reset
 
 const WebGL = dynamic(
@@ -150,10 +150,12 @@ export default function Showcase({ database }) {
         <WebGL arm={false} />
       </div>
       <div className={cn(s.page, 'theme-dark')}>
-        <section className={s.hero}>
+        <section className={cn(s.hero, 'layout-block')}>
           <div className={s.tagline}>
-            <h1 className="h2">Get smooth or die trying</h1>
-            <h2 className="h4">A showcase of neat Lenis implementations</h2>
+            <h1 className={cn('h2', s.title)}>Get smooth or die trying</h1>
+            <h2 className={cn('h4', s.subtitle)}>
+              A showcase of neat Lenis implementations
+            </h2>
           </div>
           <div className={s.buttons}>
             <Button
@@ -165,7 +167,7 @@ export default function Showcase({ database }) {
             </Button>
             <Button
               className={s.button}
-              icon={<MagicWand />}
+              icon={<CubeSVG />}
               onClick={() => {
                 filtersRef.current.setFilters(['Template'])
                 filtersRef.current.setSearch('')

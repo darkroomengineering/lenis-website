@@ -105,6 +105,10 @@
     flex-direction: column;
     align-items: flex-start;
 
+    @include mobile {
+      padding: mobile-vw(16px) 0;
+    }
+
     .title {
       //   color: var(--black);
       //   font-family: var(--font-panchang);
@@ -120,6 +124,10 @@
       overflow: hidden;
       max-width: 100%;
 
+      @include mobile {
+        font-size: mobile-vw(18px);
+      }
+
       &:hover {
         color: var(--pink);
       }
@@ -130,6 +138,10 @@
       flex-direction: row;
       gap: desktop-vw(3px);
 
+      @include mobile {
+        gap: mobile-vw(3px);
+      }
+
       * {
         color: #8c8c8c;
         white-space: nowrap;
@@ -137,6 +149,10 @@
         font-weight: 400;
         font-size: desktop-vw(16px);
         transition: color 600ms var(--ease-out-expo);
+
+        @include mobile {
+          font-size: mobile-vw(16px);
+        }
 
         &[href]:hover {
           color: var(--theme-contrast);

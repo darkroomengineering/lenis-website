@@ -12,6 +12,12 @@
     height: desktop-vw(48px);
     border-radius: desktop-vw(32px);
     grid-column: span 5 / -1;
+
+    @include mobile {
+      height: mobile-vw(48px);
+      border-radius: mobile-vw(32px);
+      padding: 0 mobile-vw(16px);
+    }
   }
 
   .tags {
@@ -20,6 +26,11 @@
     color: var(--theme-secondary);
     justify-content: flex-end;
     grid-column: 1 / -1;
+
+    @include mobile {
+      flex-wrap: wrap;
+      gap: mobile-vw(8px);
+    }
 
     .tag {
       border: 1px solid var(--theme-secondary);
@@ -30,6 +41,12 @@
       height: desktop-vw(32px);
       border-radius: desktop-vw(32px);
       background-color: var(--theme-primary);
+
+      @include mobile {
+        height: mobile-vw(32px);
+        border-radius: mobile-vw(32px);
+        padding: 0 mobile-vw(16px);
+      }
 
       &.active {
         background-color: var(--theme-contrast);

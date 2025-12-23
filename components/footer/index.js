@@ -43,8 +43,9 @@ export function Footer({ theme = 'light' }) {
         <p className={cn(s['first-line'], 'h1')}>
           Lenis is <br />
           <span className="contrast">Open source</span>
-          <br />
-          open to <br /> features and sponsors
+        </p>
+        <p className={cn(s['last-line'], 'h1')}>
+          open to features <br /> and sponsors
         </p>
       </div>
       <div className={s.bottom}>

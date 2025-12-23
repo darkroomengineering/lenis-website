@@ -25,6 +25,13 @@
     @include mobile {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      font-size: mobile-vw(24px);
+
+      :global(.h1) {
+        font-size: mobile-vw(48px);
+      }
     }
 
     @include desktop {
@@ -32,7 +39,8 @@
     }
 
     .first-line {
-      margin: auto 0;
+      // margin: auto 0;
+      width: 100%;
 
       @include desktop {
         margin: 0;

@@ -40,19 +40,46 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-
     color: var(--theme-secondary);
+
+    @include mobile {
+      justify-content: space-between;
+      padding-top: mobile-vw(16px);
+      margin-bottom: mobile-vw(64px);
+    }
 
     .tagline {
       display: flex;
       flex-direction: column;
       gap: desktop-vw(8px);
-      margin-bottom: var(--layout-columns-gap);
+      // margin-bottom: var(--layout-columns-gap);
+
+      @include mobile {
+        gap: mobile-vw(8px);
+      }
+
+      .title {
+        @include mobile {
+          font-size: mobile-vw(60px);
+        }
+      }
+
+      .subtitle {
+        @include mobile {
+          font-size: mobile-vw(16px);
+        }
+      }
     }
 
     .buttons {
       display: flex;
       gap: var(--layout-columns-gap);
+
+      @include mobile {
+        flex-direction: column;
+        width: 100%;
+        gap: mobile-vw(11px);
+      }
     }
   }
 
@@ -67,63 +94,67 @@
     position: relative;
   }
 
-  .subgrid {
-    grid-column: span 6;
-    // display: grid;
-    // grid-template-columns: repeat(6, minmax(0, 1fr));
-    // // grid-template-rows: auto auto;
-    // grid-gap: var(--layout-columns-gap);
-    align-self: stretch;
-    // align-items: flex-end;
-    display: flex;
-    flex-direction: column;
-    gap: var(--layout-columns-gap);
+  // .subgrid {
+  //   grid-column: span 6;
+  //   // display: grid;
+  //   // grid-template-columns: repeat(6, minmax(0, 1fr));
+  //   // // grid-template-rows: auto auto;
+  //   // grid-gap: var(--layout-columns-gap);
+  //   align-self: stretch;
+  //   // align-items: flex-end;
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: var(--layout-columns-gap);
 
-    .blank {
-      // background-color: var(--pink);
-      flex-grow: 1;
-      // aspect-ratio: 26/9;
-      display: flex;
-      flex-direction: column;
-      gap: desktop-vw(8px);
-      align-items: flex-start;
+  //   .blank {
+  //     // background-color: var(--pink);
+  //     flex-grow: 1;
+  //     // aspect-ratio: 26/9;
+  //     display: flex;
+  //     flex-direction: column;
+  //     gap: desktop-vw(8px);
+  //     align-items: flex-start;
 
-      // .search {
-      //   width: 100%;
-      //   border: 1px solid var(--theme-secondary);
-      //   padding: 0 desktop-vw(16px);
-      //   background-color: var(--theme-primary);
-      //   color: var(--theme-secondary);
-      //   height: desktop-vw(48px);
-      // }
+  //     // .search {
+  //     //   width: 100%;
+  //     //   border: 1px solid var(--theme-secondary);
+  //     //   padding: 0 desktop-vw(16px);
+  //     //   background-color: var(--theme-primary);
+  //     //   color: var(--theme-secondary);
+  //     //   height: desktop-vw(48px);
+  //     // }
 
-      // .tags {
-      //   display: flex;
-      //   gap: var(--layout-columns-gap);
+  //     // .tags {
+  //     //   display: flex;
+  //     //   gap: var(--layout-columns-gap);
 
-      //   .tag {
-      //     border: 1px solid var(--theme-secondary);
-      //     display: flex;
-      //     align-items: center;
-      //     justify-content: center;
-      //     padding: 0 desktop-vw(16px);
-      //     height: desktop-vw(32px);
-      //   }
-      // }
-    }
+  //     //   .tag {
+  //     //     border: 1px solid var(--theme-secondary);
+  //     //     display: flex;
+  //     //     align-items: center;
+  //     //     justify-content: center;
+  //     //     padding: 0 desktop-vw(16px);
+  //     //     height: desktop-vw(32px);
+  //     //   }
+  //     // }
+  //   }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      grid-gap: var(--layout-columns-gap);
-    }
-  }
+  //   .cards {
+  //     display: grid;
+  //     grid-template-columns: repeat(6, minmax(0, 1fr));
+  //     grid-gap: var(--layout-columns-gap);
+  //   }
+  // }
 
   .card {
     grid-column: span 3;
+
+    @include mobile {
+      grid-column: 1 / -1;
+    }
   }
 
-  .featured {
-    grid-column: span 6;
-  }
+  // .featured {
+  //   grid-column: span 6;
+  // }
 }
