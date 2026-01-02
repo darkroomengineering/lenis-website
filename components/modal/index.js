@@ -43,17 +43,17 @@ export function Modal() {
         <button className={s.close} onClick={() => setActive(false)}></button>
         <div className={cn(s.text, 'p')}>
           <p>
-            Lenis is a 100% free and open-source project, built to enhance web
-            experiences. 🚀
-            <br />
-            But maintaining and improving Lenis takes time and resources.
+            Lenis is 100% free, open-source, and built to make the web feel
+            smoother. 🚀
           </p>
           <br />
           <p>
-            If you use Lenis and want to support its development, consider
+            Maintaining a high-quality library takes time and effort. If Lenis
+            has helped your workflow, consider supporting our journey by
             becoming a sponsor! 💙
-            <br />A huge thank you to everyone who helps keep Lenis alive! 🙌
           </p>
+          <br />
+          <p>Huge thanks to our community for keeping this project alive! 🙌</p>
         </div>
         <Button
           className={cn(s.cta)}
