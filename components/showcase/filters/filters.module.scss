@@ -17,6 +17,7 @@
       height: mobile-vw(48px);
       border-radius: mobile-vw(32px);
       padding: 0 mobile-vw(16px);
+      grid-column: 1 / -1;
     }
   }
 
@@ -30,6 +31,7 @@
     @include mobile {
       flex-wrap: wrap;
       gap: mobile-vw(8px);
+      justify-content: space-between;
     }
 
     .tag {

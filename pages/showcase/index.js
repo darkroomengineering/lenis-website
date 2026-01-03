@@ -85,7 +85,6 @@ export default function Showcase({ database }) {
   //   href: result.properties.Link.url,
   // }))
 
-  console.log(filters, search)
   const list = database.results.map((result) => ({
     ...result,
     title: result.properties.title.rich_text[0].plain_text,
@@ -134,8 +133,6 @@ export default function Showcase({ database }) {
   // .sort((a, b) => {
   //   return new Date(b.created_time) - new Date(a.created_time)
   // })
-
-  console.log(filteredList)
 
   const lenis = useLenis()
 

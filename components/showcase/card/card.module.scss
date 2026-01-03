@@ -41,6 +41,10 @@
     border-radius: desktop-vw(16px);
     overflow: hidden;
 
+    @include mobile {
+      border-radius: mobile-vw(16px);
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -69,6 +73,12 @@
       transition: opacity 600ms var(--ease-out-expo);
       z-index: 1;
 
+      @include mobile {
+        width: mobile-vw(32px);
+        bottom: mobile-vw(16px);
+        right: mobile-vw(16px);
+      }
+
       svg {
         width: 33%;
         transition: transform 600ms var(--ease-out-expo);
@@ -83,16 +93,20 @@
     }
 
     &:not(:hover) {
-      .arrow {
-        opacity: 0;
-
-        svg {
-          transform: scale(0.33);
-        }
-      }
-
       &::after {
         opacity: 0;
+      }
+    }
+
+    @include desktop {
+      &:not(:hover) {
+        .arrow {
+          opacity: 0;
+
+          svg {
+            transform: scale(0.33);
+          }
+        }
       }
     }
   }
@@ -136,11 +150,11 @@
     .credits {
       display: flex;
       flex-direction: row;
-      gap: desktop-vw(3px);
+      // gap: desktop-vw(3px);
 
-      @include mobile {
-        gap: mobile-vw(3px);
-      }
+      // @include mobile {
+      //   gap: mobile-vw(3px);
+      // }
 
       * {
         color: #8c8c8c;
@@ -149,6 +163,16 @@
         font-weight: 400;
         font-size: desktop-vw(16px);
         transition: color 600ms var(--ease-out-expo);
+
+        &:not(:first-child)::before {
+          content: ',';
+          margin-right: desktop-vw(4px);
+          display: inline-block;
+
+          @include mobile {
+            margin-right: mobile-vw(4px);
+          }
+        }
 
         @include mobile {
           font-size: mobile-vw(16px);

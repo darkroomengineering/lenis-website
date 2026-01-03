@@ -21,7 +21,7 @@ export default function ShowcaseCard({
             alt={title}
             fill
             objectFit="cover"
-            sizes="40vw"
+            sizes="(max-width: 800px) 100vw, 40vw"
             priority={priority}
           />
         </div>

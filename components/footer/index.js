@@ -69,11 +69,12 @@ export function Footer({ theme = 'light' }) {
             Website
           </Link>
           <Link className={cn(s.link, 'p-xs')} href="https://studiofreight.com">
-            Designed by Studio Freight
+            Design by <br className="hide-on-desktop" /> Studio Freight
           </Link>
         </div>
         <p className={cn('p-xs', s.tm)}>
-          <span>©</span> {new Date().getFullYear()} darkroom.engineering
+          <span>©</span> {new Date().getFullYear()}{' '}
+          <Link href="https://darkroom.engineering">darkroom.engineering</Link>
         </p>
         <Button
           className={cn(s.cta, 'hide-on-desktop')}
