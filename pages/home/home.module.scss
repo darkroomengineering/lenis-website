@@ -499,6 +499,14 @@ $intro-duration: 2050ms;
       grid-column: 6 / span 7;
     }
   }
+
+  .showcaseCta {
+    grid-column: 1 / -1;
+
+    @include desktop {
+      grid-column: 6 / span 7;
+    }
+  }
 }
 
 .temp {

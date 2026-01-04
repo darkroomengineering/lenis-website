@@ -21,6 +21,7 @@ import { Modal } from 'components/modal'
 // const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
 const Sponsor = dynamic(() => import('icons/sponsor.svg'), { ssr: false })
+const Arrow = dynamic(() => import('icons/arrow-buttons.svg'), { ssr: false })
 
 const Parallax = dynamic(
   () => import('components/parallax').then((mod) => mod.Parallax),
@@ -274,19 +275,25 @@ export default function Home() {
           </h1>
           <Button
             className={cn(s.cta, s.documentation, introOut && s.in)}
-            arrow
             icon={<GitHub />}
             href="https://github.com/darkroomengineering/lenis/blob/main/README.md"
           >
             documentation
           </Button>
-          <Button
+          {/* <Button
             className={cn(s.cta, s.sponsor, introOut && s.in)}
             arrow
             icon={<Sponsor />}
             href="https://github.com/sponsors/darkroomengineering"
           >
             become a sponsor
+          </Button> */}
+          <Button
+            className={cn(s.cta, s.sponsor, introOut && s.in)}
+            icon={<Arrow />}
+            href="/showcase"
+          >
+            view showcase
           </Button>
         </div>
       </section>
@@ -477,6 +484,9 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          <Button icon={<Arrow />} className={s.showcaseCta} href="/showcase">
+            view showcase
+          </Button>
         </div>
       </section>
     </Layout>
