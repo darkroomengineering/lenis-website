@@ -202,14 +202,18 @@ export default function Showcase({ database }) {
             (search || filters.length > 0) && s.isFiltered
           )}
         >
-          {filteredList.map((card, index) => (
-            <ShowcaseCard
-              key={card.title}
-              className={cn(s.card)}
-              {...card}
-              priority={index <= 2}
-            />
-          ))}
+          {filteredList.length === 0 ? (
+            <p className={cn('p', s.noResults)}>No results found</p>
+          ) : (
+            filteredList.map((card, index) => (
+              <ShowcaseCard
+                key={card.title}
+                className={cn(s.card)}
+                {...card}
+                priority={index <= 2}
+              />
+            ))
+          )}
         </section>
         <Footer theme="dark" />
       </div>

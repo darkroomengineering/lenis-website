@@ -111,6 +111,15 @@
         }
       }
     }
+
+    .noResults {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: desktop-vw(24px);
+      font-weight: 500;
+      color: var(--theme-secondary);
+      align-self: center;
+    }
   }
 
   // .featured {
