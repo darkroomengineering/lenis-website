@@ -34,7 +34,7 @@ export default function ShowcaseCard({
           />
         </div>
         <div className={s.arrow}>
-          <Arrow />
+          <Arrow className={cn('icon')} />
         </div>
       </Link>
       <div className={s.inner}>

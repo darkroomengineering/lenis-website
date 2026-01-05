@@ -178,7 +178,7 @@
         font-size: desktop-vw(16px);
         transition: color 600ms var(--ease-out-expo);
 
-        &:not(:first-child)::before {
+        &:not(:last-child)::after {
           content: ',';
           margin-right: desktop-vw(4px);
           display: inline-block;

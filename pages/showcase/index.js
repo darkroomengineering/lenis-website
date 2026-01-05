@@ -5,7 +5,7 @@ import s from './showcase.module.scss'
 import cn from 'clsx'
 import { Footer } from 'components/footer'
 import { Button } from 'components/button'
-import Arrow from 'icons/arrow-buttons.svg'
+import Arrow from 'icons/arrow-diagonal.svg'
 import { Filters } from 'components/showcase/filters'
 import { ReactLenis } from 'lenis/react'
 import dynamic from 'next/dynamic'
@@ -157,14 +157,14 @@ export default function Showcase({ database }) {
           <div className={s.buttons}>
             <Button
               className={s.button}
-              icon={<Arrow />}
+              icon={<Arrow className={cn('icon')} />}
               href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
             >
               Submit your project
             </Button>
             <Button
               className={s.button}
-              icon={<CubeSVG />}
+              icon={<CubeSVG className={cn('icon')} />}
               onClick={() => {
                 filtersRef.current.setFilters(['Template'])
                 filtersRef.current.setSearch('')
@@ -207,7 +207,7 @@ export default function Showcase({ database }) {
               <p className="p">No results found</p>
               <Button
                 className={s.button}
-                icon={<Arrow />}
+                icon={<Arrow className={cn('icon')} />}
                 href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
               >
                 Submit your project

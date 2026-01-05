@@ -63,7 +63,6 @@ export function Footer({ theme = 'light' }) {
         </p>
         <Button
           className={cn(s.cta, 'hide-on-desktop')}
-          arrow
           icon={<GitHub />}
           href="https://github.com/sponsors/darkroomengineering"
         >
