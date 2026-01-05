@@ -52,11 +52,11 @@
     .tagline {
       display: flex;
       flex-direction: column;
-      gap: desktop-vw(8px);
+      gap: desktop-vw(12px);
       // margin-bottom: var(--layout-columns-gap);
 
       @include mobile {
-        gap: mobile-vw(8px);
+        gap: mobile-vw(12px);
       }
 
       .title {
