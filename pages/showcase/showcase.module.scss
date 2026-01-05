@@ -36,7 +36,7 @@
     color: var(--theme-contrast);
     display: flex;
     flex-direction: column;
-    gap: var(--layout-columns-gap);
+    gap: desktop-vw(48px);
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -46,6 +46,7 @@
       justify-content: space-between;
       padding-top: mobile-vw(64px);
       margin-bottom: mobile-vw(64px);
+      gap: mobile-vw(48px);
     }
 
     .tagline {
@@ -87,6 +88,7 @@
     // row-gap: calc(var(--layout-columns-gap) * 2);
     margin-bottom: desktop-vw(160px);
     align-items: flex-start;
+    min-height: 100svh;
   }
 
   .filters {

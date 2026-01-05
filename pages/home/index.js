@@ -267,10 +267,12 @@ export default function Home() {
               <p className="p-s">A smooth scroll library</p>
             </HeroTextIn>
             <HeroTextIn introOut={introOut}>
-              <p className="p-s">fresh out of darkroom.engineering</p>
-            </HeroTextIn>
-            <HeroTextIn introOut={introOut}>
-              <p className="p-s">website designed by Studio Freight</p>
+              <p className="p-s">
+                fresh out of{' '}
+                <Link className="link" href="https://darkroom.engineering">
+                  darkroom.engineering
+                </Link>
+              </p>
             </HeroTextIn>
           </h1>
           <Button

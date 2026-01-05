@@ -84,7 +84,7 @@ export function CustomHead({ title = '', description, image, keywords }) {
           site_name: '',
         }}
         twitter={{
-          handle: '@darkroomdevs',
+          handle: '@LenisSmooth',
           cardType: 'summary_large_image',
         }}
       />

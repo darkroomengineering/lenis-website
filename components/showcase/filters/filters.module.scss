@@ -5,8 +5,8 @@
 
   .search {
     width: 100%;
-    border: 1px solid var(--theme-secondary);
-    background-color: var(--theme-primary);
+    border: 1px solid #8c8c8c;
+    // background-color: var(--theme-primary);
     padding: 0 desktop-vw(16px);
     color: var(--theme-secondary);
     height: desktop-vw(48px);
@@ -35,14 +35,15 @@
     }
 
     .tag {
-      border: 1px solid var(--theme-secondary);
+      border: 1px solid #8c8c8c;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 0 desktop-vw(16px);
       height: desktop-vw(32px);
       border-radius: desktop-vw(32px);
-      background-color: var(--theme-primary);
+      font-weight: 400;
+      // background-color: var(--theme-primary);
 
       @include mobile {
         height: mobile-vw(32px);
