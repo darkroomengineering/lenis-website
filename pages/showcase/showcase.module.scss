@@ -28,7 +28,7 @@
 
 .page {
   background-color: var(--theme-primary);
-  min-height: 100vh;
+  min-height: 100svh;
   // position: relative;
 
   .hero {
@@ -101,6 +101,7 @@
     margin-bottom: desktop-vw(160px);
     align-items: flex-start;
     min-height: 100svh;
+    align-content: flex-start;
 
     .card {
       grid-column: span 3;
