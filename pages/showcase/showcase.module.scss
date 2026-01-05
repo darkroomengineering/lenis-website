@@ -32,7 +32,7 @@
   // position: relative;
 
   .hero {
-    height: 60vh;
+    height: 65vh;
     color: var(--theme-contrast);
     display: flex;
     flex-direction: column;
@@ -84,75 +84,32 @@
     }
   }
 
-  .grid {
-    // row-gap: calc(var(--layout-columns-gap) * 2);
-    margin-bottom: desktop-vw(160px);
-    align-items: flex-start;
-    min-height: 100svh;
-  }
-
   .filters {
     margin-bottom: var(--layout-columns-gap);
     position: relative;
   }
 
-  // .subgrid {
-  //   grid-column: span 6;
-  //   // display: grid;
-  //   // grid-template-columns: repeat(6, minmax(0, 1fr));
-  //   // // grid-template-rows: auto auto;
-  //   // grid-gap: var(--layout-columns-gap);
-  //   align-self: stretch;
-  //   // align-items: flex-end;
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: var(--layout-columns-gap);
+  .grid {
+    // row-gap: calc(var(--layout-columns-gap) * 2);
+    margin-bottom: desktop-vw(160px);
+    align-items: flex-start;
+    min-height: 100svh;
 
-  //   .blank {
-  //     // background-color: var(--pink);
-  //     flex-grow: 1;
-  //     // aspect-ratio: 26/9;
-  //     display: flex;
-  //     flex-direction: column;
-  //     gap: desktop-vw(8px);
-  //     align-items: flex-start;
+    .card {
+      grid-column: span 3;
 
-  //     // .search {
-  //     //   width: 100%;
-  //     //   border: 1px solid var(--theme-secondary);
-  //     //   padding: 0 desktop-vw(16px);
-  //     //   background-color: var(--theme-primary);
-  //     //   color: var(--theme-secondary);
-  //     //   height: desktop-vw(48px);
-  //     // }
+      @include mobile {
+        grid-column: 1 / -1;
+      }
+    }
 
-  //     // .tags {
-  //     //   display: flex;
-  //     //   gap: var(--layout-columns-gap);
-
-  //     //   .tag {
-  //     //     border: 1px solid var(--theme-secondary);
-  //     //     display: flex;
-  //     //     align-items: center;
-  //     //     justify-content: center;
-  //     //     padding: 0 desktop-vw(16px);
-  //     //     height: desktop-vw(32px);
-  //     //   }
-  //     // }
-  //   }
-
-  //   .cards {
-  //     display: grid;
-  //     grid-template-columns: repeat(6, minmax(0, 1fr));
-  //     grid-gap: var(--layout-columns-gap);
-  //   }
-  // }
-
-  .card {
-    grid-column: span 3;
-
-    @include mobile {
-      grid-column: 1 / -1;
+    &:not(.isFiltered) {
+      .card {
+        &:nth-child(1),
+        &:nth-child(2) {
+          grid-column: span 6;
+        }
+      }
     }
   }
 

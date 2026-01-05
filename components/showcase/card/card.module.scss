@@ -38,11 +38,11 @@
     // padding: desktop-vw(16px);
     padding-bottom: 0;
     position: relative;
-    border-radius: desktop-vw(16px);
+    border-radius: desktop-vw(8px);
     overflow: hidden;
 
     @include mobile {
-      border-radius: mobile-vw(16px);
+      border-radius: mobile-vw(8px);
     }
 
     &::after {
@@ -55,7 +55,7 @@
       //   background-color: var(--black);
       background-color: var(--theme-contrast);
       //   background: linear-gradient(to top, var(--pink) 50%, transparent);
-      opacity: 0.33;
+      opacity: 0;
       transition: opacity 600ms var(--ease-out-expo);
     }
 
@@ -72,6 +72,7 @@
       justify-content: center;
       transition: opacity 600ms var(--ease-out-expo);
       z-index: 1;
+      opacity: 0;
 
       @include mobile {
         width: mobile-vw(32px);
@@ -81,6 +82,7 @@
 
       svg {
         width: 33%;
+        transform: scale(0.33);
         transition: transform 600ms var(--ease-out-expo);
       }
     }
@@ -92,20 +94,36 @@
       overflow: hidden;
     }
 
-    &:not(:hover) {
+    // &:not(:hover) {
+    //   &::after {
+    //     opacity: 0;
+    //   }
+    // }
+
+    // @include desktop {
+    //   &:not(:hover) {
+    //     .arrow {
+    //       opacity: 0;
+
+    //       svg {
+    //         transform: scale(0.33);
+    //       }
+    //     }
+    //   }
+    // }
+  }
+
+  &.hover {
+    .image {
       &::after {
-        opacity: 0;
+        opacity: 0.33;
       }
-    }
 
-    @include desktop {
-      &:not(:hover) {
-        .arrow {
-          opacity: 0;
+      .arrow {
+        opacity: 1;
 
-          svg {
-            transform: scale(0.33);
-          }
+        svg {
+          transform: scale(1);
         }
       }
     }
@@ -124,14 +142,10 @@
     }
 
     .title {
-      //   color: var(--black);
-      //   font-family: var(--font-panchang);
-      //   text-transform: uppercase;
-      //   font-weight: 700;
       color: var(--theme-secondary);
       white-space: nowrap;
       display: inline-block;
-      font-weight: 700;
+      font-weight: 500;
       font-size: desktop-vw(18px);
       transition: color 600ms var(--ease-out-expo);
       text-overflow: ellipsis;
@@ -160,7 +174,7 @@
         color: #8c8c8c;
         white-space: nowrap;
         display: inline-block;
-        font-weight: 400;
+        font-weight: 300;
         font-size: desktop-vw(16px);
         transition: color 600ms var(--ease-out-expo);
 

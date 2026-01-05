@@ -195,13 +195,19 @@ export default function Showcase({ database }) {
           id="filters"
           ref={filtersRef}
         />
-        <section className={cn('layout-grid', s.grid)}>
+        <section
+          className={cn(
+            'layout-grid',
+            s.grid,
+            (search || filters.length > 0) && s.isFiltered
+          )}
+        >
           {filteredList.map((card, index) => (
             <ShowcaseCard
               key={card.title}
               className={cn(s.card)}
               {...card}
-              priority={index <= 3}
+              priority={index <= 2}
             />
           ))}
         </section>
