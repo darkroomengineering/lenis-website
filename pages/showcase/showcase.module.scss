@@ -81,6 +81,13 @@
         width: 100%;
         gap: mobile-vw(11px);
       }
+
+      > * {
+        @include desktop {
+          flex-shrink: 0;
+          width: columns(3);
+        }
+      }
     }
   }
 
@@ -119,6 +126,17 @@
       font-weight: 500;
       color: var(--theme-secondary);
       align-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--layout-columns-gap);
+
+      .button {
+        width: 100%;
+        @include desktop {
+          width: columns(3);
+        }
+      }
     }
   }
 

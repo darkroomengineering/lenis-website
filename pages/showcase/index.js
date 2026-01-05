@@ -203,7 +203,16 @@ export default function Showcase({ database }) {
           )}
         >
           {filteredList.length === 0 ? (
-            <p className={cn('p', s.noResults)}>No results found</p>
+            <div className={s.noResults}>
+              <p className="p">No results found</p>
+              <Button
+                className={s.button}
+                icon={<Arrow />}
+                href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
+              >
+                Submit your project
+              </Button>
+            </div>
           ) : (
             filteredList.map((card, index) => (
               <ShowcaseCard
