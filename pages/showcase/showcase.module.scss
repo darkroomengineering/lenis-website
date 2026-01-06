@@ -35,11 +35,12 @@
     position: absolute;
     top: var(--layout-margin);
     left: var(--layout-margin);
-    width: desktop-vw(120px);
+    width: desktop-vw(40px);
     z-index: 1;
-    // background-color: var(--theme-secondary);
-    // padding: desktop-vw(6px);
-    // border-radius: desktop-vw(12px);
+    background-color: var(--theme-contrast);
+    padding: desktop-vw(6px);
+    border-radius: desktop-vw(8px);
+    transition: transform 600ms var(--ease-out-expo);
 
     svg {
       width: 100%;
@@ -47,17 +48,19 @@
       display: block;
 
       path {
-        transition: fill 300ms var(--ease-out-expo);
+        fill: var(--theme-primary);
+        // transition: fill 300ms var(--ease-out-expo);
       }
     }
 
     @include hover {
       &:hover {
-        svg {
-          path {
-            fill: var(--theme-secondary);
-          }
-        }
+        // transform: scale(1.1);
+        //     svg {
+        //       path {
+        //         fill: var(--theme-secondary);
+        //       }
+        //     }
       }
     }
   }

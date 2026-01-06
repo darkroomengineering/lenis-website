@@ -16,7 +16,7 @@ import { useLenis } from 'lenis/react'
 import { CustomHead } from 'components/custom-head'
 
 import CubeSVG from 'icons/cube.svg'
-import LenisSVG from 'icons/lenis.svg'
+import LenisSVG from 'icons/l.svg'
 import { Link } from 'components/link'
 // @refresh reset
 
