@@ -9,11 +9,14 @@ export default function ShowcaseCard({
   className,
   title,
   credits,
-  image,
+  thumbnail,
+  thumbnailType,
   href,
   priority,
 }) {
   const [hover, setHover] = useState(false)
+
+  console.log(thumbnail)
 
   return (
     <div className={cn(s.card, hover && s.hover, className)}>
@@ -24,14 +27,18 @@ export default function ShowcaseCard({
         onMouseLeave={() => setHover(false)}
       >
         <div className={s.imageInner}>
-          <Image
-            src={image}
-            alt={title}
-            fill
-            objectFit="cover"
-            sizes={`(max-width: 800px) 100vw, ${priority ? '66vw' : '33vw'}`}
-            priority={priority}
-          />
+          {thumbnailType === 'image' ? (
+            <Image
+              src={thumbnail}
+              alt={title}
+              fill
+              objectFit="cover"
+              sizes={`(max-width: 800px) 100vw, ${priority ? '66vw' : '33vw'}`}
+              priority={priority}
+            />
+          ) : (
+            <video src={thumbnail} autoPlay muted loop className={s.video} />
+          )}
         </div>
         <div className={s.arrow}>
           <Arrow className={cn('icon')} />

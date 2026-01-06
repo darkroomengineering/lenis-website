@@ -23,38 +23,18 @@ const WebGL = dynamic(
   { ssr: false }
 )
 
-// const IMAGES = [
-//   '/placeholder/68fa8128610a7926725697.png',
-//   '/placeholder/6900d08689edd726047249.jpg',
-//   '/placeholder/69008cf4950da403826429.jpg',
-//   '/placeholder/opengraph-image.jpg',
-//   '/og.png',
-// ]
+function getThumbnailType(title) {
+  const imageExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif', 'gif', 'svg']
+  const videoExtensions = ['mp4', 'webm', 'mov']
 
-// const TITLES = [
-//   'Grand Theft Auto VI',
-//   'Shopify Supply',
-//   'Metamask',
-//   'Getty - Sculpting Harmony',
-// ]
-
-// const CREDITS = [
-//   'Rockstar Games',
-//   'Shopify',
-//   'Antinomy',
-//   'Resn',
-//   'darkroom.engineering',
-// ]
-
-// const CARDS = Array.from({ length: 10 }, (_, index) => ({
-//   title: TITLES[index % TITLES.length],
-//   credits: {
-//     text: CREDITS[index % CREDITS.length],
-//     href: 'https://darkroom.engineering',
-//   },
-//   image: IMAGES[index % IMAGES.length],
-//   href: 'https://www.rockstargames.com/VI',
-// }))
+  if (imageExtensions.includes(title.split('.').pop())) {
+    return 'image'
+  } else if (videoExtensions.includes(title.split('.').pop())) {
+    return 'video'
+  } else {
+    return null
+  }
+}
 
 export async function getStaticProps() {
   const notion = new Client({
@@ -85,6 +65,8 @@ export default function Showcase({ database }) {
   //   href: result.properties.Link.url,
   // }))
 
+  console.log(database.results)
+
   const list = database.results.map((result) => ({
     ...result,
     title: result.properties.title.rich_text[0].plain_text,
@@ -92,7 +74,10 @@ export default function Showcase({ database }) {
       ? result.properties.url.url
       : 'https://' + result.properties.url.url,
     // credits: result.properties.Credits.rich_text[0].plain_text,
-    image: result.properties.thumbnail.files[0].file.url,
+    thumbnail: result.properties.thumbnail.files?.[0]?.file?.url,
+    thumbnailType: getThumbnailType(
+      result.properties.thumbnail.files?.[0]?.name
+    ),
     credits: RichText({ richText: result.properties.credits.rich_text }),
     // href: result.properties.Link.url,
   }))
