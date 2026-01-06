@@ -16,7 +16,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import { useIntersection, useWindowSize } from 'react-use'
 import s from './home.module.scss'
-import { Modal } from 'components/modal'
+// import { Modal } from 'components/modal'
 
 // const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
