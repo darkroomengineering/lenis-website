@@ -173,7 +173,7 @@ export default function Showcase({ database }) {
                 lenis.scrollTo('#filters')
               }}
             >
-              Start from a template
+              find a template
             </Button>
           </div>
         </section>

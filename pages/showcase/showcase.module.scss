@@ -135,7 +135,6 @@
     margin-bottom: desktop-vw(160px);
     align-items: flex-start;
     min-height: 100svh;
-    align-content: flex-start;
 
     .card {
       grid-column: span 3;
@@ -146,6 +145,8 @@
     }
 
     &:not(.isFiltered) {
+      align-content: flex-start;
+
       .card {
         &:nth-child(1),
         &:nth-child(2) {
