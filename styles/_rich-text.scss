@@ -1,0 +1,143 @@
+// Rich text styling for Notion API rich text renderer
+// https://developers.notion.com/reference/rich-text
+
+// Base rich text styles
+.rich-text-bold {
+  font-weight: bold;
+}
+
+.rich-text-italic {
+  font-style: italic;
+}
+
+.rich-text-strikethrough {
+  text-decoration: line-through;
+}
+
+.rich-text-underline {
+  text-decoration: underline;
+}
+
+.rich-text-code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+  font-size: 0.9em;
+}
+
+.rich-text-equation {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-mention {
+  color: inherit;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.125em 0.375em;
+  border-radius: 0.25em;
+  font-weight: 500;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Color annotations
+.rich-text-color-default {
+  color: inherit;
+}
+
+.rich-text-color-gray {
+  color: #787774;
+}
+
+.rich-text-color-brown {
+  color: #9f6b53;
+}
+
+.rich-text-color-orange {
+  color: #d9730d;
+}
+
+.rich-text-color-yellow {
+  color: #cb912f;
+}
+
+.rich-text-color-green {
+  color: #448361;
+}
+
+.rich-text-color-blue {
+  color: #337ea9;
+}
+
+.rich-text-color-purple {
+  color: #9065b0;
+}
+
+.rich-text-color-pink {
+  color: #c14c8a;
+}
+
+.rich-text-color-red {
+  color: #e16259;
+}
+
+// Background color annotations
+.rich-text-color-gray_background {
+  background-color: #f1f1ef;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-color-brown_background {
+  background-color: #f4f1eb;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-color-orange_background {
+  background-color: #fbecde;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-color-yellow_background {
+  background-color: #fbf3db;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-color-green_background {
+  background-color: #ddedea;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-color-blue_background {
+  background-color: #ddebf1;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-color-purple_background {
+  background-color: #eae4f2;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-color-pink_background {
+  background-color: #f4dfeb;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.rich-text-color-red_background {
+  background-color: #fbe4e4;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}

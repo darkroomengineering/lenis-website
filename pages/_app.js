@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import { useEffect } from 'react'
 import 'styles/global.scss'
+import { Analytics } from '@vercel/analytics/next'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -59,6 +60,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Analytics />
       <Leva hidden={!debug} />
       {debug && (
         <>

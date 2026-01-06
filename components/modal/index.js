@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useStore } from 'lib/store'
 
-const GitHub = dynamic(() => import('icons/sponsor.svg'), { ssr: false })
+const HeartSVG = dynamic(() => import('icons/sponsor.svg'), { ssr: false })
 
 export function Modal() {
   const [active, setActive] = useState(false)
@@ -58,7 +58,7 @@ export function Modal() {
         <Button
           className={cn(s.cta)}
           arrow
-          icon={<GitHub />}
+          icon={<HeartSVG className={cn('icon')} />}
           href="https://github.com/sponsors/darkroomengineering"
         >
           become a sponsor

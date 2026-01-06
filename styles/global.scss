@@ -8,6 +8,7 @@
 @import './_font-style.scss';
 @import './_themes.scss';
 @import './_scroll.scss';
+@import './_rich-text.scss';
 
 :root {
   --header-height: #{mobile-vw(58px)};
@@ -82,4 +83,27 @@ svg.icon {
 
 .intro {
   overflow: hidden;
+}
+
+.link {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform-origin: bottom left;
+    transition: transform 600ms var(--ease-out-expo);
+  }
+
+  &:not(:hover) {
+    &::after {
+      transform: scaleX(0);
+      transform-origin: bottom right;
+    }
+  }
 }

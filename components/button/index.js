@@ -3,7 +3,7 @@ import { Link } from 'components/link'
 import dynamic from 'next/dynamic'
 import s from './button.module.scss'
 
-const Arrow = dynamic(() => import('icons/arrow-buttons.svg'), { ssr: false })
+const Arrow = dynamic(() => import('icons/arrow-diagonal.svg'), { ssr: false })
 
 export const Button = ({
   icon,
@@ -23,10 +23,10 @@ export const Button = ({
       {icon && <span className={s.icon}>{icon}</span>}
       <span className={s.text}>
         <span className={s.visible}>
-          {children} {arrow && <Arrow className={s.arrow} />}
+          {children} {arrow && <Arrow className={cn(s.arrow, 'icon')} />}
         </span>
         <span aria-hidden="true" className={s.hidden}>
-          {children} {arrow && <Arrow className={s.arrow} />}
+          {children} {arrow && <Arrow className={cn(s.arrow, 'icon')} />}
         </span>
       </span>
     </Link>
@@ -39,10 +39,10 @@ export const Button = ({
       {icon && <span className={s.icon}>{icon}</span>}
       <span className={s.text}>
         <span className={s.visible}>
-          {children} {arrow && <Arrow className={s.arrow} />}
+          {children} {arrow && <Arrow className={cn(s.arrow, 'icon')} />}
         </span>
         <span aria-hidden="true" className={s.hidden}>
-          {children} {arrow && <Arrow className={s.arrow} />}
+          {children} {arrow && <Arrow className={cn(s.arrow, 'icon')} />}
         </span>
       </span>
     </button>

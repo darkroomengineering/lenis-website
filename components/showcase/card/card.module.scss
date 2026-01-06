@@ -1,0 +1,210 @@
+@import 'styles/_functions';
+
+.card {
+  //   aspect-ratio: 1 / 1;
+  background-color: var(--theme-primary);
+  // border: 1px solid var(--theme-secondary);
+  //   color: var(--pink);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+  display: flex;
+  // gap: var(--layout-columns-gap);
+  transition: background-color 600ms var(--ease-out-expo);
+
+  //   &:hover {
+  //     background-color: var(--pink);
+
+  //     .title {
+  //       color: var(--white);
+  //     }
+
+  //     .credits {
+  //       color: var(--white);
+  //     }
+  //   }
+
+  //   &:hover {
+  //     background-color: var(--pink);
+  //   }
+
+  //   &:hover {
+  //     .title {
+  //       color: var(--pink);
+  //     }
+  //   }
+
+  .image {
+    // padding: desktop-vw(16px);
+    padding-bottom: 0;
+    position: relative;
+    border-radius: desktop-vw(8px);
+    overflow: hidden;
+
+    @include mobile {
+      border-radius: mobile-vw(8px);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      //   background-color: var(--black);
+      background-color: var(--theme-contrast);
+      //   background: linear-gradient(to top, var(--pink) 50%, transparent);
+      opacity: 0;
+      transition: opacity 600ms var(--ease-out-expo);
+    }
+
+    .arrow {
+      aspect-ratio: 1 / 1;
+      position: absolute;
+      bottom: desktop-vw(16px);
+      right: desktop-vw(16px);
+      background-color: var(--theme-contrast);
+      width: desktop-vw(32px);
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 600ms var(--ease-out-expo);
+      z-index: 1;
+      opacity: 0;
+
+      @include mobile {
+        width: mobile-vw(32px);
+        bottom: mobile-vw(16px);
+        right: mobile-vw(16px);
+      }
+
+      svg {
+        width: 33%;
+        transform: scale(0.33);
+        transition: transform 600ms var(--ease-out-expo);
+      }
+    }
+
+    .imageInner {
+      aspect-ratio: 4 / 3;
+      position: relative;
+      //   border-radius: desktop-vw(16px);
+      overflow: hidden;
+    }
+
+    // &:not(:hover) {
+    //   &::after {
+    //     opacity: 0;
+    //   }
+    // }
+
+    // @include desktop {
+    //   &:not(:hover) {
+    //     .arrow {
+    //       opacity: 0;
+
+    //       svg {
+    //         transform: scale(0.33);
+    //       }
+    //     }
+    //   }
+    // }
+  }
+
+  .video {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .inner {
+    padding: desktop-vw(16px) 0;
+    // padding-top: 0;
+    border-top: 0; // font
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include mobile {
+      padding: mobile-vw(16px) 0;
+    }
+
+    .title {
+      color: var(--theme-secondary);
+      white-space: nowrap;
+      display: inline-block;
+      font-weight: 500;
+      font-size: desktop-vw(18px);
+      transition: color 600ms var(--ease-out-expo);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
+
+      @include mobile {
+        font-size: mobile-vw(18px);
+      }
+    }
+
+    .credits {
+      display: flex;
+      flex-direction: row;
+      // gap: desktop-vw(3px);
+
+      // @include mobile {
+      //   gap: mobile-vw(3px);
+      // }
+
+      * {
+        color: #8c8c8c;
+        white-space: nowrap;
+        display: inline-block;
+        font-weight: 300;
+        font-size: desktop-vw(16px);
+        transition: color 600ms var(--ease-out-expo);
+
+        &:not(:last-child)::after {
+          content: ',';
+          margin-right: desktop-vw(4px);
+          display: inline-block;
+
+          @include mobile {
+            margin-right: mobile-vw(4px);
+          }
+        }
+
+        @include mobile {
+          font-size: mobile-vw(16px);
+        }
+
+        &[href]:hover {
+          color: var(--theme-contrast);
+        }
+      }
+    }
+  }
+
+  &.hover {
+    .image {
+      &::after {
+        opacity: 0.33;
+      }
+
+      .arrow {
+        opacity: 1;
+
+        svg {
+          transform: scale(1);
+        }
+      }
+    }
+
+    .title {
+      color: var(--theme-contrast);
+    }
+  }
+}
