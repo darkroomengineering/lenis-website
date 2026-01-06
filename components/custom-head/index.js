@@ -73,7 +73,7 @@ export function CustomHead({ title = '', description, image, keywords }) {
             {
               url: image
                 ? image.url
-                : 'https://lenis.darkroom.engineering/og.png',
+                : 'https://lenis.darkroom.engineering/og.png?v=1',
               width: image ? image.width : 1200,
               height: image ? image.height : 630,
               alt: title,
