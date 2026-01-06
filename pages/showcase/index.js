@@ -16,6 +16,8 @@ import { useLenis } from 'lenis/react'
 import { CustomHead } from 'components/custom-head'
 
 import CubeSVG from 'icons/cube.svg'
+import LenisSVG from 'icons/lenis.svg'
+import { Link } from 'components/link'
 // @refresh reset
 
 const WebGL = dynamic(
@@ -48,6 +50,12 @@ export async function getStaticProps() {
         equals: 'Published',
       },
     },
+    // sorts: [
+    //   {
+    //     property: 'last_edited_time',
+    //     direction: 'descending',
+    //   },
+    // ],
   })
   // todo: filter by status
   return { props: { database }, revalidate: 3600 } // revalidate every hour
@@ -65,22 +73,27 @@ export default function Showcase({ database }) {
   //   href: result.properties.Link.url,
   // }))
 
-  console.log(database.results)
+  // console.log(database.results)
 
-  const list = database.results.map((result) => ({
-    ...result,
-    title: result.properties.title.rich_text[0].plain_text,
-    href: result.properties.url.url.startsWith('http')
-      ? result.properties.url.url
-      : 'https://' + result.properties.url.url,
-    // credits: result.properties.Credits.rich_text[0].plain_text,
-    thumbnail: result.properties.thumbnail.files?.[0]?.file?.url,
-    thumbnailType: getThumbnailType(
-      result.properties.thumbnail.files?.[0]?.name
-    ),
-    credits: RichText({ richText: result.properties.credits.rich_text }),
-    // href: result.properties.Link.url,
-  }))
+  const list = database.results
+    .sort((a, b) => {
+      return new Date(b.created_time) - new Date(a.created_time)
+    })
+    .map((result) => ({
+      ...result,
+      title: result.properties.title.rich_text[0].plain_text,
+      href: result.properties.url.url.startsWith('http')
+        ? result.properties.url.url
+        : 'https://' + result.properties.url.url,
+      // credits: result.properties.Credits.rich_text[0].plain_text,
+      thumbnail: result.properties.thumbnail.files?.[0]?.file?.url,
+      thumbnailType: getThumbnailType(
+        result.properties.thumbnail.files?.[0]?.name
+      ),
+      credits: RichText({ richText: result.properties.credits.rich_text }),
+      // href: result.properties.Link.url,
+    }))
+  // .reverse()
 
   const filtersList = Array.from(
     new Set(
@@ -132,6 +145,10 @@ export default function Showcase({ database }) {
         <WebGL arm={false} />
       </div>
       <div className={cn(s.page, 'theme-dark')}>
+        <Link className={s.logo} href="/">
+          <LenisSVG />
+        </Link>
+
         <section className={cn(s.hero, 'layout-block')}>
           <div className={s.tagline}>
             <h1 className={cn('h2', s.title)}>Get smooth or die trying</h1>

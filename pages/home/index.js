@@ -226,7 +226,7 @@ export default function Home() {
         <WebGL />
       </div>
 
-      <Modal />
+      {/* <Modal /> */}
 
       <section className={s.hero}>
         <div className="layout-grid-inner">

@@ -16,8 +16,6 @@ export default function ShowcaseCard({
 }) {
   const [hover, setHover] = useState(false)
 
-  console.log(thumbnail)
-
   return (
     <div className={cn(s.card, hover && s.hover, className)}>
       <Link

@@ -31,6 +31,37 @@
   min-height: 100svh;
   // position: relative;
 
+  .logo {
+    position: absolute;
+    top: var(--layout-margin);
+    left: var(--layout-margin);
+    width: desktop-vw(120px);
+    z-index: 1;
+    // background-color: var(--theme-secondary);
+    // padding: desktop-vw(6px);
+    // border-radius: desktop-vw(12px);
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+
+      path {
+        transition: fill 300ms var(--ease-out-expo);
+      }
+    }
+
+    @include hover {
+      &:hover {
+        svg {
+          path {
+            fill: var(--theme-secondary);
+          }
+        }
+      }
+    }
+  }
+
   .hero {
     height: 65vh;
     color: var(--theme-contrast);
