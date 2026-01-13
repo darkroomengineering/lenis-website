@@ -58,7 +58,7 @@ export async function getStaticProps() {
     // ],
   })
   // todo: filter by status
-  return { props: { database }, revalidate: 3600 } // revalidate every hour
+  return { props: { database }, revalidate: 1800 } // revalidate every 30 minutes
 }
 
 export default function Showcase({ database }) {
