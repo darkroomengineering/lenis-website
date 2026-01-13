@@ -74,6 +74,7 @@ export default function Showcase({ database }) {
   // }))
 
   // console.log(database.results)
+  // return
 
   const list = database.results
     .sort((a, b) => {
