@@ -35,6 +35,12 @@ const nextConfig = {
       'prod-files-secure.s2.us-west-2.amazonaws.com',
       'prod-files-secure.s3.us-west-2.amazonaws.com',
     ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
     formats: ['image/webp'],
   },
   webpack: (config, options) => {
