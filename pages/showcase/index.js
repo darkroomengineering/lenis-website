@@ -73,7 +73,7 @@ export default function Showcase({ database }) {
   //   href: result.properties.Link.url,
   // }))
 
-  // console.log(database.results)
+  console.log(database.results)
   // return
 
   const list = database.results

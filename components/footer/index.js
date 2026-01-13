@@ -53,6 +53,12 @@ export function Footer({ theme = 'light' }) {
           </Link>
           <Link
             className={cn(s.link, 'link p-xs')}
+            href="mailto:hi@darkroom.engineering"
+          >
+            Mail
+          </Link>
+          <Link
+            className={cn(s.link, 'link p-xs')}
             href="https://darkroom.engineering/"
           >
             darkroom.engineering
