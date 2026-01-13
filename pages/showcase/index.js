@@ -73,7 +73,7 @@ export default function Showcase({ database }) {
   //   href: result.properties.Link.url,
   // }))
 
-  console.log(database.results)
+  // console.log(database.results)
   // return
 
   const list = database.results
@@ -81,11 +81,13 @@ export default function Showcase({ database }) {
       return new Date(b.created_time) - new Date(a.created_time)
     })
     .map((result) => ({
-      ...result,
+      // ...result,
       title: result.properties.title.rich_text[0].plain_text,
-      href: result.properties.url.url.startsWith('http')
-        ? result.properties.url.url
-        : 'https://' + result.properties.url.url,
+      href:
+        (result.properties.url.url.startsWith('http')
+          ? result.properties.url.url
+          : 'https://' + result.properties.url.url) +
+        '?utm_source=lenis.dev/showcase',
       // credits: result.properties.Credits.rich_text[0].plain_text,
       thumbnail: result.properties.thumbnail.files?.[0]?.file?.url,
       thumbnailType: getThumbnailType(
@@ -95,6 +97,8 @@ export default function Showcase({ database }) {
       // href: result.properties.Link.url,
     }))
   // .reverse()
+
+  console.log(list)
 
   const filtersList = Array.from(
     new Set(
