@@ -13,7 +13,10 @@
   left: 50%;
   height: 100vw;
   width: 200vw;
-  background: radial-gradient(var(--pink), var(--pink-transparent) 70%);
+  background: radial-gradient(
+    var(--color-pink),
+    var(--color-pink-transparent) 70%
+  );
   transform: translateX(-50%) translateY(50vh);
   opacity: 0.5;
 }

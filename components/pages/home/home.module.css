@@ -17,7 +17,10 @@
   left: 50%;
   height: 100vw;
   width: 200vw;
-  background: radial-gradient(var(--pink), var(--pink-transparent) 70%);
+  background: radial-gradient(
+    var(--color-pink),
+    var(--color-pink-transparent) 70%
+  );
   transform: translateX(-50%) translateY(50vh);
   opacity: 0.5;
 }
@@ -142,7 +145,7 @@
 }
 
 .hero .sub .tm {
-  color: var(--grey);
+  color: var(--color-grey);
 }
 
 .hero .sub .tm span {
@@ -188,7 +191,7 @@
   top: 0;
   height: 100%;
   width: calc(((2 * 100) / 1440) * 1vw);
-  background-color: var(--pink);
+  background-color: var(--color-pink);
   animation: scale 4s infinite;
   animation-play-state: paused;
   transform-origin: 50% 0;
@@ -401,7 +404,7 @@
 
 .solution {
   position: relative;
-  color: var(--white);
+  color: var(--color-white);
   height: 500vh;
 }
 

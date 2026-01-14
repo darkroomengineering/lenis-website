@@ -40,6 +40,7 @@
         "cross-env": "^10.1.0",
         "lefthook": "^2.0.14",
         "next-sitemap": "^4.0.6",
+        "postcss-functions": "^4.0.2",
         "postcss-preset-env": "11.0.1",
         "stats.js": "^0.17.0",
         "tailwindcss": "^4.1.18",
@@ -1179,6 +1180,8 @@
     "postcss-focus-within": ["postcss-focus-within@10.0.0", "", { "dependencies": { "postcss-selector-parser": "^7.1.1" }, "peerDependencies": { "postcss": "^8.4" } }, "sha512-dvql0fzUTG+gcJYp+KTbag5vAjuo94LDYZHkqDV1rnf5gPGer1v/SrmIZBdvKU8moep3HbcbujqGjzSb3DL53Q=="],
 
     "postcss-font-variant": ["postcss-font-variant@5.0.0", "", { "peerDependencies": { "postcss": "^8.1.0" } }, "sha512-1fmkBaCALD72CK2a9i468mA/+tr9/1cBxRRMXOUaZqO43oWPR5imcyPjXwuv7PXbCid4ndlP5zWhidQVVa3hmA=="],
+
+    "postcss-functions": ["postcss-functions@4.0.2", "", { "dependencies": { "postcss-value-parser": "^4.0.0" }, "peerDependencies": { "postcss": "^8.0.0" } }, "sha512-htDZN6t97uW4GBXquTsz/DVaNVAHtHx5tLCALquVM2u58UwHki+RwHbANKiiI0ImA8T7Iml2MnvLUM7aGtlpqA=="],
 
     "postcss-gap-properties": ["postcss-gap-properties@7.0.0", "", { "peerDependencies": { "postcss": "^8.4" } }, "sha512-PSDF2QoZMRUbsINvXObQgxx4HExRP85QTT8qS/YN9fBsCPWCqUuwqAD6E6PNp0BqL/jU1eyWUBORaOK/J/9LDA=="],
 

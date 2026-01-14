@@ -21,7 +21,7 @@
     left: 0;
     right: 0;
     height: calc(((1 * 100) / var(--device-width)) * 1vw);
-    background-color: var(--grey);
+    background-color: var(--color-grey);
     bottom: 0;
   }
 

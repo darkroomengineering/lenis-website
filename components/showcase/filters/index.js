@@ -41,7 +41,7 @@ export function Filters({ className, onChange, onSearch, list = [], id, ref }) {
   }))
 
   return (
-    <div id={id} className={cn('layout-grid', s.filters, className)}>
+    <div id={id} className={cn('dr-layout-grid', s.filters, className)}>
       {/* <div className={s.left}> */}
       <div className={cn(s.search, 'p')}>
         <input

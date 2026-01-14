@@ -10,7 +10,7 @@
   position: relative;
   line-height: 200%;
   font-size: calc(((14 * 100) / var(--device-width)) * 1vw);
-  color: var(--black);
+  color: var(--color-black);
   overflow: hidden;
   text-align: center;
 
@@ -92,7 +92,7 @@
     z-index: 10;
     padding: calc(((12 * 100) / var(--device-width)) * 1vw);
     background-color: var(--theme-primary);
-    border: 1px solid var(--pink);
+    border: 1px solid var(--color-pink);
 
     @media (--desktop) {
       width: calc(((48 * 100) / var(--device-width)) * 1vw);

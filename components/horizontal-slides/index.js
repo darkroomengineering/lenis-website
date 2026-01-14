@@ -71,12 +71,12 @@ export const HorizontalSlides = ({ children }) => {
             elementRef.current = node
             elementRectRef(node)
           }}
-          className={cn(s.overflow, 'hide-on-mobile')}
+          className={cn(s.overflow, 'desktop-only')}
         >
           {children}
         </div>
         {/* ) : ( */}
-        <div className={cn(s.cards, 'hide-on-desktop')}>{children}</div>
+        <div className={cn(s.cards, 'mobile-only')}>{children}</div>
         {/* )} */}
       </div>
     </div>

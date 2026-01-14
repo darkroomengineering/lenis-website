@@ -128,12 +128,12 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
       <div className={s.canvas}>
         <WebGL arm={false} />
       </div>
-      <div className={cn(s.page, 'theme-dark')}>
+      <div className={s.page} data-theme="dark">
         <Link className={s.logo} href="/">
           <LenisSVG />
         </Link>
 
-        <section className={cn(s.hero, 'layout-block')}>
+        <section className={cn(s.hero, 'dr-layout-block')}>
           <div className={s.tagline}>
             <h1 className={cn('h2', s.title)}>Get smooth or die trying</h1>
             <h2 className={cn('h4', s.subtitle)}>
@@ -171,7 +171,7 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
         />
         <section
           className={cn(
-            'layout-grid',
+            'dr-layout-grid',
             s.grid,
             (search || filters.length > 0) && s.isFiltered
           )}

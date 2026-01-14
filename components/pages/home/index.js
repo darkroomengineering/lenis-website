@@ -172,7 +172,7 @@ export default function Home() {
       {/* <Modal /> */}
 
       <section className={s.hero}>
-        <div className="layout-grid-inner">
+        <div className="dr-layout-grid-inner">
           <Title className={s.title} />
           {/* <SFDR className={cn(s.icon, introOut && s.show)} /> */}
           <span className={cn(s.sub)}>
@@ -187,10 +187,10 @@ export default function Home() {
           </span>
         </div>
 
-        <div className={cn(s.bottom, 'layout-grid')}>
+        <div className={cn(s.bottom, 'dr-layout-grid')}>
           <div
             className={cn(
-              'hide-on-mobile',
+              'desktop-only',
               s['scroll-hint'],
               hasScrolled && s.hide,
               introOut && s.show
@@ -244,7 +244,7 @@ export default function Home() {
       </section>
 
       <section className={s.why} data-lenis-scroll-snap-align="start">
-        <div className="layout-grid">
+        <div className="dr-layout-grid">
           <h2 className={cn(s.sticky, 'h2')}>
             <AppearTitle>Why smooth scroll?</AppearTitle>
           </h2>
@@ -295,7 +295,7 @@ export default function Home() {
         </div>
       </section>
       <section className={s.rethink}>
-        <div className={cn('layout-grid', s.pre)}>
+        <div className={cn('dr-layout-grid', s.pre)}>
           <div className={s.highlight} data-lenis-scroll-snap-align="start">
             <Parallax speed={-0.5}>
               <p className="h2">
@@ -377,9 +377,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className={cn('theme-light', s.featuring)} ref={whiteRectRef}>
+      <section className={s.featuring} data-theme="light" ref={whiteRectRef}>
         <div className={s.inner}>
-          <div className={cn('layout-block', s.intro)}>
+          <div className={cn('dr-layout-block', s.intro)}>
             <p className="p-l">
               Lenis is an{' '}
               <Link
@@ -403,9 +403,10 @@ export default function Home() {
           inuseRectRef(node)
           inUseRef.current = node
         }}
-        className={cn('theme-light', s['in-use'], visible && s.visible)}
+        className={cn(s['in-use'], visible && s.visible)}
+        data-theme="light"
       >
-        <div className="layout-grid">
+        <div className="dr-layout-grid">
           <aside className={s.title}>
             <p className="h3">
               <AppearTitle>

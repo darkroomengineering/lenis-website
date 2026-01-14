@@ -27,7 +27,7 @@ export const GridDebugger = () => {
         🌐
       </button>
       {visible && (
-        <div className={cn('layout-grid', s.debugger)}>
+        <div className={cn('dr-layout-grid', s.debugger)}>
           {new Array(columns).fill(0).map((_, idx) => (
             <span key={`col-${idx}`} />
           ))}

@@ -57,10 +57,10 @@ export const Intro = () => {
       }}
     >
       <div className={cn(isLoaded && s.relative)}>
-        <LNS isLoaded={isLoaded} fill={'var(--black)'} />
+        <LNS isLoaded={isLoaded} fill={'var(--color-black)'} />
         <EI
           isLoaded={isLoaded}
-          fill={'var(--black)'}
+          fill={'var(--color-black)'}
           className={cn(introOut && s.translate)}
         />
       </div>
@@ -73,9 +73,9 @@ export const Title = ({ className }) => {
 
   return (
     <div className={className}>
-      <LNS fill={'var(--pink)'} />
+      <LNS fill={'var(--color-pink)'} />
       <EI
-        fill={'var(--pink)'}
+        fill={'var(--color-pink)'}
         className={cn(introOut && s.translate, s.mobile)}
       />
     </div>

@@ -68,7 +68,7 @@ export const FeatureCards = () => {
       }}
       className={s.features}
     >
-      <div className={cn('layout-block-inner', s.sticky)}>
+      <div className={cn('dr-layout-block-inner', s.sticky)}>
         <aside className={s.title}>
           <p className="h3">
             <AppearTitle>

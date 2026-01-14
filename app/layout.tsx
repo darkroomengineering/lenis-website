@@ -89,7 +89,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body data-theme="dark">
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -8,16 +8,16 @@ const GitHub = dynamic(() => import('@/icons/github.svg'), { ssr: false })
 
 export function Footer({ theme = 'light' }) {
   return (
-    <footer className={cn(`theme-${theme}`, s.footer)}>
-      <div className={cn(s.top, 'layout-grid hide-on-mobile')}>
+    <footer className={s.footer} data-theme={theme}>
+      <div className={cn(s.top, 'dr-layout-grid desktop-only')}>
         <p className={cn(s['first-line'], 'h1 vh')}>
           Lenis is <br />
           <span className="contrast">Open source</span>
         </p>
 
         <p className={cn(s['last-line'], 'h1 vh')}>
-          open to <span className="hide-on-desktop">&nbsp;</span> features{' '}
-          <br /> and sponsors
+          open to <span className="mobile-only">&nbsp;</span> features <br />{' '}
+          and sponsors
         </p>
         <Button
           className={s.cta}
@@ -28,7 +28,7 @@ export function Footer({ theme = 'light' }) {
           Let's build together
         </Button>
       </div>
-      <div className={cn(s.top, 'layout-block hide-on-desktop')}>
+      <div className={cn(s.top, 'dr-layout-block mobile-only')}>
         <p className={cn(s['first-line'], 'h1')}>
           Lenis is <br />
           <span className="contrast">Open source</span>
