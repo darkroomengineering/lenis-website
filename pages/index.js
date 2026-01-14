@@ -1,6 +1,6 @@
-import Home from './_home'
+import Home from '@/components/pages/home'
 
-export { getStaticProps } from './_home'
+export { getStaticProps } from '@/components/pages/home'
 
 export default function IndexPage(props) {
   return <Home {...props} />
