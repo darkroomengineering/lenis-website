@@ -1,12 +1,10 @@
 'use client'
 
-import { Client } from '@notionhq/client'
 import cn from 'clsx'
 import { ReactLenis, useLenis } from 'lenis/react'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { Button } from '@/components/button'
-import { CustomHead } from '@/components/custom-head'
 import { Footer } from '@/components/footer'
 import { Link } from '@/components/link'
 import ShowcaseCard from '@/components/showcase/card'
@@ -24,77 +22,79 @@ const WebGL = dynamic(
   { ssr: false }
 )
 
-function getThumbnailType(title) {
+function getThumbnailType(title: string) {
   const imageExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif', 'gif', 'svg']
   const videoExtensions = ['mp4', 'webm', 'mov']
 
-  if (imageExtensions.includes(title.split('.').pop())) {
+  if (imageExtensions.includes(title.split('.').pop() || '')) {
     return 'image'
   }
-  if (videoExtensions.includes(title.split('.').pop())) {
+  if (videoExtensions.includes(title.split('.').pop() || '')) {
     return 'video'
   }
   return null
 }
 
-export async function getStaticProps() {
-  // Return empty results if NOTION_TOKEN is not configured
-  if (!process.env.NOTION_TOKEN) {
-    console.warn('NOTION_TOKEN not configured, returning empty showcase')
-    return { props: { database: { results: [] } }, revalidate: 60 }
-  }
-
-  try {
-    const notion = new Client({
-      auth: process.env.NOTION_TOKEN,
-    })
-    const database = await notion.dataSources.query({
-      data_source_id: '2c0e97ae-01cf-80a8-aa3c-000b46741671',
-      filter: {
-        property: 'status',
-        status: {
-          equals: 'Published',
-        },
-      },
-    })
-    return { props: { database }, revalidate: 1800 } // revalidate every 30 minutes
-  } catch (error) {
-    console.error('Failed to fetch showcase data:', error)
-    return { props: { database: { results: [] } }, revalidate: 60 }
+interface ShowcaseClientProps {
+  database: {
+    results: Array<{
+      created_time: string
+      properties: {
+        title: {
+          rich_text: Array<{ plain_text: string }>
+        }
+        url: {
+          url: string
+        }
+        thumbnail: {
+          files?: Array<{
+            file?: { url: string }
+            name: string
+          }>
+        }
+        credits: {
+          rich_text: unknown[]
+        }
+        technologies: {
+          multi_select: Array<{ name: string }>
+        }
+        features: {
+          multi_select: Array<{ name: string }>
+        }
+      }
+    }>
   }
 }
 
-export default function Showcase({ database }) {
-  const filtersRef = useRef(null)
+export default function ShowcaseClient({ database }: ShowcaseClientProps) {
+  const filtersRef = useRef<{
+    setFilters: (f: string[]) => void
+    setSearch: (s: string) => void
+  } | null>(null)
 
-  const [filters, setFilters] = useState([])
+  const [filters, setFilters] = useState<string[]>([])
   const [search, setSearch] = useState('')
-  // const list = database.results.map((result) => ({
-  //   title: result.properties.title.title[0].plain_text,
-  //   credits: result.properties.Credits.rich_text[0].plain_text,
-  //   image: result.properties.Image.files[0].file.url,
-  //   href: result.properties.Link.url,
-  // }))
-
-  // console.log(database.results)
-  // return
 
   const list = database.results
     .sort((a, b) => {
-      return new Date(b.created_time) - new Date(a.created_time)
+      return (
+        new Date(b.created_time).getTime() - new Date(a.created_time).getTime()
+      )
     })
     .map((result) => ({
-      title: result.properties.title.rich_text[0].plain_text,
+      title: result.properties.title.rich_text[0]?.plain_text ?? '',
       href:
-        (result.properties.url.url.startsWith('http')
+        (result.properties.url.url?.startsWith('http')
           ? result.properties.url.url
-          : `https://${result.properties.url.url}`) +
+          : `https://${result.properties.url.url ?? ''}`) +
         '?utm_source=lenis.dev/showcase',
       thumbnail: result.properties.thumbnail.files?.[0]?.file?.url,
       thumbnailType: getThumbnailType(
-        result.properties.thumbnail.files?.[0]?.name
+        result.properties.thumbnail.files?.[0]?.name ?? ''
       ),
-      credits: RichText({ richText: result.properties.credits.rich_text }),
+      credits: RichText({
+        richText: result.properties.credits.rich_text as unknown[],
+      }),
       creditsRaw: result.properties.credits.rich_text,
       technologies: result.properties.technologies.multi_select.map(
         (tag) => tag.name
@@ -119,18 +119,11 @@ export default function Showcase({ database }) {
           .includes(search.toLowerCase()))
     )
   })
-  // .sort((a, b) => {
-  //   return new Date(b.created_time) - new Date(a.created_time)
-  // })
 
   const lenis = useLenis()
 
   return (
     <>
-      <CustomHead
-        title="Lenis – Get smooth or die trying"
-        description="A showcase of neat Lenis implementations"
-      />
       <ReactLenis root />
       <div className={s.canvas}>
         <WebGL arm={false} />
@@ -159,27 +152,15 @@ export default function Showcase({ database }) {
               className={s.button}
               icon={<CubeSVG className={cn('icon')} />}
               onClick={() => {
-                filtersRef.current.setFilters(['Template'])
-                filtersRef.current.setSearch('')
-                lenis.scrollTo('#filters')
+                filtersRef.current?.setFilters(['Template'])
+                filtersRef.current?.setSearch('')
+                lenis?.scrollTo('#filters')
               }}
             >
               find a template
             </Button>
           </div>
         </section>
-        {/* <section className={cn('layout-grid', s.grid)}>
-          <ShowcaseCard
-            key={CARDS[0].title}
-            className={cn(s.card, s.featured)}
-            {...CARDS[0]}
-          />
-          <ShowcaseCard
-            key={CARDS[1].title}
-            className={cn(s.card, s.featured)}
-            {...CARDS[1]}
-          />
-        </section> */}
         <Filters
           className={s.filters}
           onChange={setFilters}

@@ -1,10 +1,12 @@
+'use client'
+
 import Lenis from 'lenis'
 import { useEffect, useRef, useState } from 'react'
 import s from './docs.module.css'
 
-export default function Docs() {
+export default function DocsClient() {
   // Custom useFrame for RAF timing
-  const useFrame = (callback, _priority = 0) => {
+  const useFrame = (callback: (time: number) => void, _priority = 0) => {
     const savedCallback = useRef(callback)
 
     useEffect(() => {
@@ -12,9 +14,9 @@ export default function Docs() {
     }, [callback])
 
     useEffect(() => {
-      let rafId
+      let rafId: number
 
-      function tick(time) {
+      function tick(time: number) {
         savedCallback.current(time)
         rafId = requestAnimationFrame(tick)
       }
@@ -26,8 +28,8 @@ export default function Docs() {
       }
     }, [])
   }
-  const [rootLenis, setRootLenis] = useState()
-  const [lenis, setLenis] = useState()
+  const [rootLenis, setRootLenis] = useState<Lenis>()
+  const [lenis, setLenis] = useState<Lenis>()
 
   useEffect(() => {
     const lenis = new Lenis({})
@@ -41,14 +43,12 @@ export default function Docs() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      wrapper: document.querySelector('#wrapper'),
-      content: document.querySelector('#content'),
-      // wheelEventsTarget: window,
-      // autoResize: false,
+      wrapper: document.querySelector('#wrapper') as HTMLElement,
+      content: document.querySelector('#content') as HTMLElement,
     })
     setLenis(lenis)
 
-    window.lenis = lenis
+    ;(window as Window & { lenis?: Lenis }).lenis = lenis
 
     return () => {
       setLenis(undefined)
@@ -66,27 +66,9 @@ export default function Docs() {
   useFrame((time) => {
     rootLenis?.raf(time)
     lenis?.raf(time)
-  }, [])
+  })
 
-  const contentRef = useRef()
-
-  // const lorem = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure autem
-  // accusantium similique quod accusamus ipsum saepe consequuntur,
-  // delectus voluptatum quibusdam laboriosam labore eos ab necessitatibus,
-  // sit hic ad dignissimos soluta. Lorem ipsum dolor sit amet consectetur
-  // adipisicing elits`
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     contentRef.current.textContent = new Array(Math.ceil(Math.random() * 10))
-  //       .fill(lorem)
-  //       .join(' ')
-  //   }, 2000)
-
-  //   return () => {
-  //     clearInterval(interval)
-  //   }
-  // }, [])
+  const contentRef = useRef<HTMLParagraphElement>(null)
 
   return (
     <div className={s.page}>

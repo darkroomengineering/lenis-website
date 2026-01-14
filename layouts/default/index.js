@@ -1,11 +1,10 @@
 import cn from 'clsx'
 import Lenis from 'lenis'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useTempus as useFrame } from 'tempus/react'
 import { useShallow } from 'zustand/react/shallow'
-import { CustomHead } from '@/components/custom-head'
 import { Footer } from '@/components/footer'
 import { Intro } from '@/components/intro'
 import { Scrollbar } from '@/components/scrollbar'
@@ -17,22 +16,11 @@ const Cursor = dynamic(
   { ssr: false }
 )
 
-const PageTransition = dynamic(
-  () =>
-    import('@/components/page-transition').then((mod) => mod.PageTransition),
-  { ssr: false }
-)
-
-export function Layout({
-  seo = { title: '', description: '', image: '', keywords: '' },
-  children,
-  theme = 'light',
-  className,
-}) {
+export function Layout({ children, theme = 'light', className }) {
   const { lenis, setLenis } = useStore(
     useShallow((state) => ({ lenis: state.lenis, setLenis: state.setLenis }))
   )
-  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -65,11 +53,10 @@ export function Layout({
 
   useEffect(() => {
     // update scroll position on page refresh based on hash
-    if (router.asPath.includes('#')) {
-      const hash = router.asPath.split('#').pop()
-      setHash(`#${hash}`)
+    if (typeof window !== 'undefined' && window.location.hash) {
+      setHash(window.location.hash)
     }
-  }, [router])
+  }, [])
 
   useEffect(() => {
     // catch anchor links clicks
@@ -84,7 +71,7 @@ export function Layout({
     }
 
     const internalLinks = [...document.querySelectorAll('[href]')].filter(
-      (node) => node.href.includes(`${router.pathname}#`)
+      (node) => node.href.includes(`${pathname}#`)
     )
 
     internalLinks.forEach((node) => {
@@ -96,23 +83,19 @@ export function Layout({
         node.removeEventListener('click', onClick, false)
       })
     }
-  }, [router.pathname])
+  }, [pathname])
 
   useFrame((time) => {
     lenis?.raf(time)
   }, 0)
 
   return (
-    <>
-      <CustomHead {...seo} />
-      <div className={cn(`theme-${theme}`, s.layout, className)}>
-        <PageTransition />
-        <Intro />
-        <Cursor />
-        <Scrollbar />
-        <main className={s.main}>{children}</main>
-        <Footer />
-      </div>
-    </>
+    <div className={cn(`theme-${theme}`, s.layout, className)}>
+      <Intro />
+      <Cursor />
+      <Scrollbar />
+      <main className={s.main}>{children}</main>
+      <Footer />
+    </div>
   )
 }

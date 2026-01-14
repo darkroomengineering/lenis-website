@@ -1,3 +1,5 @@
+'use client'
+
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import dynamic from 'next/dynamic'
@@ -9,9 +11,8 @@ import { useDebug } from '@/hooks/use-debug'
 import { useScroll } from '@/hooks/use-scroll'
 import { GTM_ID } from '@/lib/analytics'
 import { useStore } from '@/lib/store'
-import '@/lib/styles/css/index.css'
-// import { Analytics as VercelAnalytics } from '@vercel/analytics/next'
 
+// GSAP initialization (runs once on client)
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
   ScrollTrigger.defaults({ markers: process.env.NODE_ENV === 'development' })
@@ -19,9 +20,12 @@ if (typeof window !== 'undefined') {
   // merge rafs
   gsap.ticker.lagSmoothing(0)
   gsap.ticker.remove(gsap.updateRoot)
-  Tempus.add((time) => {
-    gsap.updateRoot(time / 1000)
-  }, 0)
+  Tempus.add(
+    (time) => {
+      gsap.updateRoot(time / 1000)
+    },
+    { priority: 0 }
+  )
 }
 
 const Stats = dynamic(
@@ -41,7 +45,7 @@ const Leva = dynamic(() => import('leva').then(({ Leva }) => Leva), {
   ssr: false,
 })
 
-function MyApp({ Component, pageProps }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   const debug = useDebug()
   const lenis = useStore(({ lenis }) => lenis)
 
@@ -62,7 +66,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {/* <VercelAnalytics /> */}
       <Leva hidden={!debug} />
       {debug && (
         <>
@@ -93,9 +96,7 @@ function MyApp({ Component, pageProps }) {
       )}
 
       <RealViewport />
-      <Component {...pageProps} />
+      {children}
     </>
   )
 }
-
-export default MyApp

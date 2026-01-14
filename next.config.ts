@@ -87,7 +87,8 @@ const nextConfig: NextConfig = {
         : false,
     reactRemoveProperties: true,
   },
-  cacheComponents: true,
+  // cacheComponents disabled - incompatible with revalidate, dynamic, and Date() in client components
+  // cacheComponents: true,
   compress: true,
   experimental: {
     taint: true,

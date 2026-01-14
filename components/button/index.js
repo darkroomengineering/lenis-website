@@ -7,6 +7,16 @@ const Arrow = dynamic(() => import('@/icons/arrow-diagonal.svg'), {
   ssr: false,
 })
 
+/**
+ * @param {Object} props
+ * @param {React.ReactNode} [props.icon]
+ * @param {boolean} [props.arrow]
+ * @param {React.ReactNode} [props.children]
+ * @param {string} [props.href]
+ * @param {Function} [props.onClick]
+ * @param {string} [props.className]
+ * @param {React.CSSProperties} [props.style]
+ */
 export const Button = ({
   icon,
   arrow,

@@ -1,3 +1,5 @@
+'use client'
+
 import cn from 'clsx'
 import { useRect } from 'hamo'
 import dynamic from 'next/dynamic'
@@ -162,15 +164,7 @@ export default function Home() {
   }, [intersection])
 
   return (
-    <Layout
-      theme={theme}
-      seo={{
-        title: 'Lenis – Get smooth or die trying',
-        description:
-          'A smooth scroll library fresh out of the darkroom.engineering.',
-      }}
-      className={s.home}
-    >
+    <Layout theme={theme} className={s.home}>
       <div className={s.canvas}>
         <WebGL />
       </div>
@@ -186,7 +180,7 @@ export default function Home() {
               <h2 className={cn('h3', s.subtitle)}>Smooth Scroll</h2>
             </HeroTextIn>
             <HeroTextIn introOut={introOut}>
-              <h2 className={cn('p-xs', s.tm)}>
+              <h2 className={cn('p-xs', s.tm)} suppressHydrationWarning>
                 <span>©</span> {new Date().getFullYear()} darkroom.engineering
               </h2>
             </HeroTextIn>
@@ -442,12 +436,4 @@ export default function Home() {
       </section>
     </Layout>
   )
-}
-
-export async function getStaticProps() {
-  return {
-    props: {
-      id: 'home',
-    }, // will be passed to the page component as props
-  }
 }

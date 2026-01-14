@@ -9,6 +9,15 @@ import Cross from '@/icons/cross.svg'
 import Magnifier from '@/icons/magnifier.svg'
 import s from './filters.module.css'
 
+/**
+ * @param {Object} props
+ * @param {string} [props.className]
+ * @param {Function} [props.onChange]
+ * @param {Function} [props.onSearch]
+ * @param {string[]} [props.list]
+ * @param {string} [props.id]
+ * @param {React.Ref} [props.ref]
+ */
 export function Filters({ className, onChange, onSearch, list = [], id, ref }) {
   const [filters, setFilters] = useState([])
   const [search, setSearch] = useState('')
