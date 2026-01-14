@@ -1,0 +1,49 @@
+.page {
+  background-color: #000;
+}
+
+.section {
+  padding: 24px;
+}
+
+.section .inner {
+  height: 100%;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.section-1 {
+  height: 150vh;
+}
+
+.section-1 .inner {
+  background-color: #ff98a2;
+}
+
+.section-2 {
+  height: 50vh;
+}
+
+.section-2 .inner {
+  background-color: #d585a9;
+}
+
+.section-3 {
+  height: 80vh;
+}
+
+.section-3 .inner {
+  background-color: #a378a4;
+}
+
+.section-4 {
+  height: 150vh;
+}
+
+.section-4 .inner {
+  background-color: #726a93;
+}
+
+.section:not(:last-child) {
+  margin-bottom: -24px;
+}

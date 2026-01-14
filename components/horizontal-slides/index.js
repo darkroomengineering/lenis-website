@@ -1,12 +1,12 @@
-import { useMediaQuery, useRect } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
 import gsap from 'gsap'
-import { useScroll } from 'hooks/use-scroll'
-import { clamp, mapRange } from 'lib/maths'
+import { useMediaQuery, useRect } from 'hamo'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
+import { useScroll } from '@/hooks/use-scroll'
+import { clamp, mapRange } from '@/lib/maths'
 
-import s from './horizontal-slides.module.scss'
+import s from './horizontal-slides.module.css'
 
 export const HorizontalSlides = ({ children }) => {
   const elementRef = useRef(null)
@@ -19,7 +19,7 @@ export const HorizontalSlides = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState()
 
   useScroll(({ scroll }) => {
-    if (!elementRect || !elementRef.current) return
+    if (!(elementRect && elementRef.current)) return
 
     const start = wrapperRect.top - windowHeight
     const end = wrapperRect.top + wrapperRect.height - windowHeight
@@ -60,7 +60,7 @@ export const HorizontalSlides = ({ children }) => {
       ref={wrapperRectRef}
       style={
         elementRect && isMobile === false
-          ? { height: elementRect.width + 'px' }
+          ? { height: `${elementRect.width}px` }
           : {}
       }
     >

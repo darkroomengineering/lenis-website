@@ -1,19 +1,20 @@
-import { useMediaQuery } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
+import { useMediaQuery } from 'hamo'
 import { useMemo, useState } from 'react'
-import s from './grid-debugger.module.scss'
+import s from './grid-debugger.module.css'
 
 export const GridDebugger = () => {
   const [visible, setVisible] = useState(false)
-  const isMobile = useMediaQuery('(max-width: 800px)')
+  const _isMobile = useMediaQuery('(max-width: 800px)')
 
   const columns = useMemo(() => {
-    return parseInt(
+    return Number.parseInt(
       getComputedStyle(document.documentElement).getPropertyValue(
         '--layout-columns-count'
-      )
+      ),
+      10
     )
-  }, [isMobile])
+  }, [])
 
   return (
     <div className={s.grid}>
@@ -27,7 +28,7 @@ export const GridDebugger = () => {
       {visible && (
         <div className={cn('layout-grid', s.debugger)}>
           {new Array(columns).fill(0).map((_, key) => (
-            <span key={key}></span>
+            <span key={key} />
           ))}
         </div>
       )}

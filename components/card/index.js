@@ -1,5 +1,5 @@
 import cn from 'clsx'
-import s from './card.module.scss'
+import s from './card.module.css'
 
 export const Card = ({
   number,

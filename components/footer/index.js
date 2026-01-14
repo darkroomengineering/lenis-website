@@ -1,10 +1,10 @@
 import cn from 'clsx'
-import { Button } from 'components/button'
-import { Link } from 'components/link'
 import dynamic from 'next/dynamic'
-import s from './footer.module.scss'
+import { Button } from '@/components/button'
+import { Link } from '@/components/link'
+import s from './footer.module.css'
 
-const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
+const GitHub = dynamic(() => import('@/icons/github.svg'), { ssr: false })
 
 export function Footer({ theme = 'light' }) {
   return (

@@ -1,11 +1,11 @@
-import { Button } from 'components/button'
-import s from './modal.module.scss'
 import cn from 'clsx'
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
-import { useStore } from 'lib/store'
+import { Button } from '@/components/button'
+import { useStore } from '@/lib/store'
+import s from './modal.module.css'
 
-const HeartSVG = dynamic(() => import('icons/sponsor.svg'), { ssr: false })
+const HeartSVG = dynamic(() => import('@/icons/sponsor.svg'), { ssr: false })
 
 export function Modal() {
   const [active, setActive] = useState(false)
@@ -28,7 +28,7 @@ export function Modal() {
     } else {
       lenis.start()
     }
-  }, [active])
+  }, [active, lenis])
 
   return (
     <div
@@ -40,7 +40,7 @@ export function Modal() {
       onClick={() => setActive(false)}
     >
       <div className={s.content} onClick={(e) => e.stopPropagation()}>
-        <button className={s.close} onClick={() => setActive(false)}></button>
+        <button className={s.close} onClick={() => setActive(false)} />
         <div className={cn(s.text, 'p')}>
           <p>
             Lenis is 100% free, open-source, and built to make the web feel

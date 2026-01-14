@@ -1,19 +1,18 @@
-import { useRect } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
-
-import { Card } from 'components/card'
-import { useScroll } from 'hooks/use-scroll'
-import { clamp, mapRange } from 'lib/maths'
+import { useRect } from 'hamo'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
+import { Card } from '@/components/card'
+import { useScroll } from '@/hooks/use-scroll'
+import { clamp, mapRange } from '@/lib/maths'
 
 const AppearTitle = dynamic(
-  () => import('components/appear-title').then((mod) => mod.AppearTitle),
+  () => import('@/components/appear-title').then((mod) => mod.AppearTitle),
   { ssr: false }
 )
 
-import s from './feature-cards.module.scss'
+import s from './feature-cards.module.css'
 
 const cards = [
   { text: 'Run scroll in the main thread' },

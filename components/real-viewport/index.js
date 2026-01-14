@@ -6,17 +6,17 @@ export const RealViewport = () => {
     function onWindowResize() {
       document.documentElement.style.setProperty(
         '--vh',
-        window.innerHeight * 0.01 + 'px'
+        `${window.innerHeight * 0.01}px`
       )
 
       document.documentElement.style.setProperty(
         '--dvh',
-        window.innerHeight * 0.01 + 'px'
+        `${window.innerHeight * 0.01}px`
       )
 
       document.documentElement.style.setProperty(
         '--svh',
-        document.documentElement.clientHeight * 0.01 + 'px'
+        `${document.documentElement.clientHeight * 0.01}px`
       )
 
       document.documentElement.style.setProperty('--lvh', '1vh')

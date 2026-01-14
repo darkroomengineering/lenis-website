@@ -1,0 +1,384 @@
+.features {
+  height: 1600vh;
+
+  @media (--desktop) {
+    min-height: calc(((1310 * 100) / var(--device-width)) * 1vw);
+  }
+
+  .card {
+    --d: 100vh;
+
+    position: absolute;
+    will-change: transform;
+    transition-duration: 1.2s;
+    transition-property: opacity, transform;
+    transition-timing-function: var(--ease-out-expo);
+
+    @media (--mobile) {
+      &:nth-child(1) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          0
+        );
+      }
+      &:nth-child(2) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          1
+        );
+      }
+      &:nth-child(3) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          2
+        );
+      }
+      &:nth-child(4) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          3
+        );
+      }
+      &:nth-child(5) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          4
+        );
+      }
+      &:nth-child(6) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          5
+        );
+      }
+      &:nth-child(7) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          6
+        );
+      }
+      &:nth-child(8) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          7
+        );
+      }
+      &:nth-child(9) {
+        top: calc(
+          (
+            (
+              (100 * var(--vh, 1vh)) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (var(--layout-margin))
+            ) /
+            8
+          ) *
+          8
+        );
+      }
+    }
+
+    @media (--desktop) {
+      &:nth-child(1) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          0
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          0
+        );
+      }
+      &:nth-child(2) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          1
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          1
+        );
+      }
+      &:nth-child(3) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          2
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          2
+        );
+      }
+      &:nth-child(4) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          3
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          3
+        );
+      }
+      &:nth-child(5) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          4
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          4
+        );
+      }
+      &:nth-child(6) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          5
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          5
+        );
+      }
+      &:nth-child(7) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          6
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          6
+        );
+      }
+      &:nth-child(8) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          7
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          7
+        );
+      }
+      &:nth-child(9) {
+        top: calc(
+          (
+            (
+              var(--d) -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          8
+        );
+        left: calc(
+          (
+            (
+              100vw -
+              calc(((440 * 100) / var(--device-width)) * 1vw) -
+              (2 * var(--layout-margin))
+            ) /
+            8
+          ) *
+          8
+        );
+      }
+    }
+
+    &:not(.current) {
+      transform: translate3d(100%, 100%, 0);
+      opacity: 0;
+    }
+  }
+
+  .title {
+    text-align: end;
+    padding-bottom: var(--layout-margin);
+
+    @media (--desktop) {
+      padding: 0;
+      position: absolute;
+      right: var(--layout-margin);
+    }
+  }
+}
+
+.sticky {
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: var(--layout-margin);
+
+  > * {
+    position: relative;
+  }
+}

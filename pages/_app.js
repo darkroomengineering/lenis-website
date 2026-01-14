@@ -1,16 +1,16 @@
-import Tempus from '@darkroom.engineering/tempus'
-import { useDebug } from '@darkroom.engineering/hamo'
-import { RealViewport } from 'components/real-viewport'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import { useScroll } from 'hooks/use-scroll'
-import { GTM_ID } from 'lib/analytics'
-import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import { useEffect } from 'react'
-import 'styles/global.scss'
-import { Analytics as VercelAnalytics } from '@vercel/analytics/next'
+import Tempus from 'tempus'
+import { RealViewport } from '@/components/real-viewport'
+import { useDebug } from '@/hooks/use-debug'
+import { useScroll } from '@/hooks/use-scroll'
+import { GTM_ID } from '@/lib/analytics'
+import { useStore } from '@/lib/store'
+import '@/lib/styles/css/index.css'
+// import { Analytics as VercelAnalytics } from '@vercel/analytics/next'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -25,13 +25,15 @@ if (typeof window !== 'undefined') {
 }
 
 const Stats = dynamic(
-  () => import('components/stats').then(({ Stats }) => Stats),
+  () => import('@/components/stats').then(({ Stats }) => Stats),
   { ssr: false }
 )
 
 const GridDebugger = dynamic(
   () =>
-    import('components/grid-debugger').then(({ GridDebugger }) => GridDebugger),
+    import('@/components/grid-debugger').then(
+      ({ GridDebugger }) => GridDebugger
+    ),
   { ssr: false }
 )
 
@@ -60,7 +62,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <VercelAnalytics />
+      {/* <VercelAnalytics /> */}
       <Leva hidden={!debug} />
       {debug && (
         <>

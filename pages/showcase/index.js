@@ -1,27 +1,26 @@
 'use client'
 
-import ShowcaseCard from 'components/showcase/card'
-import s from './showcase.module.scss'
+import { Client } from '@notionhq/client'
 import cn from 'clsx'
-import { Footer } from 'components/footer'
-import { Button } from 'components/button'
-import Arrow from 'icons/arrow-diagonal.svg'
-import { Filters } from 'components/showcase/filters'
-import { ReactLenis } from 'lenis/react'
+import { ReactLenis, useLenis } from 'lenis/react'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
-import { Client } from '@notionhq/client'
-import { RichText } from 'lib/notion'
-import { useLenis } from 'lenis/react'
-import { CustomHead } from 'components/custom-head'
+import { Button } from '@/components/button'
+import { CustomHead } from '@/components/custom-head'
+import { Footer } from '@/components/footer'
+import { Link } from '@/components/link'
+import ShowcaseCard from '@/components/showcase/card'
+import { Filters } from '@/components/showcase/filters'
+import Arrow from '@/icons/arrow-diagonal.svg'
+import CubeSVG from '@/icons/cube.svg'
+import LenisSVG from '@/icons/l.svg'
+import { RichText } from '@/lib/notion'
+import s from './showcase.module.css'
 
-import CubeSVG from 'icons/cube.svg'
-import LenisSVG from 'icons/l.svg'
-import { Link } from 'components/link'
 // @refresh reset
 
 const WebGL = dynamic(
-  () => import('components/webgl').then(({ WebGL }) => WebGL),
+  () => import('@/components/webgl').then(({ WebGL }) => WebGL),
   { ssr: false }
 )
 
@@ -31,34 +30,38 @@ function getThumbnailType(title) {
 
   if (imageExtensions.includes(title.split('.').pop())) {
     return 'image'
-  } else if (videoExtensions.includes(title.split('.').pop())) {
-    return 'video'
-  } else {
-    return null
   }
+  if (videoExtensions.includes(title.split('.').pop())) {
+    return 'video'
+  }
+  return null
 }
 
 export async function getStaticProps() {
-  const notion = new Client({
-    auth: process.env.NOTION_TOKEN,
-  })
-  const database = await notion.dataSources.query({
-    data_source_id: '2c0e97ae-01cf-80a8-aa3c-000b46741671',
-    filter: {
-      property: 'status',
-      status: {
-        equals: 'Published',
+  // Return empty results if NOTION_TOKEN is not configured
+  if (!process.env.NOTION_TOKEN) {
+    console.warn('NOTION_TOKEN not configured, returning empty showcase')
+    return { props: { database: { results: [] } }, revalidate: 60 }
+  }
+
+  try {
+    const notion = new Client({
+      auth: process.env.NOTION_TOKEN,
+    })
+    const database = await notion.dataSources.query({
+      data_source_id: '2c0e97ae-01cf-80a8-aa3c-000b46741671',
+      filter: {
+        property: 'status',
+        status: {
+          equals: 'Published',
+        },
       },
-    },
-    // sorts: [
-    //   {
-    //     property: 'last_edited_time',
-    //     direction: 'descending',
-    //   },
-    // ],
-  })
-  // todo: filter by status
-  return { props: { database }, revalidate: 1800 } // revalidate every 30 minutes
+    })
+    return { props: { database }, revalidate: 1800 } // revalidate every 30 minutes
+  } catch (error) {
+    console.error('Failed to fetch showcase data:', error)
+    return { props: { database: { results: [] } }, revalidate: 60 }
+  }
 }
 
 export default function Showcase({ database }) {
@@ -81,54 +84,37 @@ export default function Showcase({ database }) {
       return new Date(b.created_time) - new Date(a.created_time)
     })
     .map((result) => ({
-      // ...result,
       title: result.properties.title.rich_text[0].plain_text,
       href:
         (result.properties.url.url.startsWith('http')
           ? result.properties.url.url
-          : 'https://' + result.properties.url.url) +
+          : `https://${result.properties.url.url}`) +
         '?utm_source=lenis.dev/showcase',
-      // credits: result.properties.Credits.rich_text[0].plain_text,
       thumbnail: result.properties.thumbnail.files?.[0]?.file?.url,
       thumbnailType: getThumbnailType(
         result.properties.thumbnail.files?.[0]?.name
       ),
       credits: RichText({ richText: result.properties.credits.rich_text }),
-      // href: result.properties.Link.url,
+      creditsRaw: result.properties.credits.rich_text,
+      technologies: result.properties.technologies.multi_select.map(
+        (tag) => tag.name
+      ),
+      features: result.properties.features.multi_select.map((tag) => tag.name),
     }))
-  // .reverse()
-
-  console.log(list)
 
   const filtersList = Array.from(
-    new Set(
-      database.results
-        .map((result) =>
-          [
-            ...result.properties.technologies.multi_select.map(
-              (tag) => tag.name
-            ),
-            ...result.properties.features.multi_select.map((tag) => tag.name),
-          ].flat()
-        )
-        .flat()
-    )
+    new Set(list.flatMap((item) => [...item.technologies, ...item.features]))
   )
 
   const filteredList = list.filter((item) => {
     return (
       filters.every((filter) => {
         return (
-          item.properties.technologies.multi_select.some(
-            (tag) => tag.name === filter
-          ) ||
-          item.properties.features.multi_select.some(
-            (tag) => tag.name === filter
-          )
+          item.technologies.includes(filter) || item.features.includes(filter)
         )
       }) &&
       (item.title.toLowerCase().includes(search.toLowerCase()) ||
-        JSON.stringify(item.properties.credits.rich_text)
+        JSON.stringify(item.creditsRaw)
           .toLowerCase()
           .includes(search.toLowerCase()))
     )

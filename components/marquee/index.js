@@ -1,5 +1,5 @@
 import cn from 'clsx'
-import s from './marquee.module.scss'
+import s from './marquee.module.css'
 
 const Marquee = ({
   children,
@@ -13,8 +13,8 @@ const Marquee = ({
     <div
       className={cn(className, s.marquee, inverted && s.inverted)}
       style={{
-        '--duration': duration + 's',
-        '--offset': (offset % 100) + '%',
+        '--duration': `${duration}s`,
+        '--offset': `${offset % 100}%`,
       }}
     >
       {new Array(repeat).fill(children).map((_, i) => (

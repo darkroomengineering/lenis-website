@@ -1,51 +1,54 @@
-import { useFrame, useRect } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
-
-import { Button } from 'components/button'
-import { Card } from 'components/card'
-import { Title } from 'components/intro'
-import { Link } from 'components/link'
-import { ListItem } from 'components/list-item'
-import { projects } from 'content/projects'
-import { useScroll } from 'hooks/use-scroll'
-import { Layout } from 'layouts/default'
-import { button, useControls } from 'leva'
-import { clamp, mapRange } from 'lib/maths'
-import { useStore } from 'lib/store'
+import { useRect } from 'hamo'
 import dynamic from 'next/dynamic'
 import { useEffect, useRef, useState } from 'react'
 import { useIntersection, useWindowSize } from 'react-use'
-import s from './home.module.scss'
-// import { Modal } from 'components/modal'
+import { Button } from '@/components/button'
+import { Card } from '@/components/card'
+import { Title } from '@/components/intro'
+import { Link } from '@/components/link'
+import { ListItem } from '@/components/list-item'
+import { projects } from '@/content/projects'
+import { useScroll } from '@/hooks/use-scroll'
+import { Layout } from '@/layouts/default'
+import { clamp, mapRange } from '@/lib/maths'
+import { useStore } from '@/lib/store'
+import s from './home.module.css'
 
-// const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
-const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
-// const Sponsor = dynamic(() => import('icons/sponsor.svg'), { ssr: false })
-const Arrow = dynamic(() => import('icons/arrow-diagonal.svg'), { ssr: false })
+// import { Modal } from '@/components/modal'
+
+// const SFDR = dynamic(() => import('@/icons/sfdr.svg'), { ssr: false })
+const GitHub = dynamic(() => import('@/icons/github.svg'), { ssr: false })
+// const Sponsor = dynamic(() => import('@/icons/sponsor.svg'), { ssr: false })
+const Arrow = dynamic(() => import('@/icons/arrow-diagonal.svg'), {
+  ssr: false,
+})
 
 const Parallax = dynamic(
-  () => import('components/parallax').then((mod) => mod.Parallax),
+  () => import('@/components/parallax').then((mod) => mod.Parallax),
   { ssr: false }
 )
 
 const AppearTitle = dynamic(
-  () => import('components/appear-title').then((mod) => mod.AppearTitle),
+  () => import('@/components/appear-title').then((mod) => mod.AppearTitle),
   { ssr: false }
 )
 
 const HorizontalSlides = dynamic(
   () =>
-    import('components/horizontal-slides').then((mod) => mod.HorizontalSlides),
+    import('@/components/horizontal-slides').then(
+      (mod) => mod.HorizontalSlides
+    ),
   { ssr: false }
 )
 
 const FeatureCards = dynamic(
-  () => import('components/feature-cards').then((mod) => mod.FeatureCards),
+  () => import('@/components/feature-cards').then((mod) => mod.FeatureCards),
   { ssr: false }
 )
 
 const WebGL = dynamic(
-  () => import('components/webgl').then(({ WebGL }) => WebGL),
+  () => import('@/components/webgl').then(({ WebGL }) => WebGL),
   { ssr: false }
 )
 
@@ -71,52 +74,6 @@ export default function Home() {
 
   const [theme, setTheme] = useState('dark')
   const lenis = useStore(({ lenis }) => lenis)
-
-  useControls(
-    'lenis',
-    () => ({
-      stop: button(() => {
-        lenis.stop()
-      }),
-      start: button(() => {
-        lenis.start()
-      }),
-    }),
-    [lenis]
-  )
-
-  useControls(
-    'scrollTo',
-    () => ({
-      immediate: button(() => {
-        lenis.scrollTo(30000, { immediate: true })
-      }),
-      smoothDuration: button(() => {
-        lenis.scrollTo(30000, { lock: true, duration: 10 })
-      }),
-      smooth: button(() => {
-        lenis.scrollTo(30000)
-      }),
-      forceScrollTo: button(() => {
-        lenis.scrollTo(30000, { force: true })
-      }),
-    }),
-    [lenis]
-  )
-
-  useEffect(() => {
-    if (!lenis) return
-
-    function onClassNameChange(lenis) {
-      console.log(lenis.className)
-    }
-
-    lenis.on('className change', onClassNameChange)
-
-    return () => {
-      lenis.off('className change', onClassNameChange)
-    }
-  }, [lenis])
 
   useScroll(({ scroll }) => {
     setHasScrolled(scroll > 10)
@@ -151,7 +108,7 @@ export default function Home() {
 
   useEffect(() => {
     addThreshold({ id: 'top', value: 0 })
-  }, [])
+  }, [addThreshold])
 
   useEffect(() => {
     const top = whyRect.top - windowHeight / 2
@@ -160,7 +117,7 @@ export default function Home() {
       id: 'why-end',
       value: top + whyRect.height,
     })
-  }, [whyRect])
+  }, [whyRect, addThreshold, windowHeight])
 
   useEffect(() => {
     const top = cardsRect.top - windowHeight / 2
@@ -170,35 +127,27 @@ export default function Home() {
       id: 'red-end',
       value: top + cardsRect.height + windowHeight,
     })
-  }, [cardsRect])
+  }, [cardsRect, addThreshold, windowHeight])
 
   useEffect(() => {
     const top = whiteRect.top - windowHeight
     addThreshold({ id: 'light-start', value: top })
-  }, [whiteRect])
+  }, [whiteRect, addThreshold, windowHeight])
 
   useEffect(() => {
     const top = featuresRect.top
     addThreshold({ id: 'features', value: top })
-  }, [featuresRect])
+  }, [featuresRect, addThreshold])
 
   useEffect(() => {
     const top = inuseRect.top
     addThreshold({ id: 'in-use', value: top })
-  }, [inuseRect])
+  }, [inuseRect, addThreshold])
 
   useEffect(() => {
     const top = lenis?.limit
     addThreshold({ id: 'end', value: top })
-  }, [lenis?.limit])
-
-  useScroll((e) => {
-    console.log(window.scrollY, e.scroll, e.isScrolling, e.velocity, e.isLocked)
-  })
-
-  useFrame(() => {
-    console.log('frame', window.scrollY, lenis?.scroll, lenis?.isScrolling)
-  }, 1)
+  }, [lenis?.limit, addThreshold])
 
   const inUseRef = useRef()
 

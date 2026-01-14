@@ -1,9 +1,9 @@
-import { useScroll } from 'hooks/use-scroll'
-import { clamp, mapRange } from 'lib/maths'
-import { useStore } from 'lib/store'
 import { useEffect, useRef, useState } from 'react'
 import { useWindowSize } from 'react-use'
-import s from './scrollbar.module.scss'
+import { useScroll } from '@/hooks/use-scroll'
+import { clamp, mapRange } from '@/lib/maths'
+import { useStore } from '@/lib/store'
+import s from './scrollbar.module.css'
 
 export function Scrollbar({}) {
   const progressBar = useRef()
@@ -51,7 +51,7 @@ export function Scrollbar({}) {
       window.removeEventListener('pointermove', onPointerMove, false)
       window.removeEventListener('pointerup', onPointerUp, false)
     }
-  }, [clicked, windowHeight, windowWidth, lenis])
+  }, [clicked, windowHeight, lenis])
 
   return (
     <div className={s.scrollbar}>

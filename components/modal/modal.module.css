@@ -1,0 +1,103 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--theme-secondary);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--theme-secondary);
+    opacity: 0.5;
+    backdrop-filter: blur(10px);
+  }
+
+  .content {
+    background-color: var(--theme-primary);
+    padding: calc(((40 * 100) / var(--device-width)) * 1vw)
+      calc(((20 * 100) / var(--device-width)) * 1vw);
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: calc(((40 * 100) / var(--device-width)) * 1vw);
+    border: 1px solid var(--theme-contrast);
+    position: relative;
+
+    @media (--desktop) {
+      grid-column: 5 / -5;
+      gap: calc(((40 * 100) / var(--device-width)) * 1vw);
+      padding: calc(((40 * 100) / var(--device-width)) * 1vw)
+        calc(((20 * 100) / var(--device-width)) * 1vw);
+    }
+
+    .close {
+      position: absolute;
+      top: calc(((20 * 100) / var(--device-width)) * 1vw);
+      right: calc(((20 * 100) / var(--device-width)) * 1vw);
+      width: calc(((20 * 100) / var(--device-width)) * 1vw);
+      height: calc(((20 * 100) / var(--device-width)) * 1vw);
+
+      @media (--desktop) {
+        top: calc(((20 * 100) / var(--device-width)) * 1vw);
+        right: calc(((20 * 100) / var(--device-width)) * 1vw);
+        width: calc(((20 * 100) / var(--device-width)) * 1vw);
+        height: calc(((20 * 100) / var(--device-width)) * 1vw);
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        height: 1px;
+        width: 100%;
+        background-color: var(--theme-secondary);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &::after {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+
+    .text {
+      padding-top: calc(((20 * 100) / var(--device-width)) * 1vw);
+
+      @media (--desktop) {
+        padding-top: calc(((20 * 100) / var(--device-width)) * 1vw);
+      }
+    }
+  }
+
+  &::before,
+  .content {
+    transition-duration: 1.2s;
+    transition-timing-function: var(--ease-out-expo);
+    transition-property: opacity, transform;
+  }
+
+  &:not(.active) {
+    pointer-events: none;
+
+    &::before {
+      opacity: 0;
+    }
+
+    .content {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+}

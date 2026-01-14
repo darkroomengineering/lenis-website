@@ -1,8 +1,8 @@
 import gsap from 'gsap'
-import { useStore } from 'lib/store'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
-import s from './page-transition.module.scss'
+import { useStore } from '@/lib/store'
+import s from './page-transition.module.css'
 
 export const PageTransition = () => {
   const curtainRef = useRef()
@@ -27,7 +27,7 @@ export const PageTransition = () => {
     return () => {
       router.events.off('routeChangeComplete', changeRouteComplete)
     }
-  }, [curtainInComplete])
+  }, [curtainInComplete, router.events.off, router.events.on])
 
   useEffect(() => {
     if (triggerTransition === '') return
@@ -41,7 +41,7 @@ export const PageTransition = () => {
       },
       ease: 'circ.out',
     })
-  }, [triggerTransition])
+  }, [triggerTransition, router.push])
 
   useEffect(() => {
     if (!pageLoaded) return
@@ -57,7 +57,7 @@ export const PageTransition = () => {
       },
       ease: 'circ.out',
     })
-  }, [pageLoaded])
+  }, [pageLoaded, setTriggerTransition])
 
   return <div className={s.transition} ref={curtainRef} />
 }

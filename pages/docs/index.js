@@ -1,9 +1,31 @@
-import { useFrame } from '@darkroom.engineering/hamo'
 import Lenis from 'lenis'
 import { useEffect, useRef, useState } from 'react'
-import s from './docs.module.scss'
+import s from './docs.module.css'
 
 export default function Docs() {
+  // Custom useFrame for RAF timing
+  const useFrame = (callback, _priority = 0) => {
+    const savedCallback = useRef(callback)
+
+    useEffect(() => {
+      savedCallback.current = callback
+    }, [callback])
+
+    useEffect(() => {
+      let rafId
+
+      function tick(time) {
+        savedCallback.current(time)
+        rafId = requestAnimationFrame(tick)
+      }
+
+      rafId = requestAnimationFrame(tick)
+
+      return () => {
+        if (rafId) cancelAnimationFrame(rafId)
+      }
+    }, [])
+  }
   const [rootLenis, setRootLenis] = useState()
   const [lenis, setLenis] = useState()
 
@@ -35,14 +57,7 @@ export default function Docs() {
   }, [])
 
   useEffect(() => {
-    rootLenis?.on('scroll', (e) => {
-      console.log(
-        window.scrollY,
-        e.scroll,
-        Math.floor(e.scroll),
-        e.actualScroll
-      )
-    })
+    rootLenis?.on('scroll', () => {})
   }, [rootLenis])
 
   useFrame((time) => {

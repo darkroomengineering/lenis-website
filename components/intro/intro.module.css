@@ -1,0 +1,61 @@
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--pink);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+
+  @media (--mobile) {
+    display: none;
+  }
+
+  &.out {
+    transition: transform 1500ms var(--ease-out-expo);
+    transform: translate3d(0, -100%, 0);
+    transition-delay: calc(1500ms + 0ms);
+  }
+
+  .start {
+    transform: translate3d(0, calc(var(--index) * 5% + 100%), 0);
+  }
+
+  .relative {
+    padding: calc(((30 * 100) / var(--device-width)) * 1vw)
+      calc(((32.5 * 100) / var(--device-width)) * 1vw);
+
+    transition: transform 1500ms var(--ease-out-expo);
+    transform: translate3d(
+      0,
+      calc(((850 * 100) / var(--device-height)) * 1vh),
+      0
+    );
+    transition-delay: calc(1500ms + 0ms);
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .show {
+    transition: transform 1500ms var(--ease-out-expo);
+    transition-delay: calc(var(--index) * 75ms);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.translate {
+  @media (--desktop) {
+    transform: translate3d(0, -100%, 0);
+    transition: transform 1500ms var(--ease-out-expo);
+  }
+}
+
+.mobile {
+  @media (--mobile) {
+    transform: translate3d(0, -105%, 0);
+  }
+}

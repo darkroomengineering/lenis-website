@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import s from './header.module.scss'
+import s from './header.module.css'
 
 export const Header = forwardRef((_, ref) => {
   return (

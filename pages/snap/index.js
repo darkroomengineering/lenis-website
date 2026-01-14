@@ -1,9 +1,9 @@
 import cn from 'clsx'
-import { CustomHead } from 'components/custom-head'
 import Lenis from 'lenis'
 import Snap from 'lenis/snap'
 import { useEffect, useRef } from 'react'
-import s from './snap.module.scss'
+import { CustomHead } from '@/components/custom-head'
+import s from './snap.module.css'
 
 export default function Page() {
   const sectionRefs = useRef([])
@@ -21,12 +21,8 @@ export default function Page() {
       // debounce: 1000,
       // duration: 2,
       // easing: (t) => t,
-      onSnapStart: (snap) => {
-        console.log('onSnapStart', snap)
-      },
-      onSnapComplete: (snap) => {
-        console.log('onSnapComplete', snap)
-      },
+      onSnapStart: (_snap) => {},
+      onSnapComplete: (_snap) => {},
     })
     window.snap = snap
 
@@ -80,7 +76,7 @@ export default function Page() {
               sectionRefs.current[index] = node
             }}
           >
-            <div className={s.inner}></div>
+            <div className={s.inner} />
           </section>
         ))}
       </div>

@@ -1,8 +1,8 @@
-import { useMediaQuery } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
-import { useStore } from 'lib/store'
+import { useMediaQuery } from 'hamo'
 import { useEffect, useState } from 'react'
-import s from './intro.module.scss'
+import { useStore } from '@/lib/store'
+import s from './intro.module.css'
 
 export const Intro = () => {
   const isMobile = useMediaQuery('(max-width: 800px)')
