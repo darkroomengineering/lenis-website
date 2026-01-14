@@ -5,9 +5,9 @@ import { clamp, mapRange } from '@/lib/maths'
 import { useStore } from '@/lib/store'
 import s from './scrollbar.module.css'
 
-export function Scrollbar({}) {
+export function Scrollbar() {
   const progressBar = useRef()
-  const { width: windowWidth, height: windowHeight } = useWindowSize()
+  const { height: windowHeight } = useWindowSize()
   const lenis = useStore(({ lenis }) => lenis)
 
   useScroll(({ scroll, limit }) => {

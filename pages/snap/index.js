@@ -21,8 +21,12 @@ export default function Page() {
       // debounce: 1000,
       // duration: 2,
       // easing: (t) => t,
-      onSnapStart: (_snap) => {},
-      onSnapComplete: (_snap) => {},
+      onSnapStart: (_snap) => {
+        // Snap start callback - can be used for animations
+      },
+      onSnapComplete: (_snap) => {
+        // Snap complete callback - can be used for state updates
+      },
     })
     window.snap = snap
 

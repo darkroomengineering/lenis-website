@@ -19,6 +19,7 @@ export const GridDebugger = () => {
   return (
     <div className={s.grid}>
       <button
+        type="button"
         onClick={() => {
           setVisible(!visible)
         }}
@@ -27,8 +28,8 @@ export const GridDebugger = () => {
       </button>
       {visible && (
         <div className={cn('layout-grid', s.debugger)}>
-          {new Array(columns).fill(0).map((_, key) => (
-            <span key={key} />
+          {new Array(columns).fill(0).map((_, idx) => (
+            <span key={`col-${idx}`} />
           ))}
         </div>
       )}

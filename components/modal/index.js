@@ -30,6 +30,8 @@ export function Modal() {
     }
   }, [active, lenis])
 
+  const handleClose = () => setActive(false)
+
   return (
     <div
       className={cn(
@@ -37,10 +39,19 @@ export function Modal() {
         'layout-grid-inner theme-light',
         active && s.active
       )}
-      onClick={() => setActive(false)}
+      onClick={handleClose}
+      onKeyDown={(e) => e.key === 'Escape' && handleClose()}
+      role="dialog"
+      aria-modal="true"
+      tabIndex={-1}
     >
-      <div className={s.content} onClick={(e) => e.stopPropagation()}>
-        <button className={s.close} onClick={() => setActive(false)} />
+      <div
+        className={s.content}
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
+        role="document"
+      >
+        <button type="button" className={s.close} onClick={() => setActive(false)} />
         <div className={cn(s.text, 'p')}>
           <p>
             Lenis is 100% free, open-source, and built to make the web feel

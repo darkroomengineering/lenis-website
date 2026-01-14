@@ -1,15 +1,14 @@
 import NextLink from 'next/link'
-import { forwardRef, useMemo } from 'react'
+import { useMemo } from 'react'
 
 const SHALLOW_URLS = ['?demo=true']
 
-export const Link = forwardRef(
-  ({ href, children, className, scroll, shallow, ...props }, ref) => {
-    const attributes = {
-      ref,
-      className,
-      ...props,
-    }
+export function Link({ href, children, className, scroll, shallow, ref, ...props }) {
+  const attributes = {
+    ref,
+    className,
+    ...props,
+  }
 
     const isProtocol = useMemo(
       () => href?.startsWith('mailto:') || href?.startsWith('tel:'),
@@ -53,7 +52,4 @@ export const Link = forwardRef(
         {children}
       </NextLink>
     )
-  }
-)
-
-Link.displayName = 'Link'
+}

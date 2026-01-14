@@ -3,16 +3,13 @@
 // import { Button } from '@/components/button'
 // import Arrow from '@/icons/arrow-diagonal.svg'
 import cn from 'clsx'
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
+import { useEffect, useImperativeHandle, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import Cross from '@/icons/cross.svg'
 import Magnifier from '@/icons/magnifier.svg'
 import s from './filters.module.css'
 
-export const Filters = forwardRef(function Filters(
-  { className, onChange, onSearch, list = [], id },
-  ref
-) {
+export function Filters({ className, onChange, onSearch, list = [], id, ref }) {
   const [filters, setFilters] = useState([])
   const [search, setSearch] = useState('')
   const [debouncedSearch] = useDebounce(search, 500)
@@ -85,4 +82,4 @@ export const Filters = forwardRef(function Filters(
       {/* </div> */}
     </div>
   )
-})
+}

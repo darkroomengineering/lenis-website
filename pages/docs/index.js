@@ -57,7 +57,10 @@ export default function Docs() {
   }, [])
 
   useEffect(() => {
-    rootLenis?.on('scroll', () => {})
+    // Subscribe to scroll events (handler left empty for debugging)
+    rootLenis?.on('scroll', () => {
+      // Scroll event handler - can be used for debugging
+    })
   }, [rootLenis])
 
   useFrame((time) => {

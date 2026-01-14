@@ -7,6 +7,12 @@
     "useIgnoreFile": true
   },
 
+  "plugins": [
+    "./.biome/plugins/no-anchor-element.grit",
+    "./.biome/plugins/no-unnecessary-forwardref.grit",
+    "./.biome/plugins/no-relative-parent-imports.grit"
+  ],
+
   "files": {
     "ignoreUnknown": true,
     "includes": [
@@ -100,7 +106,8 @@
         "noPrototypeBuiltins": "warn",
         "noSelfCompare": "error",
         "noSparseArray": "error",
-        "useAwait": "off"
+        "useAwait": "off",
+        "noArrayIndexKey": "warn"
       },
 
       "complexity": {
@@ -127,7 +134,8 @@
         "noAutofocus": "warn",
         "noDistractingElements": "error",
         "noRedundantAlt": "error",
-        "useSemanticElements": "warn"
+        "useSemanticElements": "warn",
+        "noSvgWithoutTitle": "warn"
       },
 
       "performance": {
@@ -222,7 +230,11 @@
         "app/**/*.tsx",
         "app/**/*.ts",
         "app/**/*.jsx",
-        "app/**/*.js"
+        "app/**/*.js",
+        "pages/**/*.tsx",
+        "pages/**/*.ts",
+        "pages/**/*.jsx",
+        "pages/**/*.js"
       ],
       "linter": {
         "rules": {
