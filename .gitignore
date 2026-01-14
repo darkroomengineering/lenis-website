@@ -47,3 +47,9 @@ certificates
 
 # migration
 MIGRATION_PLAN.md
+
+# tldr cache
+.tldr
+
+# claude
+.claude
