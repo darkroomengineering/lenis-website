@@ -1,10 +1,24 @@
+'use client'
+
 import cn from 'clsx'
-import { Link } from 'components/link'
 import dynamic from 'next/dynamic'
-import s from './button.module.scss'
+import { Link } from '@/components/link'
+import s from './button.module.css'
 
-const Arrow = dynamic(() => import('icons/arrow-diagonal.svg'), { ssr: false })
+const Arrow = dynamic(() => import('@/icons/arrow-diagonal.svg'), {
+  ssr: false,
+})
 
+/**
+ * @param {Object} props
+ * @param {React.ReactNode} [props.icon]
+ * @param {boolean} [props.arrow]
+ * @param {React.ReactNode} [props.children]
+ * @param {string} [props.href]
+ * @param {Function} [props.onClick]
+ * @param {string} [props.className]
+ * @param {React.CSSProperties} [props.style]
+ */
 export const Button = ({
   icon,
   arrow,
@@ -32,6 +46,7 @@ export const Button = ({
     </Link>
   ) : (
     <button
+      type="button"
       className={cn(s.button, className, icon && s['has-icon'])}
       style={style}
       onClick={onClick}

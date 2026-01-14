@@ -1,10 +1,10 @@
-import { useMediaQuery, useRect } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
 import { gsap } from 'gsap'
 import { SplitText } from 'gsap/dist/SplitText'
+import { useMediaQuery, useRect } from 'hamo'
 import { useEffect, useRef, useState } from 'react'
 import { useIntersection, useWindowSize } from 'react-use'
-import s from './appear-title.module.scss'
+import s from './appear-title.module.css'
 
 gsap.registerPlugin(SplitText)
 
@@ -22,10 +22,10 @@ export function AppearTitle({ children, visible = true }) {
     }
   }, [intersection])
 
-  const { width } = useWindowSize()
-  const isMobile = useMediaQuery('(max-width: 800px)')
+  const { width: _width } = useWindowSize()
+  const isMobile = useMediaQuery('(max-width: 799.98px)')
 
-  const [rectRef, rect] = useRect()
+  const [rectRef, _rect] = useRect()
 
   useEffect(() => {
     if (isMobile === false) {
@@ -49,7 +49,7 @@ export function AppearTitle({ children, visible = true }) {
         splitted.revert()
       }
     }
-  }, [width, rect, isMobile])
+  }, [isMobile])
 
   return (
     <span

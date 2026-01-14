@@ -1,0 +1,18 @@
+.title .line {
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.title .line > * {
+  display: inline-block;
+}
+
+.title.visible .line > * {
+  transition: 1.2s var(--ease-out-expo) transform;
+  transition-delay: calc(200ms * var(--i));
+}
+
+.title:not(.visible) .line > * {
+  transform: translateY(100%);
+}

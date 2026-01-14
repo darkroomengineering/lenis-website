@@ -1,11 +1,11 @@
-import { useMediaQuery } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
-import { useStore } from 'lib/store'
+import { useMediaQuery } from 'hamo'
 import { useEffect, useState } from 'react'
-import s from './intro.module.scss'
+import { useStore } from '@/lib/store'
+import s from './intro.module.css'
 
 export const Intro = () => {
-  const isMobile = useMediaQuery('(max-width: 800px)')
+  const isMobile = useMediaQuery('(max-width: 799.98px)')
   const [isLoaded, setIsLoaded] = useState(false)
   const [scroll, setScroll] = useState(false)
   const introOut = useStore(({ introOut }) => introOut)
@@ -57,10 +57,10 @@ export const Intro = () => {
       }}
     >
       <div className={cn(isLoaded && s.relative)}>
-        <LNS isLoaded={isLoaded} fill={'var(--black)'} />
+        <LNS isLoaded={isLoaded} fill={'var(--color-black)'} />
         <EI
           isLoaded={isLoaded}
-          fill={'var(--black)'}
+          fill={'var(--color-black)'}
           className={cn(introOut && s.translate)}
         />
       </div>
@@ -73,9 +73,9 @@ export const Title = ({ className }) => {
 
   return (
     <div className={className}>
-      <LNS fill={'var(--pink)'} />
+      <LNS fill={'var(--color-pink)'} />
       <EI
-        fill={'var(--pink)'}
+        fill={'var(--color-pink)'}
         className={cn(introOut && s.translate, s.mobile)}
       />
     </div>

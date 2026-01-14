@@ -1,6 +1,6 @@
-import { useFrame } from '@darkroom.engineering/hamo'
 import { useEffect, useMemo } from 'react'
 import _Stats from 'stats.js'
+import { useTempus as useFrame } from 'tempus/react'
 
 export const Stats = () => {
   const stats = useMemo(() => new _Stats(), [])
@@ -16,11 +16,11 @@ export const Stats = () => {
 
   useFrame(() => {
     stats.begin()
-  }, -Infinity)
+  }, Number.NEGATIVE_INFINITY)
 
   useFrame(() => {
     stats.end()
-  }, Infinity)
+  }, Number.POSITIVE_INFINITY)
 
   return null
 }

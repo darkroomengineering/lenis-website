@@ -1,78 +1,89 @@
 # Lenis Website
 
+The official website for [Lenis](https://github.com/darkroomengineering/lenis), the smooth scroll library.
+
 ## Setup
 
-The usual process for Next.js based apps/websites:
+1. Install dependencies:
 
-1. Install node modules:
+   ```bash
+   bun install
+   ```
 
-   `$ pnpm i`
+2. Get the .env variables from Vercel:
 
-2. Get the .env variables from Vercel (check `.env.template`), after [installing Vercel CLI](https://vercel.com/docs/cli):
+   ```bash
+   vc link
+   vc env pull
+   ```
 
-   `$ vc link`
+3. Run development environment:
 
-   `$ vc env pull`
-
-3. Set up GSAP authentication:
-   
-   Copy `.npmrc.config` to `.npmrc` and replace `GSAP_AUTH_TOKEN` with your token
-
-4. Run development environment:
-
-   `$ pnpm dev`
+   ```bash
+   bun dev
+   ```
 
 ## Stack
 
-- [Lenis](https://github.com/darkroomengineering/lenis) - Smooth scroll library
-- [Tempus](https://github.com/darkroomengineering/tempus) - Animation timing control
-- [Hamo](https://github.com/darkroomengineering/hamo) - React hooks and utilities
-- [PNPM](https://pnpm.io/) - Package manager
-- [Next.js](https://nextjs.org/) - React framework
+### Core
+- [Next.js 16](https://nextjs.org/) - React framework with Turbopack
+- [React 19](https://react.dev/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Bun](https://bun.sh/) - Package manager and runtime
+
+### Styling
+- [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS
+- [CSS Modules](https://github.com/css-modules/css-modules) - Scoped styles
+- [PostCSS](https://postcss.org/) - CSS processing
+
+### Animation & Graphics
+- [Lenis](https://github.com/darkroomengineering/lenis) - Smooth scroll
+- [Tempus](https://github.com/darkroomengineering/tempus) - RAF management
+- [Hamo](https://github.com/darkroomengineering/hamo) - React hooks
+- [GSAP](https://greensock.com/gsap/) - Animation library
 - [Three.js](https://threejs.org/) - 3D graphics
-- [@react-three/drei](https://github.com/pmndrs/drei) - Three.js React utilities
-- [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) - Three.js React renderer
-- [GSAP Business](https://greensock.com/gsap/) - Animation library
-- [Sass Modules](https://sass-lang.com/) - CSS preprocessing
+- [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber) - React renderer for Three.js
+- [@react-three/drei](https://github.com/pmndrs/drei) - Three.js helpers
+
+### State & Data
 - [Zustand](https://github.com/pmndrs/zustand) - State management
-- [Next PWA](https://www.npmjs.com/package/next-pwa) - Progressive Web App support
-- [Next SEO](https://github.com/garmeeh/next-seo) - SEO optimization
-- [Next Sitemap](https://github.com/iamvishnusankar/next-sitemap) - Sitemap generation
-- [@svgr/webpack](https://github.com/gregberge/svgr/tree/main) - SVG imports
+- [Notion API](https://developers.notion.com/) - Showcase data
 
-## Code Style & Linting
+## Code Quality
 
-- Eslint ([Next](https://nextjs.org/docs/basic-features/eslint#eslint-config) and [Prettier](https://github.com/prettier/eslint-config-prettier) plugins)
-- [Prettier](https://prettier.io/) with the following settings:
-  ```json
-  {
-    "endOfLine": "auto",
-    "semi": false,
-    "singleQuote": true
-  }
-  ```
-- [Husky + lint-staged precommit hooks](https://github.com/okonet/lint-staged)
+### Linting & Formatting
+- [Biome](https://biomejs.dev/) - Fast linter and formatter (replaces ESLint + Prettier)
+- [Lefthook](https://github.com/evilmartians/lefthook) - Git hooks
 
-## Development Tools
+### Pre-commit Checks
+- Biome lint + format (auto-fix enabled)
+- TypeScript type checking
 
-- [Bundle Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer) - Analyze bundle sizes
-- [Duplicate Package Checker](https://www.npmjs.com/package/duplicate-package-checker-webpack-plugin) - Check for duplicate packages
-- [Stats.js](https://github.com/mrdoob/stats.js/) - Performance monitoring
-- [Leva](https://github.com/pmndrs/leva) - Debug UI controls
+Run manually:
+```bash
+bun biome check --write .   # Lint and format
+bun typecheck               # Type check
+```
 
 ## Folder Structure
 
-Alongside the usual Next.js folder structure (`/public`, `/pages`, etc.) We've added a few other folders:
+```
+├── components/     # Reusable UI components
+├── hooks/          # Custom React hooks
+├── icons/          # SVG icons (imported as React components)
+├── layouts/        # Page layout components
+├── lib/
+│   ├── styles/     # Global CSS, Tailwind config
+│   ├── store.js    # Zustand state store
+│   └── ...         # Utilities
+├── pages/          # Next.js pages (Pages Router)
+└── public/         # Static assets
+```
 
-- **/assets:** General Images/Videos and SVGs
-- **/components:** Reusable components with their respective Sass files
-- **/config:** General settings (mostly Leva for now)
-- **/hooks:** Reusable Custom Hooks
-- **/layouts:** High level layout components
-- **/lib:** Reusable Scripts and State Store
-- **/styles:** Global styles and Sass partials
+## Development
+
+Debug mode: Press `Cmd/Ctrl + O` to toggle debug overlay
 
 ## Deployment
 
-- [Vercel](https://vercel.com/home) - Hosting & Continuous Deployment
-- [GitHub](https://github.com/) - Version Control
+Hosted on [Vercel](https://vercel.com) with automatic deployments from GitHub.

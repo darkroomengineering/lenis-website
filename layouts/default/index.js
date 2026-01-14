@@ -1,34 +1,26 @@
-import { useFrame } from '@darkroom.engineering/hamo'
 import cn from 'clsx'
-import { CustomHead } from 'components/custom-head'
-import { Footer } from 'components/footer'
-import { Intro } from 'components/intro'
-import { Scrollbar } from 'components/scrollbar'
 import Lenis from 'lenis'
-import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import s from './layout.module.scss'
+import { useTempus as useFrame } from 'tempus/react'
+import { useShallow } from 'zustand/react/shallow'
+import { Footer } from '@/components/footer'
+import { Intro } from '@/components/intro'
+import { Scrollbar } from '@/components/scrollbar'
+import { useStore } from '@/lib/store'
+import s from './layout.module.css'
 
 const Cursor = dynamic(
-  () => import('components/cursor').then((mod) => mod.Cursor),
+  () => import('@/components/cursor').then((mod) => mod.Cursor),
   { ssr: false }
 )
 
-const PageTransition = dynamic(
-  () => import('components/page-transition').then((mod) => mod.PageTransition),
-  { ssr: false }
-)
-
-export function Layout({
-  seo = { title: '', description: '', image: '', keywords: '' },
-  children,
-  theme = 'light',
-  className,
-}) {
-  const [lenis, setLenis] = useStore((state) => [state.lenis, state.setLenis])
-  const router = useRouter()
+export function Layout({ children, theme = 'light', className }) {
+  const { lenis, setLenis } = useStore(
+    useShallow((state) => ({ lenis: state.lenis, setLenis: state.setLenis }))
+  )
+  const pathname = usePathname()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -47,7 +39,7 @@ export function Layout({
       lenis.destroy()
       setLenis(null)
     }
-  }, [])
+  }, [setLenis])
 
   const [hash, setHash] = useState()
 
@@ -61,11 +53,10 @@ export function Layout({
 
   useEffect(() => {
     // update scroll position on page refresh based on hash
-    if (router.asPath.includes('#')) {
-      const hash = router.asPath.split('#').pop()
-      setHash('#' + hash)
+    if (typeof window !== 'undefined' && window.location.hash) {
+      setHash(window.location.hash)
     }
-  }, [router])
+  }, [])
 
   useEffect(() => {
     // catch anchor links clicks
@@ -73,14 +64,14 @@ export function Layout({
       e.preventDefault()
       const node = e.currentTarget
       const hash = node.href.split('#').pop()
-      setHash('#' + hash)
+      setHash(`#${hash}`)
       setTimeout(() => {
         window.location.hash = hash
       }, 0)
     }
 
     const internalLinks = [...document.querySelectorAll('[href]')].filter(
-      (node) => node.href.includes(router.pathname + '#')
+      (node) => node.href.includes(`${pathname}#`)
     )
 
     internalLinks.forEach((node) => {
@@ -92,23 +83,22 @@ export function Layout({
         node.removeEventListener('click', onClick, false)
       })
     }
-  }, [])
+  }, [pathname])
 
   useFrame((time) => {
     lenis?.raf(time)
   }, 0)
 
   return (
-    <>
-      <CustomHead {...seo} />
-      <div className={cn(`theme-${theme}`, s.layout, className)}>
-        <PageTransition />
-        <Intro />
-        <Cursor />
-        <Scrollbar />
-        <main className={s.main}>{children}</main>
-        <Footer />
-      </div>
-    </>
+    <div
+      className={cn(`theme-${theme}`, s.layout, className)}
+      data-theme={theme}
+    >
+      <Intro />
+      <Cursor />
+      <Scrollbar />
+      <main className={s.main}>{children}</main>
+      <Footer theme={theme} />
+    </div>
   )
 }

@@ -44,3 +44,6 @@ yarn-error.log*
 
 *storybook.log
 certificates
+
+# migration
+MIGRATION_PLAN.md

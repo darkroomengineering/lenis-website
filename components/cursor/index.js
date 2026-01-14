@@ -1,7 +1,7 @@
 import cn from 'clsx'
 import gsap from 'gsap'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import s from './cursor.module.scss'
+import s from './cursor.module.css'
 
 const Cursor = () => {
   const cursor = useRef()
@@ -28,7 +28,7 @@ const Cursor = () => {
     return () => {
       window.removeEventListener('mousemove', onMouseMove, false)
     }
-  }, [hasMoved])
+  }, [onMouseMove])
 
   useEffect(() => {
     document.documentElement.classList.add('has-custom-cursor')

@@ -1,7 +1,7 @@
-import { useStore } from 'lib/store'
 import { useEffect } from 'react'
+import { useStore } from '@/lib/store'
 
-export function useScroll(callback, deps = []) {
+export function useScroll(callback, _deps = []) {
   const lenis = useStore(({ lenis }) => lenis)
 
   useEffect(() => {
@@ -12,5 +12,5 @@ export function useScroll(callback, deps = []) {
     return () => {
       lenis.off('scroll', callback)
     }
-  }, [lenis, callback, [...deps]])
+  }, [lenis, callback])
 }

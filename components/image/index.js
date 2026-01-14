@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import NextImage from 'next/image'
-import s from './image.module.scss'
+import s from './image.module.css'
 
 export function Image({ className, ...props }) {
   return (

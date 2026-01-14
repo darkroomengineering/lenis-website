@@ -1,0 +1,121 @@
+.footer {
+  background-color: transparent;
+  color: var(--theme-secondary);
+  padding: calc(((20 * 100) / 375) * 1vw) 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  @media (--desktop) {
+    height: 100vh;
+    padding: calc(((40 * 100) / 1440) * 1vw) 0;
+  }
+
+  .top {
+    position: relative;
+    height: 100%;
+    padding-bottom: calc(((20 * 100) / 375) * 1vw);
+    align-items: center;
+
+    @media (--mobile) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (--desktop) {
+      padding-bottom: calc(((40 * 100) / 1440) * 1vw);
+    }
+
+    .first-line {
+      margin: auto 0;
+
+      @media (--desktop) {
+        margin: 0;
+        align-self: start;
+        grid-column: 1 / -1;
+      }
+    }
+
+    .shameless-plug {
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+
+      @media (--desktop) {
+        text-align: end;
+        grid-column: 9 / span 4;
+      }
+
+      p:first-child {
+        margin-bottom: calc(((8 * 100) / 375) * 1vw);
+
+        @media (--desktop) {
+          margin-bottom: calc(((8 * 100) / 1440) * 1vw);
+        }
+      }
+    }
+
+    .cta {
+      @media (--mobile) {
+        margin-top: auto;
+      }
+
+      @media (--desktop) {
+        position: absolute;
+        left: 0;
+        bottom: calc(((40 * 100) / 1440) * 1vw);
+      }
+    }
+
+    .last-line {
+      text-align: end;
+      align-self: end;
+      grid-column: 1 / -1;
+    }
+  }
+
+  .bottom {
+    width: var(--layout-width);
+    margin: 0 auto;
+
+    @media (--mobile) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (--desktop) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .links {
+      @media (--desktop) {
+        .link:not(:first-child) {
+          margin: 0;
+          margin-left: calc(((32 * 100) / 1440) * 1vw);
+        }
+      }
+
+      @media (--mobile) {
+        .link:not(:last-child) {
+          display: block;
+          margin-bottom: calc(((16 * 100) / 375) * 1vw);
+        }
+      }
+    }
+
+    .tm {
+      @media (--mobile) {
+        text-align: end;
+        align-self: end;
+      }
+
+      span {
+        vertical-align: text-top;
+      }
+    }
+  }
+}

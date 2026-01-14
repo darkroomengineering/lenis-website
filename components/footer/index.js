@@ -1,23 +1,23 @@
 import cn from 'clsx'
-import { Button } from 'components/button'
-import { Link } from 'components/link'
 import dynamic from 'next/dynamic'
-import s from './footer.module.scss'
+import { Button } from '@/components/button'
+import { Link } from '@/components/link'
+import s from './footer.module.css'
 
-const GitHub = dynamic(() => import('icons/github.svg'), { ssr: false })
+const GitHub = dynamic(() => import('@/icons/github.svg'), { ssr: false })
 
 export function Footer({ theme = 'light' }) {
   return (
-    <footer className={cn(`theme-${theme}`, s.footer)}>
-      <div className={cn(s.top, 'layout-grid hide-on-mobile')}>
+    <footer className={s.footer} data-theme={theme}>
+      <div className={cn(s.top, 'dr-layout-grid desktop-only')}>
         <p className={cn(s['first-line'], 'h1 vh')}>
           Lenis is <br />
           <span className="contrast">Open source</span>
         </p>
 
         <p className={cn(s['last-line'], 'h1 vh')}>
-          open to <span className="hide-on-desktop">&nbsp;</span> features{' '}
-          <br /> and sponsors
+          open to <span className="mobile-only">&nbsp;</span> features <br />{' '}
+          and sponsors
         </p>
         <Button
           className={s.cta}
@@ -28,7 +28,7 @@ export function Footer({ theme = 'light' }) {
           Let's build together
         </Button>
       </div>
-      <div className={cn(s.top, 'layout-block hide-on-desktop')}>
+      <div className={cn(s.top, 'dr-layout-block mobile-only')}>
         <p className={cn(s['first-line'], 'h1')}>
           Lenis is <br />
           <span className="contrast">Open source</span>
@@ -36,6 +36,13 @@ export function Footer({ theme = 'light' }) {
         <p className={cn(s['last-line'], 'h1')}>
           open to features <br /> and sponsors
         </p>
+        <Button
+          className={s.cta}
+          icon={<GitHub />}
+          href="https://github.com/sponsors/darkroomengineering"
+        >
+          Let's build together
+        </Button>
       </div>
       <div className={s.bottom}>
         <div className={s.links}>
@@ -67,13 +74,6 @@ export function Footer({ theme = 'light' }) {
         <p className={cn('p-xs', s.tm)}>
           <span>©</span> {new Date().getFullYear()} darkroom.engineering
         </p>
-        <Button
-          className={cn(s.cta, 'hide-on-desktop')}
-          icon={<GitHub />}
-          href="https://github.com/sponsors/darkroomengineering"
-        >
-          Let's build together
-        </Button>
       </div>
     </footer>
   )

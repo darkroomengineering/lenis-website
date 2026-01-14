@@ -1,0 +1,35 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 10000;
+  pointer-events: none;
+  overflow: hidden;
+
+  @media (hover: none) {
+    display: none;
+  }
+
+  .cursor {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    border: calc(((2 * 100) / var(--device-width)) * 1vw) solid
+      var(--color-pink);
+    width: 40px;
+    height: 40px;
+    opacity: 0.4;
+    transition: transform 600ms var(--ease-out-expo);
+
+    @media (--desktop) {
+      border: calc(((2 * 100) / var(--device-width)) * 1vw) solid
+        var(--color-pink);
+    }
+
+    &.pointer {
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+  }
+}

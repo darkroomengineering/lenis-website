@@ -16,7 +16,7 @@ export function Sticky({
   const targetRef = useRef()
 
   useEffect(() => {
-    if (!enabled || !pinSpacer.current || !trigger.current) return
+    if (!(enabled && pinSpacer.current && trigger.current)) return
     gsap.set(trigger.current, { clearProps: 'all' })
 
     const timeline = gsap.timeline({
@@ -28,12 +28,12 @@ export function Sticky({
         trigger: trigger.current,
         scrub: true,
         pin: true,
-        start: `top top+=${parseFloat(start)}px`,
+        start: `top top+=${Number.parseFloat(start)}px`,
         end: () => {
           const targetRefRect = targetRef.current.getBoundingClientRect()
           const triggerRect = trigger.current.getBoundingClientRect()
           return `+=${
-            targetRefRect.bottom - triggerRect.bottom + parseFloat(end)
+            targetRefRect.bottom - triggerRect.bottom + Number.parseFloat(end)
           }`
         },
         invalidateOnRefresh: true,

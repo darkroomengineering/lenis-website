@@ -1,0 +1,12 @@
+.layout {
+  background-color: transparent;
+  color: var(--theme-secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout .main {
+  /* if content is empty, footer will remain sticky to bottom */
+  flex-grow: 1;
+}

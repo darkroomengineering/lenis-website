@@ -1,15 +1,17 @@
 import cn from 'clsx'
-import { Link } from 'components/link'
-import { useStore } from 'lib/store'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { shallow } from 'zustand/shallow'
-import s from './navigation.module.scss'
+import { useShallow } from 'zustand/react/shallow'
+import { Link } from '@/components/link'
+import { useStore } from '@/lib/store'
+import s from './navigation.module.css'
 
 export const Navigation = () => {
-  const [navIsOpen, setNavIsOpen] = useStore(
-    (state) => [state.navIsOpen, state.setNavIsOpen],
-    shallow
+  const { navIsOpen, setNavIsOpen } = useStore(
+    useShallow((state) => ({
+      navIsOpen: state.navIsOpen,
+      setNavIsOpen: state.setNavIsOpen,
+    }))
   )
 
   const router = useRouter()
@@ -24,7 +26,7 @@ export const Navigation = () => {
     return () => {
       router.events.off('routeChangeStart', onRouteChange)
     }
-  }, [])
+  }, [router.events.off, router.events.on, setNavIsOpen])
 
   return (
     <div className={cn(s.navigation, !navIsOpen && s.closed)}>

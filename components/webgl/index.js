@@ -1,11 +1,8 @@
 import { Float, useGLTF } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useFrame as useRaf } from '@darkroom.engineering/hamo'
-import { useScroll } from 'hooks/use-scroll'
 import { button, useControls } from 'leva'
-import { mapRange } from 'lib/maths'
-import { useStore } from 'lib/store'
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
+import { useTempus as useRaf } from 'tempus/react'
 import {
   Color,
   DoubleSide,
@@ -15,6 +12,9 @@ import {
   Vector2,
   Vector3,
 } from 'three'
+import { useScroll } from '@/hooks/use-scroll'
+import { mapRange } from '@/lib/maths'
+import { useStore } from '@/lib/store'
 import fragmentShader from './particles/fragment.glsl'
 import vertexShader from './particles/vertex.glsl'
 
@@ -33,7 +33,7 @@ function Particles({
   height = 250,
   depth = 250,
   count = 1000,
-  scale = 100,
+  scale: _scale = 100,
   size = 100,
 }) {
   const positions = useMemo(() => {
@@ -46,7 +46,7 @@ function Particles({
     }
 
     return Float32Array.from(array)
-  }, [count, scale, width, height, depth])
+  }, [count, width, height, depth])
 
   const noise = useMemo(
     () =>
@@ -100,12 +100,12 @@ function Particles({
         value: new Vector2(width, height),
       },
     }),
-    []
+    [height, width]
   )
 
   useEffect(() => {
     uniforms.uResolution.value.set(width, height)
-  }, [width, height])
+  }, [width, height, uniforms.uResolution.value.set])
 
   useFrame(({ clock }) => {
     uniforms.uTime.value = clock.elapsedTime
@@ -348,7 +348,7 @@ export function Arm() {
     material.roughness = roughness
     material.metalness = metalness
     material.wireframe = wireframe
-  }, [color, roughness, metalness, wireframe, material])
+  }, [color, roughness, metalness, wireframe])
 
   useEffect(() => {
     if (arm1) {
@@ -356,7 +356,7 @@ export function Arm() {
         if (node.material) node.material = material
       })
     }
-  }, [arm1, material])
+  }, [arm1])
 
   useEffect(() => {
     if (arm2) {
@@ -364,7 +364,7 @@ export function Arm() {
         if (node.material) node.material = material
       })
     }
-  }, [arm2, material])
+  }, [arm2])
 
   const parent = useRef()
 
@@ -403,7 +403,7 @@ export function Arm() {
         metalness: 0.6,
       })
     }
-  }, [step])
+  }, [step, setLights, setMaterial])
 
   useScroll(
     ({ scroll }) => {
@@ -436,10 +436,10 @@ export function Arm() {
     const from = steps[current]
     const to = steps[current + 1]
 
-    // return
-
+    // Keep arm visible unless explicitly hidden
+    // When to is undefined (end of scroll) or types match, show the arm
     if (parent.current) {
-      parent.current.visible = from?.type === to?.type
+      parent.current.visible = !to || from?.type === to?.type
     }
 
     if (!to) return
@@ -517,11 +517,27 @@ export function Arm() {
   )
 }
 
+function SceneBackground() {
+  const { scene } = useThree()
+  const _thresholds = useStore(({ thresholds }) => thresholds)
+
+  useScroll(
+    ({ scroll }) => {
+      const isLight = scroll >= _thresholds['light-start']
+      scene.background = isLight ? new Color('#efefef') : new Color('#000000')
+    },
+    [_thresholds]
+  )
+
+  return null
+}
+
 function Content({ arm = true }) {
   const { viewport } = useThree()
 
   return (
     <>
+      <SceneBackground />
       {/* <OrbitControls makeDefault /> */}
       <Particles
         width={viewport.width}
