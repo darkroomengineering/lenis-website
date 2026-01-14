@@ -1,7 +1,6 @@
 import { createHash } from 'node:crypto'
-import { getMediaMapping, setMediaMapping } from './kv-client'
 import { imageProvider, videoProvider } from './providers'
-import type { MediaMapping, NotionFile, ResolvedMedia } from './types'
+import type { NotionFile, ResolvedMedia } from './types'
 
 function generateFileHash(file: NotionFile): string {
   return createHash('md5').update(file.name).digest('hex').slice(0, 12)
@@ -21,52 +20,17 @@ export async function resolveMedia(
 
   const fileHash = generateFileHash(file)
   const mediaType = getMediaType(file.name)
+  const filename = `${pageId}-${fileHash}-${file.name}`
 
-  // Check cache first
-  const cached = await getMediaMapping(pageId, fileHash)
-  if (cached) {
-    return {
-      url: cached.url,
-      type: cached.type,
-      poster: cached.poster,
-      playbackId: cached.playbackId,
-    }
-  }
-
-  // Upload to appropriate provider
   try {
-    const provider = mediaType === 'image' ? imageProvider : videoProvider
-    const filename = `${pageId}-${fileHash}-${file.name}`
-
     if (mediaType === 'image') {
-      const result = await provider.uploadImage(file.file.url, filename)
-
-      const mapping: MediaMapping = {
-        notionPageId: pageId,
-        fileHash,
-        url: result.url,
-        type: 'image',
-        provider: 'cloudinary',
-        createdAt: new Date().toISOString(),
-      }
-      await setMediaMapping(mapping)
-
+      // Cloudinary handles caching internally - checks if exists before uploading
+      const result = await imageProvider.uploadImage(file.file.url, filename)
       return { url: result.url, type: 'image' }
     }
-    const result = await provider.uploadVideo(file.file.url, filename)
 
-    const mapping: MediaMapping = {
-      notionPageId: pageId,
-      fileHash,
-      url: result.url,
-      type: 'video',
-      provider: videoProvider.name as 'cloudinary' | 'mux',
-      poster: result.poster,
-      playbackId: result.playbackId,
-      createdAt: new Date().toISOString(),
-    }
-    await setMediaMapping(mapping)
-
+    // Video - use configured video provider (Mux or Cloudinary)
+    const result = await videoProvider.uploadVideo(file.file.url, filename)
     return {
       url: result.url,
       type: 'video',

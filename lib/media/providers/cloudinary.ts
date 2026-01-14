@@ -21,6 +21,39 @@ function getCloudinaryConfig() {
   cloudinary.config({ cloud_name, api_key, api_secret })
 }
 
+const FOLDER = 'lenis-showcase'
+
+// Check if a resource already exists in Cloudinary
+export async function getExistingResource(
+  publicId: string,
+  resourceType: 'image' | 'video'
+): Promise<{ url: string; poster?: string } | null> {
+  getCloudinaryConfig()
+  try {
+    const result = await cloudinary.api.resource(`${FOLDER}/${publicId}`, {
+      resource_type: resourceType,
+    })
+
+    if (resourceType === 'video') {
+      const posterUrl = cloudinary.url(result.public_id, {
+        resource_type: 'video',
+        format: 'jpg',
+        transformation: [
+          { width: 800, crop: 'limit' },
+          { quality: 'auto' },
+          { start_offset: '0' },
+        ],
+      })
+      return { url: result.secure_url, poster: posterUrl }
+    }
+
+    return { url: result.secure_url }
+  } catch {
+    // Resource doesn't exist
+    return null
+  }
+}
+
 export const cloudinaryProvider: MediaProvider = {
   name: 'cloudinary',
 
@@ -29,9 +62,21 @@ export const cloudinaryProvider: MediaProvider = {
     filename: string
   ): Promise<UploadResult> {
     getCloudinaryConfig()
+    const publicId = filename.replace(/\.[^.]+$/, '') // Remove extension
+
+    // Check if already exists
+    const existing = await getExistingResource(publicId, 'image')
+    if (existing) {
+      return {
+        url: existing.url,
+        publicId: `${FOLDER}/${publicId}`,
+      }
+    }
+
+    // Upload new
     const result = await cloudinary.uploader.upload(sourceUrl, {
-      folder: 'lenis-showcase',
-      public_id: filename.replace(/\.[^.]+$/, ''), // Remove extension
+      folder: FOLDER,
+      public_id: publicId,
       resource_type: 'image',
       overwrite: false,
       unique_filename: false,
@@ -47,9 +92,22 @@ export const cloudinaryProvider: MediaProvider = {
     filename: string
   ): Promise<VideoUploadResult> {
     getCloudinaryConfig()
+    const publicId = filename.replace(/\.[^.]+$/, '')
+
+    // Check if already exists
+    const existing = await getExistingResource(publicId, 'video')
+    if (existing) {
+      return {
+        url: existing.url,
+        poster: existing.poster,
+        publicId: `${FOLDER}/${publicId}`,
+      }
+    }
+
+    // Upload new
     const result = await cloudinary.uploader.upload(sourceUrl, {
-      folder: 'lenis-showcase',
-      public_id: filename.replace(/\.[^.]+$/, ''),
+      folder: FOLDER,
+      public_id: publicId,
       resource_type: 'video',
       overwrite: false,
       unique_filename: false,
@@ -74,19 +132,15 @@ export const cloudinaryProvider: MediaProvider = {
   },
 
   getOptimizedUrl(baseUrl: string, options: TransformOptions = {}): string {
-    // Extract public ID from Cloudinary URL and rebuild with transforms
     const { width, height, quality = 'auto', format = 'auto' } = options
 
-    // If it's already a Cloudinary URL, we can transform it
     if (baseUrl.includes('cloudinary.com')) {
-      // Simple approach: append transformations
       const transforms = []
       if (width) transforms.push(`w_${width}`)
       if (height) transforms.push(`h_${height}`)
       transforms.push(`q_${quality}`)
       transforms.push(`f_${format}`)
 
-      // Insert transforms before /upload/
       return baseUrl.replace('/upload/', `/upload/${transforms.join(',')}/`)
     }
     return baseUrl

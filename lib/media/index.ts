@@ -1,4 +1,3 @@
-export { getAllMappings, getMediaMapping, setMediaMapping } from './kv-client'
 export { resolveMedia } from './media-resolver'
 export {
   cloudinaryProvider,
@@ -6,4 +5,5 @@ export {
   muxProvider,
   videoProvider,
 } from './providers'
+export { getExistingResource } from './providers/cloudinary'
 export type * from './types'
