@@ -62,6 +62,12 @@ interface ShowcaseClientProps {
           multi_select: Array<{ name: string }>
         }
       }
+      resolvedMedia?: {
+        url: string
+        type: 'image' | 'video'
+        poster?: string
+        playbackId?: string
+      } | null
     }>
   }
 }
@@ -88,10 +94,15 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
           ? result.properties.url.url
           : `https://${result.properties.url.url ?? ''}`) +
         '?utm_source=lenis.dev/showcase',
-      thumbnail: result.properties.thumbnail.files?.[0]?.file?.url,
-      thumbnailType: getThumbnailType(
-        result.properties.thumbnail.files?.[0]?.name ?? ''
-      ),
+      // Use resolved media URL, fallback to original Notion URL
+      thumbnail:
+        result.resolvedMedia?.url ??
+        result.properties.thumbnail.files?.[0]?.file?.url,
+      thumbnailType:
+        result.resolvedMedia?.type ??
+        getThumbnailType(result.properties.thumbnail.files?.[0]?.name ?? ''),
+      poster: result.resolvedMedia?.poster,
+      playbackId: result.resolvedMedia?.playbackId,
       credits: RichText({
         richText: result.properties.credits.rich_text as unknown[],
       }),

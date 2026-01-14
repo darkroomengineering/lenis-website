@@ -128,6 +128,16 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: '**.amazonaws.com',
       },
+      // Cloudinary CDN for optimized images/videos
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+      // Mux video thumbnails
+      {
+        protocol: 'https',
+        hostname: 'image.mux.com',
+      },
     ],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
     qualities: [90],

@@ -11,6 +11,7 @@ export default function ShowcaseCard({
   credits,
   thumbnail,
   thumbnailType,
+  poster,
   href,
   priority,
 }) {
@@ -35,7 +36,14 @@ export default function ShowcaseCard({
               priority={priority}
             />
           ) : (
-            <video src={thumbnail} autoPlay muted loop className={s.video} />
+            <video
+              src={thumbnail}
+              poster={poster}
+              autoPlay
+              muted
+              loop
+              className={s.video}
+            />
           )}
         </div>
         <div className={s.arrow}>

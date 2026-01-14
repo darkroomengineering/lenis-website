@@ -1,6 +1,7 @@
 import { Client } from '@notionhq/client'
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
+import { type ResolvedMedia, resolveMedia } from '@/lib/media'
 import ShowcaseClient from './client'
 import s from './showcase.module.css'
 
@@ -32,7 +33,29 @@ async function getShowcaseData() {
         },
       },
     })
-    return database
+
+    // Resolve media URLs in parallel
+    const resultsWithMedia = await Promise.all(
+      database.results.map(async (result: any) => {
+        const file = result.properties?.thumbnail?.files?.[0]
+        let resolvedMedia: ResolvedMedia | null = null
+
+        if (file?.file?.url) {
+          try {
+            resolvedMedia = await resolveMedia(result.id, file)
+          } catch (error) {
+            console.error(`Failed to resolve media for ${result.id}:`, error)
+          }
+        }
+
+        return {
+          ...result,
+          resolvedMedia,
+        }
+      })
+    )
+
+    return { results: resultsWithMedia }
   } catch (error) {
     console.error('Failed to fetch showcase data:', error)
     return { results: [] }
