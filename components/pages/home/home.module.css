@@ -91,7 +91,7 @@
     margin-top: calc(((30 * 100) / 1440) * 1vw);
     position: absolute;
     top: 0;
-    left: 2.5%;
+    left: var(--layout-margin);
   }
 }
 
@@ -156,7 +156,6 @@
 }
 
 .hero .bottom {
-  width: 100%;
   overflow: hidden;
 }
 
