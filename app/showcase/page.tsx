@@ -1,6 +1,8 @@
 import { Client } from '@notionhq/client'
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import ShowcaseClient from './client'
+import s from './showcase.module.css'
 
 export const metadata: Metadata = {
   title: 'Lenis – Get smooth or die trying',
@@ -37,9 +39,32 @@ async function getShowcaseData() {
   }
 }
 
+function ShowcaseSkeleton() {
+  return (
+    <div className={s.page} data-theme="dark">
+      <div className={s.skeleton}>
+        <div className={s.skeletonTitle} />
+        <div className={s.skeletonGrid}>
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={`skeleton-${i}`} className={s.skeletonCard} />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default async function ShowcasePage() {
   const database = await getShowcaseData()
-  // Type assertion needed due to Notion SDK's complex union types
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return <ShowcaseClient database={database as any} />
+  return (
+    <Suspense fallback={<ShowcaseSkeleton />}>
+      <ShowcaseClient
+        database={
+          database as unknown as Parameters<
+            typeof ShowcaseClient
+          >[0]['database']
+        }
+      />
+    </Suspense>
+  )
 }

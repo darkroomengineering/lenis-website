@@ -1,3 +1,5 @@
+'use client'
+
 import cn from 'clsx'
 import dynamic from 'next/dynamic'
 import { Link } from '@/components/link'

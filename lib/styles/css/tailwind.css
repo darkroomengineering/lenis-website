@@ -12,8 +12,11 @@
 	--color-primary: rgb(239, 239, 239);
 	--color-secondary: rgb(0, 0, 0);
 	--color-contrast: rgb(255, 152, 162);
+	--color-primary-transparent: rgba(239, 239, 239, 0);
   --color-black: rgb(0, 0, 0);
+	--color-black-transparent: rgba(0, 0, 0, 0);
 	--color-white: rgb(239, 239, 239);
+	--color-white-transparent: rgba(239, 239, 239, 0);
 	--color-grey: rgb(176, 176, 176);
 	--color-pink: rgb(255, 152, 162);
 	--color-pink-transparent: rgba(255, 152, 162, 0);
@@ -58,10 +61,12 @@
   --color-primary: rgb(239, 239, 239);
 	--color-secondary: rgb(0, 0, 0);
 	--color-contrast: rgb(255, 152, 162);
+	--color-primary-transparent: rgba(239, 239, 239, 0);
   /* Legacy aliases */
   --theme-primary: rgb(239, 239, 239);
 	--theme-secondary: rgb(0, 0, 0);
 	--theme-contrast: rgb(255, 152, 162);
+	--theme-primary-transparent: rgba(239, 239, 239, 0);
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
@@ -69,10 +74,12 @@
   --color-primary: rgb(0, 0, 0);
 	--color-secondary: rgb(239, 239, 239);
 	--color-contrast: rgb(255, 152, 162);
+	--color-primary-transparent: rgba(0, 0, 0, 0);
   /* Legacy aliases */
   --theme-primary: rgb(0, 0, 0);
 	--theme-secondary: rgb(239, 239, 239);
 	--theme-contrast: rgb(255, 152, 162);
+	--theme-primary-transparent: rgba(0, 0, 0, 0);
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
@@ -80,10 +87,12 @@
   --color-primary: rgb(255, 152, 162);
 	--color-secondary: rgb(0, 0, 0);
 	--color-contrast: rgb(239, 239, 239);
+	--color-primary-transparent: rgba(255, 152, 162, 0);
   /* Legacy aliases */
   --theme-primary: rgb(255, 152, 162);
 	--theme-secondary: rgb(0, 0, 0);
 	--theme-contrast: rgb(239, 239, 239);
+	--theme-primary-transparent: rgba(255, 152, 162, 0);
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }

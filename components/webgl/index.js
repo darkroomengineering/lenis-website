@@ -436,10 +436,10 @@ export function Arm() {
     const from = steps[current]
     const to = steps[current + 1]
 
-    // return
-
+    // Keep arm visible unless explicitly hidden
+    // When to is undefined (end of scroll) or types match, show the arm
     if (parent.current) {
-      parent.current.visible = from?.type === to?.type
+      parent.current.visible = !to || from?.type === to?.type
     }
 
     if (!to) return
@@ -517,11 +517,27 @@ export function Arm() {
   )
 }
 
+function SceneBackground() {
+  const { scene } = useThree()
+  const _thresholds = useStore(({ thresholds }) => thresholds)
+
+  useScroll(
+    ({ scroll }) => {
+      const isLight = scroll >= _thresholds['light-start']
+      scene.background = isLight ? new Color('#efefef') : new Color('#000000')
+    },
+    [_thresholds]
+  )
+
+  return null
+}
+
 function Content({ arm = true }) {
   const { viewport } = useThree()
 
   return (
     <>
+      <SceneBackground />
       {/* <OrbitControls makeDefault /> */}
       <Particles
         width={viewport.width}

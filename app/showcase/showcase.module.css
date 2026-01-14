@@ -176,3 +176,64 @@
     );
   }
 }
+
+/* Skeleton loading state */
+.skeleton {
+  min-height: 100svh;
+  padding: var(--layout-margin);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(((64 * 100) / 1440) * 1vw);
+  padding-top: 30vh;
+}
+
+.skeletonTitle {
+  width: 40%;
+  height: calc(((48 * 100) / 1440) * 1vw);
+  background: linear-gradient(
+    90deg,
+    var(--theme-secondary-10) 25%,
+    var(--theme-secondary-20) 50%,
+    var(--theme-secondary-10) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--layout-columns-gap);
+  width: 100%;
+  max-width: calc(100% - 2 * var(--layout-margin));
+}
+
+@media (width <= 799.98px) {
+  .skeletonGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skeletonCard {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(
+    90deg,
+    var(--theme-secondary-10) 25%,
+    var(--theme-secondary-20) 50%,
+    var(--theme-secondary-10) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

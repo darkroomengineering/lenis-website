@@ -57,7 +57,9 @@
 	--ease-gleasing: cubic-bezier(0.4, 0, 0, 1);
 
 	--color-black: rgb(0, 0, 0);
+	--color-black-transparent: rgba(0, 0, 0, 0);
 	--color-white: rgb(239, 239, 239);
+	--color-white-transparent: rgba(239, 239, 239, 0);
 	--color-grey: rgb(176, 176, 176);
 	--color-pink: rgb(255, 152, 162);
 	--color-pink-transparent: rgba(255, 152, 162, 0);

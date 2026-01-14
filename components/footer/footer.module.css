@@ -1,4 +1,5 @@
 .footer {
+  background-color: transparent;
   color: var(--theme-secondary);
   padding: calc(((20 * 100) / 375) * 1vw) 0;
   height: 100vh;
@@ -15,7 +16,6 @@
   .top {
     position: relative;
     height: 100%;
-    width: 100%;
     padding-bottom: calc(((20 * 100) / 375) * 1vw);
     align-items: center;
 

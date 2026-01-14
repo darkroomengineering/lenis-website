@@ -90,12 +90,15 @@ export function Layout({ children, theme = 'light', className }) {
   }, 0)
 
   return (
-    <div className={cn(`theme-${theme}`, s.layout, className)}>
+    <div
+      className={cn(`theme-${theme}`, s.layout, className)}
+      data-theme={theme}
+    >
       <Intro />
       <Cursor />
       <Scrollbar />
       <main className={s.main}>{children}</main>
-      <Footer />
+      <Footer theme={theme} />
     </div>
   )
 }

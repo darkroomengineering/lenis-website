@@ -2,6 +2,11 @@
   position: relative;
 }
 
+/* Override data-theme backgrounds to allow canvas to show through */
+.home main > *[data-theme] {
+  background-color: transparent;
+}
+
 .canvas {
   position: fixed;
   top: 0;
@@ -47,8 +52,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
-  height: calc(100 * var(--svh, 1vh));
   height: 100svh;
   margin-bottom: calc(((160 * 100) / 375) * 1vw);
   position: relative;
