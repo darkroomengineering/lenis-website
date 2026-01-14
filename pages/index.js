@@ -1,5 +1,7 @@
-import home, { getStaticProps as homeGetStaticProps } from './_home'
+import Home from './_home'
 
-export const getStaticProps = homeGetStaticProps
+export { getStaticProps } from './_home'
 
-export default home
+export default function IndexPage(props) {
+  return <Home {...props} />
+}
