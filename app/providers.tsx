@@ -1,5 +1,7 @@
 'use client'
 
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import dynamic from 'next/dynamic'
@@ -97,6 +99,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
       <RealViewport />
       {children}
+      <Analytics />
+      <SpeedInsights />
     </>
   )
 }
