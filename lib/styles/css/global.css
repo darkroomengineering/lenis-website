@@ -18,7 +18,6 @@ html.nav {
 
 body {
   min-height: 100vh;
-  /* biome-ignore lint/suspicious/noDuplicateProperties: Progressive enhancement - 100dvh fallback for browsers without support */
   min-height: 100dvh;
 }
 
