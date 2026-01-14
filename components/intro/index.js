@@ -5,7 +5,7 @@ import { useStore } from '@/lib/store'
 import s from './intro.module.css'
 
 export const Intro = () => {
-  const isMobile = useMediaQuery('(max-width: 800px)')
+  const isMobile = useMediaQuery('(max-width: 799.98px)')
   const [isLoaded, setIsLoaded] = useState(false)
   const [scroll, setScroll] = useState(false)
   const introOut = useStore(({ introOut }) => introOut)

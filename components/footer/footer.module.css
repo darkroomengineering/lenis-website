@@ -58,9 +58,15 @@
     }
 
     .cta {
-      position: absolute;
-      left: 0;
-      bottom: calc(((40 * 100) / 1440) * 1vw);
+      @media (--mobile) {
+        margin-top: auto;
+      }
+
+      @media (--desktop) {
+        position: absolute;
+        left: 0;
+        bottom: calc(((40 * 100) / 1440) * 1vw);
+      }
     }
 
     .last-line {
@@ -110,11 +116,6 @@
       span {
         vertical-align: text-top;
       }
-    }
-
-    .cta {
-      grid-column: 1 / -1;
-      margin-top: calc(((24 * 100) / 375) * 1vw);
     }
   }
 }

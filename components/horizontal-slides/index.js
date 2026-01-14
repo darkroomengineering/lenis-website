@@ -10,7 +10,7 @@ import s from './horizontal-slides.module.css'
 
 export const HorizontalSlides = ({ children }) => {
   const elementRef = useRef(null)
-  const isMobile = useMediaQuery('(max-width: 800px)')
+  const isMobile = useMediaQuery('(max-width: 799.98px)')
   const [wrapperRectRef, wrapperRect] = useRect()
   const [elementRectRef, elementRect] = useRect()
 

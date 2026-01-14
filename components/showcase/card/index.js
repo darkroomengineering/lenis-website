@@ -31,7 +31,7 @@ export default function ShowcaseCard({
               alt={title}
               fill
               style={{ objectFit: 'cover' }}
-              sizes={`(max-width: 800px) 100vw, ${priority ? '66vw' : '33vw'}`}
+              sizes={`(max-width: 799.98px) 100vw, ${priority ? '66vw' : '33vw'}`}
               priority={priority}
             />
           ) : (

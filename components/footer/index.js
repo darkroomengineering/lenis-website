@@ -36,6 +36,13 @@ export function Footer({ theme = 'light' }) {
         <p className={cn(s['last-line'], 'h1')}>
           open to features <br /> and sponsors
         </p>
+        <Button
+          className={s.cta}
+          icon={<GitHub />}
+          href="https://github.com/sponsors/darkroomengineering"
+        >
+          Let's build together
+        </Button>
       </div>
       <div className={s.bottom}>
         <div className={s.links}>
@@ -67,13 +74,6 @@ export function Footer({ theme = 'light' }) {
         <p className={cn('p-xs', s.tm)}>
           <span>©</span> {new Date().getFullYear()} darkroom.engineering
         </p>
-        <Button
-          className={cn(s.cta, 'hide-on-desktop')}
-          icon={<GitHub />}
-          href="https://github.com/sponsors/darkroomengineering"
-        >
-          Let's build together
-        </Button>
       </div>
     </footer>
   )

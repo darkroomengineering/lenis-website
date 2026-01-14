@@ -330,11 +330,17 @@
   }
 }
 
+.rethink .pre .highlight {
+  grid-column: 1 / -1;
+  margin-bottom: calc(((32 * 100) / 375) * 1vw);
+}
+
 @media (width >= 800px) {
   .rethink .pre .highlight {
     border-left: 4px solid var(--theme-contrast);
     grid-column: 3 / span 4;
     top: calc(((64 * 100) / 1440) * 1vw);
+    margin-bottom: 0;
     padding: calc(((24 * 100) / 1440) * 1vw) 0 calc(((24 * 100) / 1440) * 1vw)
       calc(((32 * 100) / 1440) * 1vw);
   }

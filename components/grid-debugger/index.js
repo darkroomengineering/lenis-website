@@ -5,7 +5,7 @@ import s from './grid-debugger.module.css'
 
 export const GridDebugger = () => {
   const [visible, setVisible] = useState(false)
-  const _isMobile = useMediaQuery('(max-width: 800px)')
+  const _isMobile = useMediaQuery('(max-width: 799.98px)')
 
   const columns = useMemo(() => {
     return Number.parseInt(

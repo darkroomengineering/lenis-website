@@ -23,7 +23,7 @@ export function AppearTitle({ children, visible = true }) {
   }, [intersection])
 
   const { width: _width } = useWindowSize()
-  const isMobile = useMediaQuery('(max-width: 800px)')
+  const isMobile = useMediaQuery('(max-width: 799.98px)')
 
   const [rectRef, _rect] = useRect()
 
