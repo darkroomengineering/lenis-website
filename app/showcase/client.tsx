@@ -157,7 +157,7 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
               icon={<Arrow className={cn('icon')} />}
               href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
             >
-              Submit your project
+              Submit your work
             </Button>
             <Button
               className={s.button}
@@ -195,7 +195,7 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
                 icon={<Arrow className={cn('icon')} />}
                 href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
               >
-                Submit your project
+                Submit your work
               </Button>
             </div>
           ) : (
