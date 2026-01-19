@@ -61,6 +61,11 @@ interface ShowcaseClientProps {
         features: {
           multi_select: Array<{ name: string }>
         }
+        publishedAt: {
+          date: {
+            start: string
+          }
+        }
       }
       resolvedMedia?: {
         url: string
@@ -81,12 +86,14 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
   const [filters, setFilters] = useState<string[]>([])
   const [search, setSearch] = useState('')
 
+  console.log(database.results)
+
   const list = database.results
-    .sort((a, b) => {
-      return (
-        new Date(b.created_time).getTime() - new Date(a.created_time).getTime()
-      )
-    })
+    // .sort((a, b) => {
+    //   return (
+    //     new Date(b.created_time).getTime() - new Date(a.created_time).getTime()
+    //   )
+    // })
     .map((result) => ({
       title: result.properties.title.rich_text[0]?.plain_text ?? '',
       href:
@@ -111,7 +118,16 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
         (tag) => tag.name
       ),
       features: result.properties.features.multi_select.map((tag) => tag.name),
+      publishedAt:
+        result.properties.publishedAt.date?.start ?? result.created_time,
     }))
+    .sort((a, b) => {
+      return (
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      )
+    })
+
+  console.log(list)
 
   const filtersList = Array.from(
     new Set(list.flatMap((item) => [...item.technologies, ...item.features]))
