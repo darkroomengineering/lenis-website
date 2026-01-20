@@ -1,3 +1,5 @@
+'use client'
+
 import cn from 'clsx'
 import { useState } from 'react'
 import { Image } from '@/components/image'

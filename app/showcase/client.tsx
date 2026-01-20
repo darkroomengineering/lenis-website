@@ -127,8 +127,6 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
       )
     })
 
-  console.log(list)
-
   const filtersList = Array.from(
     new Set(list.flatMap((item) => [...item.technologies, ...item.features]))
   )
@@ -156,56 +154,19 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
         <WebGL arm={false} />
       </div>
       <div className={s.page} data-theme="dark">
-        <Link className={s.logo} href="/">
-          <LenisSVG />
-        </Link>
+        <div className="relative">
+          <Link className={s.logo} href="/">
+            <LenisSVG />
+          </Link>
 
-        <section className={cn(s.hero, 'dr-layout-block')}>
-          <div className={s.tagline}>
-            <h1 className={cn('h2', s.title)}>Get smooth or die trying</h1>
-            <h2 className={cn('h4', s.subtitle)}>
-              A showcase of neat Lenis implementations
-            </h2>
-          </div>
-          <div className={s.buttons}>
-            <Button
-              className={s.button}
-              icon={<Arrow className={cn('icon')} />}
-              href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
-            >
-              Submit your work
-            </Button>
-            <Button
-              className={s.button}
-              icon={<CubeSVG className={cn('icon')} />}
-              onClick={() => {
-                filtersRef.current?.setFilters(['Template'])
-                filtersRef.current?.setSearch('')
-                lenis?.scrollTo('#filters')
-              }}
-            >
-              find a template
-            </Button>
-          </div>
-        </section>
-        <Filters
-          className={s.filters}
-          onChange={setFilters}
-          onSearch={setSearch}
-          list={filtersList}
-          id="filters"
-          ref={filtersRef}
-        />
-        <section
-          className={cn(
-            'dr-layout-grid',
-            s.grid,
-            (search || filters.length > 0) && s.isFiltered
-          )}
-        >
-          {filteredList.length === 0 ? (
-            <div className={s.noResults}>
-              <p className="p">No results found</p>
+          <section className={cn(s.hero, 'dr-layout-block')}>
+            <div className={s.tagline}>
+              <h1 className={cn('h2', s.title)}>Get smooth or die trying</h1>
+              <h2 className={cn('h4', s.subtitle)}>
+                A showcase of neat Lenis implementations
+              </h2>
+            </div>
+            <div className={s.buttons}>
               <Button
                 className={s.button}
                 icon={<Arrow className={cn('icon')} />}
@@ -213,19 +174,58 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
               >
                 Submit your work
               </Button>
+              <Button
+                className={s.button}
+                icon={<CubeSVG className={cn('icon')} />}
+                onClick={() => {
+                  filtersRef.current?.setFilters(['Template'])
+                  filtersRef.current?.setSearch('')
+                  lenis?.scrollTo('#filters')
+                }}
+              >
+                find a template
+              </Button>
             </div>
-          ) : (
-            filteredList.map((card, index) => (
-              <ShowcaseCard
-                key={card.title}
-                className={cn(s.card)}
-                {...card}
-                priority={index <= 2}
-              />
-            ))
-          )}
-        </section>
-        <Footer theme="dark" />
+          </section>
+          <Filters
+            className={s.filters}
+            onChange={setFilters}
+            onSearch={setSearch}
+            list={filtersList}
+            id="filters"
+            ref={filtersRef}
+          />
+          <section
+            className={cn(
+              'dr-layout-grid',
+              s.grid,
+              (search || filters.length > 0) && s.isFiltered
+            )}
+          >
+            {filteredList.length === 0 ? (
+              <div className={s.noResults}>
+                <p className="p">No results found</p>
+                <Button
+                  className={s.button}
+                  icon={<Arrow className={cn('icon')} />}
+                  href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
+                >
+                  Submit your work
+                </Button>
+              </div>
+            ) : (
+              filteredList.map((card, index) => (
+                <ShowcaseCard
+                  key={card.title}
+                  className={cn(s.card)}
+                  {...card}
+                  priority={index <= 2}
+                />
+              ))
+            )}
+          </section>
+          <Footer theme="dark" />
+        </div>
       </div>
     </>
   )
