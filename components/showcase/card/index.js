@@ -1,5 +1,6 @@
 'use client'
 
+import { track } from '@vercel/analytics'
 import cn from 'clsx'
 import { useState } from 'react'
 import { Image } from '@/components/image'
@@ -26,6 +27,9 @@ export default function ShowcaseCard({
         href={href}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
+        onClick={() => {
+          track('showcase_card_click', { href })
+        }}
       >
         <div className={s.imageInner}>
           {thumbnailType === 'image' ? (

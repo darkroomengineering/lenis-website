@@ -86,8 +86,6 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
   const [filters, setFilters] = useState<string[]>([])
   const [search, setSearch] = useState('')
 
-  console.log(database.results)
-
   const list = database.results
     // .sort((a, b) => {
     //   return (
