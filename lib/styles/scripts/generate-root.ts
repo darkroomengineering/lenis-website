@@ -63,6 +63,7 @@ export function generateRoot({
 	--layout-columns-count: var(--columns);
 	--layout-columns-gap: var(--gap);
 	--layout-margin: var(--safe);
+	--layout-column-width: calc((var(--layout-width) - ((var(--layout-columns-count) - 1) * var(--layout-columns-gap))) / var(--layout-columns-count));
 
 	${formatObject(easings, ([name, value]) => `--ease-${name}: ${value};`)}
 

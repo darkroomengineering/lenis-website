@@ -35,6 +35,7 @@
 	--layout-columns-count: var(--columns);
 	--layout-columns-gap: var(--gap);
 	--layout-margin: var(--safe);
+	--layout-column-width: calc((var(--layout-width) - ((var(--layout-columns-count) - 1) * var(--layout-columns-gap))) / var(--layout-columns-count));
 
 	--ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
 	--ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
