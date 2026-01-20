@@ -28,6 +28,7 @@ export function generateTailwind({
 	--spacing-0: 0;
 	--spacing-safe: var(--safe);
 	--spacing-gap: var(--gap);
+	--spacing-layout-column-width: var(--layout-column-width);
   ${formatObject(customSizes, ([key]) => `--spacing-${key}: var(--${key});`)}
 
   /* Fonts are set by Next.js font loader, no need to redefine in @theme */
