@@ -166,16 +166,21 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
                 A showcase of neat Lenis implementations
               </h2>
             </div>
-            <div className={s.buttons}>
+            <div
+              className={cn(
+                'dr-layout-grid w-full max-dt:flex max-dt:flex-col',
+                s.buttons
+              )}
+            >
               <Button
-                className={s.button}
+                className={cn(s.button, 'col-span-3 col-start-4')}
                 icon={<Arrow className={cn('icon')} />}
                 href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
               >
                 Submit your work
               </Button>
               <Button
-                className={s.button}
+                className={cn(s.button, 'col-span-3')}
                 icon={<CubeSVG className={cn('icon')} />}
                 onClick={() => {
                   filtersRef.current?.setFilters(['Template'])

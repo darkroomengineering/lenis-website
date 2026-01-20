@@ -1,5 +1,6 @@
 .filters {
   padding-top: var(--layout-columns-gap);
+  row-gap: var(--layout-columns-gap);
 
   .search {
     width: 100%;

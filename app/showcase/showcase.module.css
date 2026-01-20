@@ -55,7 +55,6 @@
 
 .page .hero {
   height: 65vh;
-  color: var(--theme-contrast);
   display: flex;
   flex-direction: column;
   gap: calc(((48 * 100) / 1440) * 1vw);
@@ -98,11 +97,6 @@
   }
 }
 
-.page .hero .buttons {
-  display: flex;
-  gap: var(--layout-columns-gap);
-}
-
 @media (width <= 799.98px) {
   .page .hero .buttons {
     flex-direction: column;
@@ -114,10 +108,6 @@
 @media (width >= 800px) {
   .page .hero .buttons > * {
     flex-shrink: 0;
-    width: calc(
-      (3 * var(--layout-column-width)) +
-      ((3 - 1) * var(--layout-columns-gap))
-    );
   }
 }
 
@@ -130,6 +120,7 @@
   margin-bottom: calc(((160 * 100) / 1440) * 1vw);
   align-items: flex-start;
   min-height: 100svh;
+  row-gap: var(--layout-columns-gap);
 }
 
 .page .grid .card {

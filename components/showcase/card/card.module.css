@@ -108,7 +108,7 @@
         color: #8c8c8c;
         white-space: nowrap;
         display: inline-block;
-        font-weight: 300;
+        font-weight: 400;
         font-size: calc(((16 * 100) / var(--device-width)) * 1vw);
         transition: color 600ms var(--ease-out-expo);
 
