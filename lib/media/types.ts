@@ -3,7 +3,7 @@ export interface MediaMapping {
   fileHash: string
   url: string // CDN URL (Cloudinary or Mux)
   type: 'image' | 'video'
-  provider: 'cloudinary' | 'mux'
+  provider: 'cloudinary' | 'mux' | 's3'
   poster?: string | undefined // For videos
   playbackId?: string | undefined // For Mux
   createdAt: string

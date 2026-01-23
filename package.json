@@ -23,6 +23,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.974.0",
+    "@aws-sdk/lib-storage": "^3.974.0",
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
     "@mux/mux-node": "^12.8.1",
     "@notion-render/client": "^0.0.2",
     "@notionhq/client": "^5.6.0",
