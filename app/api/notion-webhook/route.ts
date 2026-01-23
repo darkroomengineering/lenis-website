@@ -1,3 +1,4 @@
+import { timingSafeEqual } from 'node:crypto'
 import { Client } from '@notionhq/client'
 import { revalidatePath } from 'next/cache'
 import { NextResponse } from 'next/server'
@@ -7,7 +8,28 @@ import { resolveMedia } from '@/lib/media'
 export const runtime = 'nodejs'
 export const maxDuration = 30
 
+function verifyWebhookSecret(request: Request): boolean {
+  const secret = process.env.NOTION_WEBHOOK_SECRET
+  if (!secret) return false // Require secret to be configured
+
+  const authHeader = request.headers.get('authorization') || ''
+  const providedToken = authHeader.replace('Bearer ', '')
+
+  if (providedToken.length !== secret.length) return false
+
+  try {
+    return timingSafeEqual(Buffer.from(providedToken), Buffer.from(secret))
+  } catch {
+    return false
+  }
+}
+
 export async function POST(request: Request) {
+  // Verify webhook secret to prevent unauthorized access
+  if (!verifyWebhookSecret(request)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   try {
     const payload = await request.json()
 

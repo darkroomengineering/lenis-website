@@ -96,10 +96,33 @@ async function uploadBuffer(
   return getS3Url(key)
 }
 
+// Allowed hosts for fetching media (SSRF protection)
+const ALLOWED_FETCH_HOSTS = [
+  's3.us-west-2.amazonaws.com',
+  'prod-files-secure.s3.us-west-2.amazonaws.com', // Notion's S3
+  'res.cloudinary.com', // For migration
+  'image.mux.com', // Mux thumbnails
+]
+
+function isAllowedUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url)
+    return ALLOWED_FETCH_HOSTS.some(
+      (host) => parsed.hostname === host || parsed.hostname.endsWith(`.${host}`)
+    )
+  } catch {
+    return false
+  }
+}
+
 async function fetchAsBuffer(url: string): Promise<Buffer> {
+  if (!isAllowedUrl(url)) {
+    throw new Error(`Fetch blocked: untrusted host in URL`)
+  }
+
   const response = await fetch(url)
   if (!response.ok) {
-    throw new Error(`Failed to fetch ${url}: ${response.status}`)
+    throw new Error(`Failed to fetch: ${response.status}`)
   }
   const arrayBuffer = await response.arrayBuffer()
   return Buffer.from(arrayBuffer)
@@ -176,7 +199,7 @@ export const s3Provider: MediaProvider = {
     }
 
     // Download video
-    console.log(`[S3] Downloading video: ${sourceUrl}`)
+    console.log(`[S3] Downloading video: ${filename}`)
     const videoBuffer = await fetchAsBuffer(sourceUrl)
 
     // Upload video if not exists
