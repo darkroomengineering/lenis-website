@@ -103,6 +103,7 @@
     .credits {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
 
       * {
         color: #8c8c8c;
