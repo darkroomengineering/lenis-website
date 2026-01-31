@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: 'https://lenis.darkroom.engineering/og.png?v=1',
+        url: 'https://lenis.dev/og.png?v=1',
         width: 1200,
         height: 630,
         alt: 'Lenis – Get smooth or die trying',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: 'Lenis – Get smooth or die trying',
     description:
       'A smooth scroll library fresh out of the darkroom.engineering.',
-    images: ['https://lenis.darkroom.engineering/og.png?v=1'],
+    images: ['https://lenis.dev/og.png?v=1'],
   },
   icons: {
     icon: [
