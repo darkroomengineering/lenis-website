@@ -6,7 +6,7 @@ import ShowcaseClient from './client'
 import s from './showcase.module.css'
 
 export const metadata: Metadata = {
-  title: 'Lenis – Get smooth or die trying',
+  title: 'Lenis – Showcase',
   description: 'A showcase of neat Lenis implementations',
 }
 
