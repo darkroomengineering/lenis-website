@@ -46,7 +46,7 @@ export function Link({
 
   if (isProtocol || isExternal) {
     return (
-      <a {...attributes} href={href} target="_blank" rel="noopener noreferrer">
+      <a {...attributes} href={href} target="_blank" rel="noopener">
         {children}
       </a>
     )

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     'darkroom.engineering',
   ],
   authors: [{ name: 'darkroom.engineering' }],
-  referrer: 'no-referrer',
+  referrer: 'strict-origin-when-cross-origin',
   formatDetection: {
     telephone: false,
   },
