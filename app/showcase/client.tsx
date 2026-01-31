@@ -125,8 +125,19 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
       )
     })
 
-  const filtersList = Array.from(
-    new Set(list.flatMap((item) => [...item.technologies, ...item.features]))
+  const allFilters = list.flatMap((item) => [
+    ...item.technologies,
+    ...item.features,
+  ])
+  const filterCounts = allFilters.reduce<Record<string, number>>(
+    (acc, filter) => {
+      acc[filter] = (acc[filter] || 0) + 1
+      return acc
+    },
+    {}
+  )
+  const filtersList = Array.from(new Set(allFilters)).sort(
+    (a, b) => (filterCounts[b] ?? 0) - (filterCounts[a] ?? 0)
   )
 
   const filteredList = list.filter((item) => {
