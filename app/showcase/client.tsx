@@ -94,10 +94,13 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
     // })
     .map((result) => ({
       title: result.properties.title.rich_text[0]?.plain_text ?? '',
-      href: result.properties.url.url?.includes('?aff=')
-        ? result.properties.url.url
-        : `https://${result.properties.url.url ?? ''}` +
-          '?utm_source=lenis.dev/showcase',
+      href: (() => {
+        const url = result.properties.url.url ?? ''
+        if (url.includes('?aff=')) return url
+        const baseUrl = url.startsWith('http') ? url : `https://${url}`
+        const separator = baseUrl.includes('?') ? '&' : '?'
+        return `${baseUrl}${separator}utm_source=lenis.dev`
+      })(),
       // Use resolved media URL, fallback to original Notion URL
       thumbnail:
         result.resolvedMedia?.url ??
