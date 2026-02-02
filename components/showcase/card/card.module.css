@@ -113,7 +113,7 @@
         font-size: calc(((16 * 100) / var(--device-width)) * 1vw);
         transition: color 600ms var(--ease-out-expo);
 
-        &:not(:last-child)::after {
+        /* &:not(:last-child)::after {
           content: ",";
           margin-right: calc(((4 * 100) / var(--device-width)) * 1vw);
           display: inline-block;
@@ -121,7 +121,7 @@
           @media (--mobile) {
             margin-right: calc(((4 * 100) / var(--device-width)) * 1vw);
           }
-        }
+        } */
 
         @media (--mobile) {
           font-size: calc(((16 * 100) / var(--device-width)) * 1vw);
