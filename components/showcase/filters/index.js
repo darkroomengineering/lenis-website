@@ -1,5 +1,6 @@
 'use client'
 
+import { track } from '@vercel/analytics'
 // import { Button } from '@/components/button'
 // import Arrow from '@/icons/arrow-diagonal.svg'
 import cn from 'clsx'
@@ -76,13 +77,15 @@ export function Filters({ className, onChange, onSearch, list = [], id, ref }) {
             type="button"
             key={filter}
             className={cn(s.tag, filters.includes(filter) && s.active)}
-            onClick={() =>
+            onClick={() => {
+              track('showcase_filter_click', filter)
+
               setFilters((prev) => {
                 return prev.includes(filter)
                   ? prev.filter((f) => f !== filter)
                   : [...prev, filter]
               })
-            }
+            }}
           >
             {filter}
           </button>
