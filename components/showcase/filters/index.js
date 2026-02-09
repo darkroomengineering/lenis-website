@@ -78,7 +78,7 @@ export function Filters({ className, onChange, onSearch, list = [], id, ref }) {
             key={filter}
             className={cn(s.tag, filters.includes(filter) && s.active)}
             onClick={() => {
-              track('showcase_filter_click', filter)
+              track('showcase_filter_click', { filter })
 
               setFilters((prev) => {
                 return prev.includes(filter)
