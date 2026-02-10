@@ -36,6 +36,7 @@ function getThumbnailType(title: string) {
 }
 
 interface ShowcaseClientProps {
+  filters?: string[]
   database: {
     results: Array<{
       created_time: string
@@ -77,7 +78,10 @@ interface ShowcaseClientProps {
   }
 }
 
-export default function ShowcaseClient({ database }: ShowcaseClientProps) {
+export default function ShowcaseClient({
+  database,
+  filters: filterParams,
+}: ShowcaseClientProps) {
   const filtersRef = useRef<{
     setFilters: (f: string[]) => void
     setSearch: (s: string) => void
@@ -141,6 +145,12 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
   const filtersList = Array.from(new Set(allFilters)).sort(
     (a, b) => (filterCounts[b] ?? 0) - (filterCounts[a] ?? 0)
   )
+
+  const defaultFilters = filterParams?.length
+    ? filtersList.filter((f) =>
+        filterParams.some((p) => f.toLowerCase() === p.toLowerCase())
+      )
+    : undefined
 
   const filteredList = list.filter((item) => {
     return (
@@ -208,12 +218,14 @@ export default function ShowcaseClient({ database }: ShowcaseClientProps) {
             onChange={setFilters}
             onSearch={setSearch}
             list={filtersList}
+            defaultFilters={defaultFilters}
             id="filters"
             ref={filtersRef}
           />
           <section
             className={cn(
               'dr-layout-grid',
+              filteredList.length === 0 && 'min-h-screen',
               s.grid,
               (search || filters.length > 0) && s.isFiltered
             )}

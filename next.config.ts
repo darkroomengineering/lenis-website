@@ -200,6 +200,12 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
   ],
+  rewrites: async () => [
+    {
+      source: '/templates',
+      destination: '/showcase?filters=template',
+    },
+  ],
 }
 
 const bundleAnalyzerPlugin = bundleAnalyzer({

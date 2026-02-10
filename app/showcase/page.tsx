@@ -77,11 +77,18 @@ function ShowcaseSkeleton() {
   )
 }
 
-export default async function ShowcasePage() {
+export default async function ShowcasePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ filter?: string; filters?: string }>
+}) {
+  const { filters } = await searchParams
+  const filterParams = filters?.split(',').filter(Boolean) ?? []
   const database = await getShowcaseData()
   return (
     <Suspense fallback={<ShowcaseSkeleton />}>
       <ShowcaseClient
+        filters={filterParams}
         database={
           database as unknown as Parameters<
             typeof ShowcaseClient

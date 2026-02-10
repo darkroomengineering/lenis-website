@@ -16,11 +16,20 @@ import s from './filters.module.css'
  * @param {Function} [props.onChange]
  * @param {Function} [props.onSearch]
  * @param {string[]} [props.list]
+ * @param {string[]} [props.defaultFilters]
  * @param {string} [props.id]
  * @param {React.Ref} [props.ref]
  */
-export function Filters({ className, onChange, onSearch, list = [], id, ref }) {
-  const [filters, setFilters] = useState([])
+export function Filters({
+  className,
+  onChange,
+  onSearch,
+  list = [],
+  defaultFilters,
+  id,
+  ref,
+}) {
+  const [filters, setFilters] = useState(defaultFilters ?? [])
   const [search, setSearch] = useState('')
   const [debouncedSearch] = useDebounce(search, 500)
 
