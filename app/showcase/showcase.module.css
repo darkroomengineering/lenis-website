@@ -119,7 +119,7 @@
 .page .grid {
   margin-bottom: calc(((160 * 100) / 1440) * 1vw);
   align-items: flex-start;
-  /* min-height: 100svh; */
+  min-height: 100svh;
   row-gap: var(--layout-columns-gap);
 }
 

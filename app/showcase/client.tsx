@@ -225,10 +225,13 @@ export default function ShowcaseClient({
           <section
             className={cn(
               'dr-layout-grid',
-              filteredList.length === 0 && 'min-h-screen',
               s.grid,
               (search || filters.length > 0) && s.isFiltered
             )}
+            style={{
+              gridTemplateRows:
+                filteredList.length > 0 ? 'max-content' : 'auto',
+            }}
           >
             {filteredList.length === 0 ? (
               <div className={s.noResults}>
