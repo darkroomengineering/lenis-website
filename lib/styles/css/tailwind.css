@@ -25,6 +25,7 @@
 	--spacing-0: 0;
 	--spacing-safe: var(--safe);
 	--spacing-gap: var(--gap);
+	--spacing-layout-column-width: var(--layout-column-width);
   --spacing-header-height: var(--header-height);
 	--spacing-spacer-xl: var(--spacer-xl);
 	--spacing-spacer-lg: var(--spacer-lg);

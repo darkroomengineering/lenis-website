@@ -5,9 +5,28 @@ import { type ResolvedMedia, resolveMedia } from '@/lib/media'
 import ShowcaseClient from './client'
 import s from './showcase.module.css'
 
-export const metadata: Metadata = {
-  title: 'Lenis – Showcase',
-  description: 'A showcase of neat Lenis implementations',
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ filters?: string }>
+}): Promise<Metadata> {
+  const { filters } = await searchParams
+  const isTemplates = filters
+    ?.split(',')
+    .some((f) => f.toLowerCase() === 'template')
+
+  if (isTemplates) {
+    return {
+      title: 'Lenis – Templates',
+      description:
+        'Ready-to-use Framer and Webflow templates to start your next project with Lenis',
+    }
+  }
+
+  return {
+    title: 'Lenis – Showcase',
+    description: 'A showcase of neat Lenis implementations',
+  }
 }
 
 // ISR: revalidate every 30 minutes
