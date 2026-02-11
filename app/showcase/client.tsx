@@ -82,13 +82,14 @@ export default function ShowcaseClient({
   database,
   filters: filterParams,
 }: ShowcaseClientProps) {
+  const isTemplateLayout = filterParams?.some(
+    (f) => f.toLowerCase() === 'template'
+  )
+
   const filtersRef = useRef<{
     setFilters: (f: string[]) => void
     setSearch: (s: string) => void
   } | null>(null)
-
-  const [filters, setFilters] = useState<string[]>([])
-  const [search, setSearch] = useState('')
 
   const list = database.results
     // .sort((a, b) => {
@@ -152,6 +153,9 @@ export default function ShowcaseClient({
       )
     : undefined
 
+  const [filters, setFilters] = useState<string[]>(defaultFilters ?? [])
+  const [search, setSearch] = useState('')
+
   const filteredList = list.filter((item) => {
     return (
       filters.every((filter) => {
@@ -184,7 +188,8 @@ export default function ShowcaseClient({
             <div className={s.tagline}>
               <h1 className={cn('h2', s.title)}>Get smooth or die trying</h1>
               <h2 className={cn('h4', s.subtitle)}>
-                A showcase of neat Lenis implementations
+                A showcase of neat Lenis{' '}
+                {isTemplateLayout ? 'templates' : 'implementations'}
               </h2>
             </div>
             <div
@@ -194,23 +199,30 @@ export default function ShowcaseClient({
               )}
             >
               <Button
-                className={cn(s.button, 'col-span-3 col-start-4')}
+                className={cn(
+                  s.button,
+                  isTemplateLayout
+                    ? 'col-span-4 col-start-5'
+                    : 'col-span-3 col-start-4'
+                )}
                 icon={<Arrow className={cn('icon')} />}
                 href="https://darkroom-engineering.notion.site/2c0e97ae01cf80598f03e5fa862b678e"
               >
-                Submit your work
+                {isTemplateLayout ? 'Submit your template' : 'Submit your work'}
               </Button>
-              <Button
-                className={cn(s.button, 'col-span-3')}
-                icon={<CubeSVG className={cn('icon')} />}
-                onClick={() => {
-                  filtersRef.current?.setFilters(['Template'])
-                  filtersRef.current?.setSearch('')
-                  lenis?.scrollTo('#filters')
-                }}
-              >
-                find a template
-              </Button>
+              {!isTemplateLayout && (
+                <Button
+                  className={cn(s.button, 'col-span-3')}
+                  icon={<CubeSVG className={cn('icon')} />}
+                  onClick={() => {
+                    filtersRef.current?.setFilters(['Template'])
+                    filtersRef.current?.setSearch('')
+                    lenis?.scrollTo('#filters')
+                  }}
+                >
+                  find a template
+                </Button>
+              )}
             </div>
           </section>
           <Filters
