@@ -77,6 +77,15 @@ const typography: TypeStyles = {
     'text-transform': 'uppercase',
     'font-size': { mobile: 12, desktop: 12 },
   },
+  cta: {
+    'font-family': `var(${fonts.roboto})`,
+    'font-style': 'normal',
+    'font-weight': 900,
+    'line-height': { mobile: '200%', desktop: '200%' },
+    'letter-spacing': '0em',
+    'text-transform': 'uppercase',
+    'font-size': { mobile: 14, desktop: 14 },
+  },
 } as const
 
 export { fonts, typography }

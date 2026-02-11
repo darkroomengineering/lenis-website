@@ -155,6 +155,7 @@ export default function ShowcaseClient({
 
   const [filters, setFilters] = useState<string[]>(defaultFilters ?? [])
   const [search, setSearch] = useState('')
+  const [page, setPage] = useState(0)
 
   const filteredList = list.filter((item) => {
     return (
@@ -169,6 +170,11 @@ export default function ShowcaseClient({
           .includes(search.toLowerCase()))
     )
   })
+
+  const slicedList = filteredList.slice(
+    0,
+    (filters.length > 0 ? 20 : 18) + page * 20
+  )
 
   const lenis = useLenis()
 
@@ -236,16 +242,15 @@ export default function ShowcaseClient({
           />
           <section
             className={cn(
-              'dr-layout-grid',
+              'dr-layout-grid dr-mb-80 dt:dr-mb-160',
               s.grid,
               (search || filters.length > 0) && s.isFiltered
             )}
             style={{
-              gridTemplateRows:
-                filteredList.length > 0 ? 'max-content' : 'auto',
+              gridTemplateRows: slicedList.length > 0 ? 'max-content' : 'auto',
             }}
           >
-            {filteredList.length === 0 ? (
+            {slicedList.length === 0 ? (
               <div className={s.noResults}>
                 <p className="p">No results found</p>
                 <Button
@@ -257,7 +262,7 @@ export default function ShowcaseClient({
                 </Button>
               </div>
             ) : (
-              filteredList.map((card, index) => (
+              slicedList.map((card, index) => (
                 <ShowcaseCard
                   key={card.title}
                   className={cn(s.card)}
@@ -267,6 +272,17 @@ export default function ShowcaseClient({
               ))
             )}
           </section>
+          {filteredList.length > slicedList.length && (
+            <div className="dr-layout-grid dr-mb-80 dt:dr-mb-160">
+              <button
+                type="button"
+                onClick={() => setPage(page + 1)}
+                className="dr-h-48 cta col-span-full dt:col-span-2 dt:col-start-6 rounded-[4px] bg-contrast text-black"
+              >
+                Load more
+              </button>
+            </div>
+          )}
           <Footer theme="dark" />
         </div>
       </div>

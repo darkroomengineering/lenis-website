@@ -9,13 +9,13 @@
   text-transform: uppercase;
   position: relative;
   line-height: 200%;
-  font-size: calc(((14 * 100) / var(--device-width)) * 1vw);
+  font-size: mobile-vw(14);
   color: var(--color-black);
   overflow: hidden;
   text-align: center;
 
   @media (--desktop) {
-    font-size: calc(((14 * 100) / var(--device-width)) * 1vw);
+    font-size: desktop-vw(14);
   }
 
   .text {
@@ -31,7 +31,7 @@
       height: 100%;
 
       @media (--desktop) {
-        padding: 0 calc(((24 * 100) / var(--device-width)) * 1vw);
+        padding: 0 desktop-vw(24);
       }
     }
 

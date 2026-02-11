@@ -181,6 +181,17 @@
 	font-size: calc(((12 * 100) / var(--device-width)) * 1vw);
 	@variant dt { font-size: calc(((12 * 100) / var(--device-width)) * 1vw); }
 }
+@utility cta {
+  font-family: var(--font-roboto);
+	font-style: normal;
+	font-weight: 900;
+	line-height: 200%;
+	@variant dt { line-height: 200%; }
+	letter-spacing: 0em;
+	text-transform: uppercase;
+	font-size: calc(((14 * 100) / var(--device-width)) * 1vw);
+	@variant dt { font-size: calc(((14 * 100) / var(--device-width)) * 1vw); }
+}
 
 @utility desktop-only {
   @media (--mobile) {
