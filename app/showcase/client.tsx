@@ -1,5 +1,6 @@
 'use client'
 
+import { track } from '@vercel/analytics'
 import cn from 'clsx'
 import { ReactLenis, useLenis } from 'lenis/react'
 import dynamic from 'next/dynamic'
@@ -276,7 +277,10 @@ export default function ShowcaseClient({
             <div className="dr-layout-grid dr-mb-80 dt:dr-mb-160">
               <button
                 type="button"
-                onClick={() => setPage(page + 1)}
+                onClick={() => {
+                  track('showcase_load_more', { page })
+                  setPage(page + 1)
+                }}
                 className="dr-h-48 cta col-span-full dt:col-span-2 dt:col-start-6 rounded-[4px] bg-contrast text-black"
               >
                 Load more
