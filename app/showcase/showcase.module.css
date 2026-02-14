@@ -35,11 +35,11 @@
   position: absolute;
   top: var(--layout-margin);
   left: var(--layout-margin);
-  width: calc(((40 * 100) / 1440) * 1vw);
+  width: calc(((40 * 100) / var(--device-width)) * 1vw);
   z-index: 1;
   background-color: var(--theme-contrast);
-  padding: calc(((6 * 100) / 1440) * 1vw);
-  border-radius: calc(((8 * 100) / 1440) * 1vw);
+  padding: calc(((6 * 100) / var(--device-width)) * 1vw);
+  border-radius: calc(((8 * 100) / var(--device-width)) * 1vw);
   transition: transform 600ms var(--ease-out-expo);
 }
 

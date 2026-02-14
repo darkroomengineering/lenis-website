@@ -281,7 +281,7 @@ export default function ShowcaseClient({
                   track('showcase_load_more', { page })
                   setPage(page + 1)
                 }}
-                className="dr-h-48 cta col-span-full dt:col-span-2 dt:col-start-6 rounded-[4px] bg-contrast text-black"
+                className="dr-h-48 cta dr-rounded-8 col-span-full dt:col-span-2 dt:col-start-6 bg-contrast text-black"
               >
                 Load more
               </button>
