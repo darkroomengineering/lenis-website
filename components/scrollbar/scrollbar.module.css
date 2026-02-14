@@ -12,7 +12,7 @@
 
   .inner {
     width: 100%;
-    height: calc(((4 * 100) / var(--device-width)) * 1vw);
+    height: device-vw(4);
     position: relative;
     background-color: var(--color-pink);
     transform: scaleX(0);

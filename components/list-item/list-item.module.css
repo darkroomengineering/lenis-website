@@ -2,7 +2,7 @@
   position: relative;
 
   .inner {
-    padding: calc(((16 * 100) / var(--device-width)) * 1vw) 0;
+    padding: device-vw(16) 0;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
@@ -11,7 +11,7 @@
     @media (--desktop) {
       flex-direction: row;
       align-items: center;
-      padding: calc(((16 * 100) / var(--device-width)) * 1vw) 0;
+      padding: device-vw(16) 0;
     }
   }
 
@@ -20,7 +20,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    height: calc(((1 * 100) / var(--device-width)) * 1vw);
+    height: device-vw(1);
     background-color: var(--color-grey);
     bottom: 0;
   }
@@ -57,24 +57,24 @@
       font-family: var(--font-roboto);
       font-weight: 500;
       line-height: 100%;
-      font-size: calc(((20 * 100) / var(--device-width)) * 1vw);
+      font-size: device-vw(20);
       letter-spacing: -0.03em;
 
       @media (--mobile) {
         max-width: 70%;
-        margin-bottom: calc(((8 * 100) / var(--device-width)) * 1vw);
+        margin-bottom: device-vw(8);
       }
 
       @media (--desktop) {
         line-height: 114%;
-        font-size: calc(((28 * 100) / var(--device-width)) * 1vw);
+        font-size: device-vw(28);
       }
     }
 
     .arrow {
       aspect-ratio: 1 / 1;
       margin-left: auto;
-      width: calc(((19 * 100) / var(--device-width)) * 1vw);
+      width: device-vw(19);
 
       @media (--mobile) {
         flex-shrink: 0;
@@ -83,8 +83,8 @@
       @media (--desktop) {
         transform: translate(-20%, 20%);
         opacity: 0;
-        margin-left: calc(((24 * 100) / var(--device-width)) * 1vw);
-        width: calc(((19 * 100) / var(--device-width)) * 1vw);
+        margin-left: device-vw(24);
+        width: device-vw(19);
       }
     }
   }
@@ -95,13 +95,13 @@
     transition: transform 600ms var(--ease-out-expo);
     line-height: 100%;
     letter-spacing: -0.03em;
-    font-size: calc(((20 * 100) / var(--device-width)) * 1vw);
+    font-size: device-vw(20);
     will-change: transform;
 
     @media (--desktop) {
       text-align: end;
       line-height: 114%;
-      font-size: calc(((28 * 100) / var(--device-width)) * 1vw);
+      font-size: device-vw(28);
     }
   }
 
@@ -113,7 +113,7 @@
       }
 
       .title {
-        transform: translateX(calc(((16 * 100) / var(--device-width)) * 1vw));
+        transform: translateX(device-vw(16));
 
         .arrow {
           transition:

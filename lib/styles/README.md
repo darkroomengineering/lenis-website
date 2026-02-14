@@ -196,7 +196,7 @@ Available globally:
 ## Media Queries
 
 ```css
-@media (--mobile) { /* width <= 799.98px */ }
+@media (--mobile) { /* width <= 800px */ }
 @media (--desktop) { /* width >= 800px */ }
 @media (--hover) { /* hover: hover */ }
 @media (--reduced-motion) { /* prefers-reduced-motion: reduce */ }

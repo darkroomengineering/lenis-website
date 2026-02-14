@@ -2,7 +2,7 @@
   font-weight: 900;
   font-family: var(--font-roboto);
   display: flex;
-  grid-template-columns: calc(((48 * 100) / var(--device-width)) * 1vw) 1fr;
+  grid-template-columns: device-vw(48) 1fr;
   align-items: center;
   justify-content: space-between;
   user-select: none;
@@ -88,15 +88,15 @@
     display: flex;
     aspect-ratio: 1 / 1;
     transition: border-color 600ms var(--ease-out-expo);
-    width: calc(((48 * 100) / var(--device-width)) * 1vw);
+    width: device-vw(48);
     z-index: 10;
-    padding: calc(((12 * 100) / var(--device-width)) * 1vw);
+    padding: device-vw(12);
     background-color: var(--theme-primary);
     border: 1px solid var(--color-pink);
 
     @media (--desktop) {
-      width: calc(((48 * 100) / var(--device-width)) * 1vw);
-      padding: calc(((12 * 100) / var(--device-width)) * 1vw);
+      width: device-vw(48);
+      padding: device-vw(12);
     }
 
     svg {
@@ -104,12 +104,12 @@
       margin: auto;
       transition: color 600ms var(--ease-out-expo);
       background-color: var(--theme-primary);
-      width: calc(((24 * 100) / var(--device-width)) * 1vw);
-      height: calc(((24 * 100) / var(--device-width)) * 1vw);
+      width: device-vw(24);
+      height: device-vw(24);
 
       @media (--desktop) {
-        width: calc(((24 * 100) / var(--device-width)) * 1vw);
-        height: calc(((24 * 100) / var(--device-width)) * 1vw);
+        width: device-vw(24);
+        height: device-vw(24);
       }
     }
   }
@@ -118,13 +118,13 @@
     position: relative;
     z-index: 10;
     aspect-ratio: 1 / 1;
-    width: calc(((10 * 100) / var(--device-width)) * 1vw);
-    margin-left: calc(((16 * 100) / var(--device-width)) * 1vw);
+    width: device-vw(10);
+    margin-left: device-vw(16);
     transition: transform 600ms var(--ease-out-expo);
 
     @media (--desktop) {
-      width: calc(((10 * 100) / var(--device-width)) * 1vw);
-      margin-left: calc(((16 * 100) / var(--device-width)) * 1vw);
+      width: device-vw(10);
+      margin-left: device-vw(16);
     }
   }
 

@@ -18,37 +18,35 @@
 
   .content {
     background-color: var(--theme-primary);
-    padding: calc(((40 * 100) / var(--device-width)) * 1vw)
-      calc(((20 * 100) / var(--device-width)) * 1vw);
+    padding: device-vw(40) device-vw(20);
     display: flex;
     flex-direction: column;
     grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: calc(((40 * 100) / var(--device-width)) * 1vw);
+    gap: device-vw(40);
     border: 1px solid var(--theme-contrast);
     position: relative;
 
     @media (--desktop) {
       grid-column: 5 / -5;
-      gap: calc(((40 * 100) / var(--device-width)) * 1vw);
-      padding: calc(((40 * 100) / var(--device-width)) * 1vw)
-        calc(((20 * 100) / var(--device-width)) * 1vw);
+      gap: device-vw(40);
+      padding: device-vw(40) device-vw(20);
     }
 
     .close {
       position: absolute;
-      top: calc(((20 * 100) / var(--device-width)) * 1vw);
-      right: calc(((20 * 100) / var(--device-width)) * 1vw);
-      width: calc(((20 * 100) / var(--device-width)) * 1vw);
-      height: calc(((20 * 100) / var(--device-width)) * 1vw);
+      top: device-vw(20);
+      right: device-vw(20);
+      width: device-vw(20);
+      height: device-vw(20);
 
       @media (--desktop) {
-        top: calc(((20 * 100) / var(--device-width)) * 1vw);
-        right: calc(((20 * 100) / var(--device-width)) * 1vw);
-        width: calc(((20 * 100) / var(--device-width)) * 1vw);
-        height: calc(((20 * 100) / var(--device-width)) * 1vw);
+        top: device-vw(20);
+        right: device-vw(20);
+        width: device-vw(20);
+        height: device-vw(20);
       }
 
       &::before,
@@ -73,10 +71,10 @@
     }
 
     .text {
-      padding-top: calc(((20 * 100) / var(--device-width)) * 1vw);
+      padding-top: device-vw(20);
 
       @media (--desktop) {
-        padding-top: calc(((20 * 100) / var(--device-width)) * 1vw);
+        padding-top: device-vw(20);
       }
     }
   }

@@ -4,7 +4,7 @@
  */
 
 @custom-media --hover (hover: hover);
-@custom-media --mobile (width <= 799.98px);
+@custom-media --mobile (width <= 800px);
 @custom-media --desktop (width >= 800px);
 @custom-media --reduced-motion (prefers-reduced-motion: reduce);
 
@@ -18,15 +18,15 @@
 	--device-height: 650;
 
 	--columns: 6;
-	--gap: calc(((24 * 100) / var(--device-width)) * 1vw);
-	--safe: calc(((16 * 100) / var(--device-width)) * 1vw);
+	--gap: device-vw(24);
+	--safe: device-vw(16);
 
-	--header-height: calc(((58 * 100) / var(--device-width)) * 1vw);
-	--spacer-xl: calc(((80 * 100) / var(--device-width)) * 1vw);
-	--spacer-lg: calc(((64 * 100) / var(--device-width)) * 1vw);
-	--spacer-md: calc(((48 * 100) / var(--device-width)) * 1vw);
-	--spacer-sm: calc(((32 * 100) / var(--device-width)) * 1vw);
-	--spacer-xs: calc(((32 * 100) / var(--device-width)) * 1vw);
+	--header-height: device-vw(58);
+	--spacer-xl: device-vw(80);
+	--spacer-lg: device-vw(64);
+	--spacer-md: device-vw(48);
+	--spacer-sm: device-vw(32);
+	--spacer-xs: device-vw(32);
 
 	--layout-width: calc(100vw - (2 * var(--safe)));
 	--column-width: calc((var(--layout-width) - (var(--columns) - 1) * var(--gap)) / var(--columns));
@@ -70,15 +70,15 @@
     --device-height: 816;
 
     --columns: 12;
-		--gap: calc(((24 * 100) / var(--device-width)) * 1vw);
-		--safe: calc(((40 * 100) / var(--device-width)) * 1vw);
+		--gap: device-vw(24);
+		--safe: device-vw(40);
 
-    --header-height: calc(((98 * 100) / var(--device-width)) * 1vw);
-		--spacer-xl: calc(((192 * 100) / var(--device-width)) * 1vw);
-		--spacer-lg: calc(((128 * 100) / var(--device-width)) * 1vw);
-		--spacer-md: calc(((80 * 100) / var(--device-width)) * 1vw);
-		--spacer-sm: calc(((64 * 100) / var(--device-width)) * 1vw);
-		--spacer-xs: calc(((48 * 100) / var(--device-width)) * 1vw);
+    --header-height: device-vw(98);
+		--spacer-xl: device-vw(192);
+		--spacer-lg: device-vw(128);
+		--spacer-md: device-vw(80);
+		--spacer-sm: device-vw(64);
+		--spacer-xs: device-vw(48);
 	}
 }
   

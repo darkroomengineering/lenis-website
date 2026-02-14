@@ -16,16 +16,14 @@
     position: absolute;
     transform: translate(-50%, -50%);
     border-radius: 100%;
-    border: calc(((2 * 100) / var(--device-width)) * 1vw) solid
-      var(--color-pink);
+    border: device-vw(2) solid var(--color-pink);
     width: 40px;
     height: 40px;
     opacity: 0.4;
     transition: transform 600ms var(--ease-out-expo);
 
     @media (--desktop) {
-      border: calc(((2 * 100) / var(--device-width)) * 1vw) solid
-        var(--color-pink);
+      border: device-vw(2) solid var(--color-pink);
     }
 
     &.pointer {

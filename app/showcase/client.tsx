@@ -268,7 +268,8 @@ export default function ShowcaseClient({
                   key={card.title}
                   className={cn(s.card)}
                   {...card}
-                  priority={index <= 2}
+                  priority={index < 2}
+                  featured={index < 2}
                 />
               ))
             )}

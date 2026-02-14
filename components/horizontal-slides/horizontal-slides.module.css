@@ -12,12 +12,12 @@
     }
 
     @media (--mobile) {
-      width: calc(((375 * 100) / var(--device-width)) * 1vw);
+      width: device-vw(375);
     }
 
     @media (--desktop) {
       position: sticky;
-      --height: calc(((440 * 100) / var(--device-width)) * 1vw);
+      --height: device-vw(440);
       top: calc((100vh - var(--height)) / 2);
     }
 
@@ -30,7 +30,7 @@
         width: 100%;
 
         > * {
-          margin-bottom: calc(((32 * 100) / var(--device-width)) * 1vw);
+          margin-bottom: device-vw(32);
         }
       }
     }

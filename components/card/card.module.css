@@ -5,8 +5,8 @@
   color: var(--theme-secondary);
   border: 1px solid;
   aspect-ratio: 1 / 1;
-  padding: calc(((24 * 100) / var(--device-width)) * 1vw);
-  width: calc(((343 * 100) / var(--device-width)) * 1vw);
+  padding: device-vw(24);
+  width: device-vw(343);
   background-color: var(--background);
   backdrop-filter: blur(5px);
 
@@ -17,16 +17,16 @@
 
   @media (--desktop) {
     width: columns(4);
-    padding: calc(((24 * 100) / var(--device-width)) * 1vw);
+    padding: device-vw(24);
   }
 
   .number {
     color: var(--theme-contrast);
     line-height: 90%;
-    font-size: calc(((56 * 100) / var(--device-width)) * 1vw);
+    font-size: device-vw(56);
 
     @media (--desktop) {
-      font-size: calc(((96 * 100) / var(--device-width)) * 1vw);
+      font-size: device-vw(96);
     }
   }
 
@@ -35,10 +35,10 @@
     font-weight: 700;
     text-transform: uppercase;
     line-height: 100%;
-    font-size: calc(((20 * 100) / var(--device-width)) * 1vw);
+    font-size: device-vw(20);
 
     @media (--desktop) {
-      font-size: calc(((28 * 100) / var(--device-width)) * 1vw);
+      font-size: device-vw(28);
     }
 
     span {

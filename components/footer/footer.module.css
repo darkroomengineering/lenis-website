@@ -1,7 +1,7 @@
 .footer {
   background-color: transparent;
   color: var(--theme-secondary);
-  padding: calc(((20 * 100) / 375) * 1vw) 0;
+  padding: mobile-vw(20) 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -10,13 +10,13 @@
 
   @media (--desktop) {
     height: 100vh;
-    padding: calc(((40 * 100) / 1440) * 1vw) 0;
+    padding: desktop-vw(40) 0;
   }
 
   .top {
     position: relative;
     height: 100%;
-    padding-bottom: calc(((20 * 100) / 375) * 1vw);
+    padding-bottom: mobile-vw(20);
     /* align-items: center; */
 
     @media (--mobile) {
@@ -25,7 +25,7 @@
     }
 
     @media (--desktop) {
-      padding-bottom: calc(((40 * 100) / 1440) * 1vw);
+      padding-bottom: desktop-vw(40);
     }
 
     .first-line {
@@ -49,10 +49,10 @@
       }
 
       p:first-child {
-        margin-bottom: calc(((8 * 100) / 375) * 1vw);
+        margin-bottom: mobile-vw(8);
 
         @media (--desktop) {
-          margin-bottom: calc(((8 * 100) / 1440) * 1vw);
+          margin-bottom: desktop-vw(8);
         }
       }
     }
@@ -65,7 +65,7 @@
       @media (--desktop) {
         position: absolute;
         left: 0;
-        bottom: calc(((40 * 100) / 1440) * 1vw);
+        bottom: desktop-vw(40);
       }
     }
 
@@ -95,7 +95,7 @@
       @media (--desktop) {
         .link:not(:first-child) {
           margin: 0;
-          margin-left: calc(((32 * 100) / 1440) * 1vw);
+          margin-left: desktop-vw(32);
         }
       }
 
@@ -105,7 +105,7 @@
 
         .link:not(:last-child) {
           display: block;
-          margin-bottom: calc(((16 * 100) / 375) * 1vw);
+          margin-bottom: mobile-vw(16);
         }
       }
     }

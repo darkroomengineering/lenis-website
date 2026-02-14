@@ -23,8 +23,7 @@
   }
 
   .relative {
-    padding: calc(((30 * 100) / var(--device-width)) * 1vw)
-      calc(((32.5 * 100) / var(--device-width)) * 1vw);
+    padding: device-vw(30) device-vw(32.5);
 
     transition: transform 1500ms var(--ease-out-expo);
     transform: translate3d(

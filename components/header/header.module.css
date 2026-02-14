@@ -4,10 +4,10 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: calc(((20 * 100) / var(--device-width)) * 1vw) 0;
+  padding: device-vw(20) 0;
 
   @media (--desktop) {
-    padding: calc(((40 * 100) / var(--device-width)) * 1vw) 0;
+    padding: device-vw(40) 0;
   }
 
   .head {

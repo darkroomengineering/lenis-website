@@ -11,6 +11,7 @@ import s from './card.module.css'
 export default function ShowcaseCard({
   className,
   title,
+  featured,
   credits,
   thumbnail,
   thumbnailType,
@@ -21,7 +22,14 @@ export default function ShowcaseCard({
   const [hover, setHover] = useState(false)
 
   return (
-    <div className={cn(s.card, hover && s.hover, className)}>
+    <div
+      className={cn(
+        s.card,
+        hover && s.hover,
+        featured && s.featured,
+        className
+      )}
+    >
       <Link
         className={s.image}
         href={href}
@@ -38,7 +46,7 @@ export default function ShowcaseCard({
               alt={title}
               fill
               style={{ objectFit: 'cover' }}
-              sizes={`(max-width: 799.98px) 100vw, ${priority ? '66vw' : '33vw'}`}
+              sizes={`(max-width: 800px) 100vw, ${priority ? '66vw' : '33vw'}`}
               priority={priority}
             />
           ) : (
