@@ -41,16 +41,6 @@
   padding: device-vw(6);
   border-radius: device-vw(8);
   aspect-ratio: 1 / 1;
-
-  svg {
-    transition: transform 600ms var(--ease-out-expo);
-  }
-
-  &:hover {
-    svg {
-      transform: scale(1.1);
-    }
-  }
 }
 
 .page .logo svg {

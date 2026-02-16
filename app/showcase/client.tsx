@@ -268,7 +268,7 @@ export default function ShowcaseClient({
                   className={cn(s.card)}
                   {...card}
                   priority={index < 2}
-                  featured={index < 2}
+                  featured={index < 2 && filters.length === 0}
                 />
               ))
             )}
