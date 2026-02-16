@@ -32,15 +32,25 @@
 }
 
 .page .logo {
-  position: absolute;
-  top: var(--layout-margin);
-  left: var(--layout-margin);
+  /* position: absolute; */
+  /* top: var(--layout-margin);
+  left: var(--layout-margin); */
   width: device-vw(40);
-  z-index: 1;
+  /* z-index: 1; */
   background-color: var(--theme-contrast);
   padding: device-vw(6);
   border-radius: device-vw(8);
-  transition: transform 600ms var(--ease-out-expo);
+  aspect-ratio: 1 / 1;
+
+  svg {
+    transition: transform 600ms var(--ease-out-expo);
+  }
+
+  &:hover {
+    svg {
+      transform: scale(1.1);
+    }
+  }
 }
 
 .page .logo svg {

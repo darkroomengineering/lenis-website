@@ -187,11 +187,10 @@ export default function ShowcaseClient({
       </div>
       <div className={s.page} data-theme="dark">
         <div className="relative">
-          <Link className={s.logo} href="/">
-            <LenisSVG />
-          </Link>
-
           <section className={cn(s.hero, 'dr-layout-block')}>
+            <Link className={s.logo} href="/">
+              <LenisSVG />
+            </Link>
             <div className={s.tagline}>
               <h1 className={cn('h2', s.title)}>Get smooth or die trying</h1>
               <h2 className={cn('h4', s.subtitle)}>
