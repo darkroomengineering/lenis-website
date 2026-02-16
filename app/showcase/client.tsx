@@ -185,10 +185,10 @@ export default function ShowcaseClient({
       <div className={s.canvas}>
         <WebGL arm={false} />
       </div>
-      <div className={s.page} data-theme="dark">
+      <main className={s.page} data-theme="dark">
         <div className="relative">
           <section className={cn(s.hero, 'dr-layout-block')}>
-            <Link className={s.logo} href="/">
+            <Link className={s.logo} href="/" aria-label="home">
               <LenisSVG />
             </Link>
             <div className={s.tagline}>
@@ -289,7 +289,7 @@ export default function ShowcaseClient({
           )}
           <Footer theme="dark" />
         </div>
-      </div>
+      </main>
     </>
   )
 }

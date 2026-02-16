@@ -38,6 +38,7 @@ export default function ShowcaseCard({
         onClick={() => {
           track('showcase_card_click', { href })
         }}
+        aria-label={title}
       >
         <div className={s.imageInner}>
           {thumbnailType === 'image' ? (
