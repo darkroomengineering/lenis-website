@@ -142,6 +142,12 @@
   grid-column: span 6;
 }
 
+.page .grid:not(.isFiltered) .card:nth-child(3),
+.page .grid:not(.isFiltered) .card:nth-child(4),
+.page .grid:not(.isFiltered) .card:nth-child(5) {
+  grid-column: span 4;
+}
+
 .page .grid .noResults {
   grid-column: 1 / -1;
   text-align: center;

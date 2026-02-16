@@ -174,7 +174,7 @@ export default function ShowcaseClient({
 
   const slicedList = filteredList.slice(
     0,
-    (filters.length > 0 ? 20 : 18) + page * 20
+    (filters.length > 0 ? 20 : 17) + page * 20
   )
 
   const lenis = useLenis()
