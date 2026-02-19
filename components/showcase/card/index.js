@@ -17,6 +17,7 @@ export default function ShowcaseCard({
   thumbnailType,
   poster,
   href,
+  isSponsor,
   priority,
 }) {
   const [hover, setHover] = useState(false)
@@ -61,6 +62,7 @@ export default function ShowcaseCard({
             />
           )}
         </div>
+        {isSponsor && <div className={cn('p-xs', s.sponsor)}>Sponsored</div>}
         <div className={s.arrow}>
           <Arrow className={cn('icon')} />
         </div>

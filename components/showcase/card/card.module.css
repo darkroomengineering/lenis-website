@@ -28,6 +28,20 @@
       transition: opacity 600ms var(--ease-out-expo);
     }
 
+    .sponsor {
+      position: absolute;
+      bottom: device-vw(16);
+      left: device-vw(16);
+      background-color: var(--theme-contrast);
+
+      padding: device-vw(4) device-vw(8);
+      border-radius: device-vw(4);
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--theme-primary);
+      z-index: 1;
+    }
+
     .arrow {
       aspect-ratio: 1 / 1;
       position: absolute;

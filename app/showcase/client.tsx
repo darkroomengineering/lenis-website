@@ -68,6 +68,9 @@ interface ShowcaseClientProps {
             start: string
           }
         }
+        isSponsor: {
+          checkbox: boolean
+        }
       }
       resolvedMedia?: {
         url: string
@@ -126,6 +129,7 @@ export default function ShowcaseClient({
       features: result.properties.features.multi_select.map((tag) => tag.name),
       publishedAt:
         result.properties.publishedAt.date?.start ?? result.created_time,
+      isSponsor: result.properties.isSponsor.checkbox,
     }))
     .sort((a, b) => {
       return (
@@ -178,6 +182,8 @@ export default function ShowcaseClient({
   )
 
   const lenis = useLenis()
+
+  console.log(slicedList[0])
 
   return (
     <>
@@ -268,7 +274,7 @@ export default function ShowcaseClient({
                   className={cn(s.card)}
                   {...card}
                   priority={index < 2}
-                  featured={index < 2 && filters.length === 0}
+                  featured={index < 2 && filters.length === 0 && search === ''}
                 />
               ))
             )}
