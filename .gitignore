@@ -53,3 +53,5 @@ MIGRATION_PLAN.md
 
 # claude
 .claude
+.vercel
+.env*.local
