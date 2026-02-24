@@ -137,6 +137,14 @@ export default function ShowcaseClient({
       )
     })
 
+  // Move sponsor entries to the 5th position (index 4)
+  const sponsor = list.find((item) => item.isSponsor)
+  const nonSponsors = list.filter((item) => !item.isSponsor)
+  if (sponsor) {
+    nonSponsors.splice(4, 0, sponsor)
+  }
+  const sortedList = nonSponsors
+
   const allFilters = list.flatMap((item) => [
     ...item.technologies,
     ...item.features,
@@ -162,7 +170,7 @@ export default function ShowcaseClient({
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(0)
 
-  const filteredList = list.filter((item) => {
+  const filteredList = sortedList.filter((item) => {
     return (
       filters.every((filter) => {
         return (
