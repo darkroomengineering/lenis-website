@@ -191,8 +191,6 @@ export default function ShowcaseClient({
 
   const lenis = useLenis()
 
-  console.log(slicedList[0])
-
   return (
     <>
       <ReactLenis root />
@@ -244,6 +242,7 @@ export default function ShowcaseClient({
                 </Button>
               )}
             </div>
+            {/* <Newsletter /> */}
           </section>
           <Filters
             className={s.filters}
