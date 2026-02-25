@@ -249,6 +249,8 @@ export default function ShowcaseClient({
             onChange={setFilters}
             onSearch={setSearch}
             list={filtersList}
+            counts={filterCounts}
+            total={list.length}
             defaultFilters={defaultFilters}
             id="filters"
             ref={filtersRef}

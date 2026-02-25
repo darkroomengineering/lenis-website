@@ -16,6 +16,8 @@ import s from './filters.module.css'
  * @param {Function} [props.onChange]
  * @param {Function} [props.onSearch]
  * @param {string[]} [props.list]
+ * @param {Record<string, number>} [props.counts]
+ * @param {number} [props.total]
  * @param {string[]} [props.defaultFilters]
  * @param {string} [props.id]
  * @param {React.Ref} [props.ref]
@@ -25,6 +27,8 @@ export function Filters({
   onChange,
   onSearch,
   list = [],
+  counts = {},
+  total,
   defaultFilters,
   id,
   ref,
@@ -76,16 +80,34 @@ export function Filters({
       <div className={cn(s.tags, 'p')}>
         <button
           type="button"
-          className={cn(s.tag, filters.length === 0 && s.active)}
+          className={cn(
+            s.tag,
+            filters.length === 0 && s.active,
+            'dr-gap-4 flex items-center'
+          )}
           onClick={() => setFilters([])}
         >
-          All
+          <span>All</span>
+          {total != null && (
+            <div
+              className={cn(
+                'dr-w-16 dr-h-16 dr-text-8 flex aspect-square shrink-0 items-center justify-center rounded-full bg-contrast text-center text-primary',
+                filters.length === 0 && 'bg-primary! text-secondary!'
+              )}
+            >
+              {total}
+            </div>
+          )}
         </button>
         {list.map((filter) => (
           <button
             type="button"
             key={filter}
-            className={cn(s.tag, filters.includes(filter) && s.active)}
+            className={cn(
+              s.tag,
+              filters.includes(filter) && s.active,
+              'dr-gap-8 flex items-center text-nowrap'
+            )}
             onClick={() => {
               track('showcase_filter_click', { filter })
 
@@ -96,7 +118,18 @@ export function Filters({
               })
             }}
           >
-            {filter}
+            <span>{filter}</span>
+
+            {/* {counts[filter] != null ? (
+              <div
+                className={cn(
+                  'dr-w-16 dr-h-16 dr-text-8 flex aspect-square shrink-0 items-center justify-center rounded-full border border-contrast bg-contrast text-center text-primary',
+                  filters.includes(filter) && 'bg-secondary! text-contrast'
+                )}
+              >
+                {counts[filter]}
+              </div>
+            ) : null} */}
           </button>
         ))}
       </div>
